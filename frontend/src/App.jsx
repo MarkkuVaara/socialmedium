@@ -4,23 +4,7 @@ import {
   BrowserRouter as Router,
   Routes, Route, Link
 } from 'react-router-dom';
-
-import { legacy_createStore as createStore } from 'redux';
-
-const pageTurner = (state = 0, action) => {
-  switch (action.type) {
-    case 'BASE':
-      return 0
-    case 'TIMELINE':
-      return 1
-    case 'INTERACTION':
-      return 2
-    default:
-    return state
-  }
-};
-
-const store = createStore(pageTurner);
+import { useSelector, useDispatch } from 'react-redux';
 
 import Base from './components/Base';
 import Timeline from './components/Timeline';
@@ -36,6 +20,9 @@ const App = (props) => {
   const [likes, setLLikes] = useState(props.likes);
   const [user, setUser] = useState(null);
 
+  const pageTurner = useSelector((state) => state);
+  const dispatch = useDispatch();
+
   return (
 
     <div className="mainapp">
@@ -46,24 +33,24 @@ const App = (props) => {
       </div>
       <div className="nav">
         <h2>Navigation</h2>
-        <button onClick={() => store.dispatch({type: 'BASE'})}>Base</button>
-        <button onClick={() => store.dispatch({type: 'TIMELINE'})}>Timeline</button>
-        <button onClick={() => store.dispatch({type: 'INTERACTION'})}>Interaction</button>
+        <button onClick={() => dispatch({type: 'BASE'})}>Base</button>
+        <button onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
+        <button onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
       </div>
       <div className="main">
-        {store.getState() === 0
+        {pageTurner === 0
           &&
           <div className="nav">
             <Base videos={videos} views={views} messages={messages} likes={likes} />
           </div>
         }
-        {store.getState() === 1
+        {pageTurner === 1
           && 
           <div className="nav">
             <Timeline videos={videos} views={views} messages={messages} likes={likes} />
           </div>
         }
-        {store.getState() === 2
+        {pageTurner === 2
           && 
           <div className="nav">
             <Interaction videos={videos} views={views} messages={messages} likes={likes} />
