@@ -5,6 +5,23 @@ import {
   Routes, Route, Link
 } from 'react-router-dom';
 
+import { legacy_createStore as createStore } from 'redux';
+
+const pageTurner = (state = 0, action) => {
+  switch (action.type) {
+    case 'BASE':
+      return 0
+    case 'TIMELINE':
+      return 1
+    case 'INTERACTION':
+      return 2
+    default:
+    return state
+  }
+};
+
+const store = createStore(pageTurner);
+
 import Base from './components/Base';
 import Timeline from './components/Timeline';
 import Interaction from './components/Interaction';
@@ -29,21 +46,29 @@ const App = (props) => {
       </div>
       <div className="nav">
         <h2>Navigation</h2>
+        <button onClick={() => store.dispatch({type: 'BASE'})}>Base</button>
+        <button onClick={() => store.dispatch({type: 'TIMELINE'})}>Timeline</button>
+        <button onClick={() => store.dispatch({type: 'INTERACTION'})}>Interaction</button>
       </div>
       <div className="main">
-        <p>Feed</p>
-        {videos.map(video => 
-          <p>{video.name}</p>
-        )}
-        {views.map(view => 
-          <p>{view.date}</p>
-        )}
-        {messages.map(message => 
-          <p>{message.title}</p>
-        )}
-        {likes.map(like => 
-          <p>{like.type}</p>
-        )}
+        {store.getState() === 0
+          &&
+          <div className="nav">
+            <Base videos={videos} views={views} messages={messages} likes={likes} />
+          </div>
+        }
+        {store.getState() === 1
+          && 
+          <div className="nav">
+            <Timeline videos={videos} views={views} messages={messages} likes={likes} />
+          </div>
+        }
+        {store.getState() === 2
+          && 
+          <div className="nav">
+            <Interaction videos={videos} views={views} messages={messages} likes={likes} />
+          </div>
+        }
       </div>
     </div>
 
