@@ -5,11 +5,19 @@ import {
   Routes, Route, Link
 } from 'react-router-dom';
 
+import Base from './components/Base';
+import Timeline from './components/Timeline';
+import Interaction from './components/Interaction';
+
 import Filmreel from './images/filmreel.png';
 
-const App = () => {
+const App = (props) => {
 
-  const [messages, setMessages] = useState([]);
+  const [videos, setVideos] = useState(props.videos);
+  const [views, setViews] = useState(props.views);
+  const [messages, setMessages] = useState(props.messages);
+  const [likes, setLLikes] = useState(props.likes);
+  const [user, setUser] = useState(null);
 
   return (
 
@@ -24,6 +32,18 @@ const App = () => {
       </div>
       <div className="main">
         <p>Feed</p>
+        {videos.map(video => 
+          <p>{video.name}</p>
+        )}
+        {views.map(view => 
+          <p>{view.date}</p>
+        )}
+        {messages.map(message => 
+          <p>{message.title}</p>
+        )}
+        {likes.map(like => 
+          <p>{like.type}</p>
+        )}
       </div>
     </div>
 
