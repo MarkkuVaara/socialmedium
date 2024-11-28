@@ -5,7 +5,17 @@ const Base = (props) => {
         <div className="nav">
             <h3>Base</h3>
             {props.videos.map(video => 
-                <p>{video.name}</p>
+                <div className="basevideo" key={video.id}>
+                    <h4>{video.name}</h4>
+                    <p>{video.year}</p>
+                    <p>{video.director}</p>
+                    <p>{video.actors.map(actor => 
+                        <div className="videoactor" key={video.id}>
+                            <span>{actor}</span>
+                        </div>)}
+                    </p>
+                    <p>{video.length} min</p>
+                </div>
             )}
             {props.views.map(view => 
                 <p>{view.date}</p>

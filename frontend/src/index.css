@@ -83,7 +83,7 @@ p {
 }
 
 
-/* Subpage styles */
+/* Base-subpage styles */
 
 .base {
     margin-left: 5%;
@@ -95,6 +95,34 @@ p {
     border-bottom: 2px solid gray;
 }
 
+.basevideo {
+    height: 60%;
+    width: 60%;
+    min-height: 200px;
+    min-width: 200px;
+    padding: 10px;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    background: #3F2207;
+    border: 2px solid gray;
+}
+
+.basevideo > h4 {
+    color: deepskyblue;
+}
+
+.basevideo > p {
+    padding-left: 20px;
+}
+
+.videoactor {
+    display: flex;
+    justify-content: space-between;
+    text-align: justify;
+}
+
+/* Timeline-subpage styles */
+
 .timeline {
     padding-bottom: 5px;
     padding-left: 20px;
@@ -102,6 +130,9 @@ p {
     background-color: #3F2D17;
     border-bottom: 2px solid gray;
 }
+
+
+/* Interaction-subpage styles */
 
 .interaction {
     margin-left: 10%;

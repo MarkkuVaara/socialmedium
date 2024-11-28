@@ -57,6 +57,15 @@ const App = (props) => {
         <button className="navbutton" onClick={() => dispatch({type: 'BASE'})}>Base</button>
         <button className="navbutton" onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
         <button className="navbutton" onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
+        <button className="navbutton" onClick={() => dispatch({
+          type: 'NEW_VIDEO',
+          payload: {id: 20, name: "Gladiator",
+            type: "movie",
+            director: "Ridley Scott",
+            actors: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
+            year: 2000,
+            length: 130}
+        })}>Add Gladiator</button>
       </div>
       <div className="main">
         {pageTurner === 0
