@@ -20,7 +20,7 @@ const App = (props) => {
   const [likes, setLLikes] = useState(props.likes);
   const [user, setUser] = useState(null);
 
-  const pageTurner = useSelector((state) => state);
+  const pageTurner = useSelector((state) => state.pageTurner);
   const dispatch = useDispatch();
 
   return (
@@ -33,26 +33,26 @@ const App = (props) => {
       </div>
       <div className="nav">
         <h2>Navigation</h2>
-        <button onClick={() => dispatch({type: 'BASE'})}>Base</button>
-        <button onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
-        <button onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
+        <button className="navbutton" onClick={() => dispatch({type: 'BASE'})}>Base</button>
+        <button className="navbutton" onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
+        <button className="navbutton" onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
       </div>
       <div className="main">
         {pageTurner === 0
           &&
-          <div className="nav">
+          <div className="base">
             <Base videos={videos} views={views} messages={messages} likes={likes} />
           </div>
         }
         {pageTurner === 1
           && 
-          <div className="nav">
+          <div className="timeline">
             <Timeline videos={videos} views={views} messages={messages} likes={likes} />
           </div>
         }
         {pageTurner === 2
           && 
-          <div className="nav">
+          <div className="interaction">
             <Interaction videos={videos} views={views} messages={messages} likes={likes} />
           </div>
         }
