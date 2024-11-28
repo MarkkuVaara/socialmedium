@@ -14,20 +14,41 @@ import Filmreel from './images/filmreel.png';
 
 const App = (props) => {
 
-  const [videos, setVideos] = useState(props.videos);
-  const [views, setViews] = useState(props.views);
-  const [messages, setMessages] = useState(props.messages);
-  const [likes, setLLikes] = useState(props.likes);
   const [user, setUser] = useState(null);
 
   const pageTurner = useSelector((state) => state.pageTurner);
+  const videos = useSelector((state) => state.videoReducer);
+  const views = useSelector((state) => state.viewReducer);
+  const messages = useSelector((state) => state.commentReducer);
+  const likes = useSelector((state) => state.reactionReducer);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    dispatch({
+      type: 'ALL_VIDEOS',
+      payload: props.videos
+    });
+    dispatch({
+      type: 'ALL_VIEWS',
+      payload: props.views
+    });
+    dispatch({
+      type: 'ALL_COMMENTS',
+      payload: props.messages
+    });
+    dispatch({
+      type: 'ALL_REACTIONS',
+      payload: props.likes
+    });
+
+  }, []);
 
   return (
 
     <div className="mainapp">
       <div className="banner">
-        <h1>Movie social</h1>
+        <h1>Media social</h1>
         <p>Welcome to the social media for movie, tv and streaming watchers!</p>
         <img className="filmlogo" src={Filmreel} alt={Filmreel}></img>
       </div>
