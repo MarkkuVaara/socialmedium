@@ -10,9 +10,9 @@ const Base = (props) => {
                     <p>{video.year}</p>
                     <p>{video.director}</p>
                     <p>{video.actors.map(actor => 
-                        <div className="videoactor" key={video.id}>
-                            <span>{actor}</span>
-                        </div>)}
+                        <span className="videoactor" key={video.id}>
+                            <p>{actor}</p>
+                        </span>)}
                     </p>
                     <p>{video.length} min</p>
                 </div>

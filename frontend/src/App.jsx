@@ -53,19 +53,21 @@ const App = (props) => {
         <img className="filmlogo" src={Filmreel} alt={Filmreel}></img>
       </div>
       <div className="nav">
-        <h2>Navigation</h2>
-        <button className="navbutton" onClick={() => dispatch({type: 'BASE'})}>Base</button>
-        <button className="navbutton" onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
-        <button className="navbutton" onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
-        <button className="navbutton" onClick={() => dispatch({
-          type: 'NEW_VIDEO',
-          payload: {id: 20, name: "Gladiator",
-            type: "movie",
-            director: "Ridley Scott",
-            actors: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
-            year: 2000,
-            length: 130}
-        })}>Add Gladiator</button>
+        <div className="subnav">
+          <h2>Navigation</h2>
+          <button className="navbutton" onClick={() => dispatch({type: 'BASE'})}>Base</button>
+          <button className="navbutton" onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
+          <button className="navbutton" onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
+          <button className="navbutton" onClick={() => dispatch({
+            type: 'NEW_VIDEO',
+            payload: {id: 20, name: "Gladiator",
+              type: "movie",
+              director: "Ridley Scott",
+              actors: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
+              year: 2000,
+              length: 130}
+            })}>Add Gladiator</button>
+        </div>
       </div>
       <div className="main">
         {pageTurner === 0

@@ -65,6 +65,11 @@ p {
     border-bottom: 2px solid gray;
 }
 
+.subnav {
+    display: flex;
+    justify-content: space-around;
+}
+
 .main {
     margin: 20px;
     margin-left: 10%;
@@ -102,6 +107,7 @@ p {
     min-width: 200px;
     padding: 10px;
     padding-left: 20px;
+    padding-right: 20px;
     margin-bottom: 20px;
     background: #3F2207;
     border: 2px solid gray;
@@ -109,6 +115,8 @@ p {
 
 .basevideo > h4 {
     color: deepskyblue;
+    padding-bottom: 10px;
+    border-bottom: 2px solid gray;
 }
 
 .basevideo > p {
@@ -116,10 +124,17 @@ p {
 }
 
 .videoactor {
-    display: flex;
+    display: inline-block;
     justify-content: space-between;
     text-align: justify;
+    margin-right: 20px;
 }
+
+.videoactor > p {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
 
 /* Timeline-subpage styles */
 
