@@ -54,11 +54,10 @@ const App = (props) => {
       </div>
       <div className="nav">
         <div className="subnav">
-          <h2>Navigation</h2>
           <button className="navbutton" onClick={() => dispatch({type: 'BASE'})}>Base</button>
           <button className="navbutton" onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
           <button className="navbutton" onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
-          <button className="navbutton" onClick={() => dispatch({
+          <button className="navbutton" onClick={() => { dispatch({
             type: 'NEW_VIDEO',
             payload: {id: 20, name: "Gladiator",
               type: "movie",
@@ -66,7 +65,13 @@ const App = (props) => {
               actors: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
               year: 2000,
               length: 130}
-            })}>Add Gladiator</button>
+            }); dispatch({
+              type: 'NEW_VIEW',
+              payload: {id: 1000, date: "04122024",
+                videoid: 1,
+                userid: 1,
+                partid: null}
+            }) }} >Add Gladiator</button>
         </div>
       </div>
       <div className="main">

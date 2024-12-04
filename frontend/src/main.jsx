@@ -37,9 +37,23 @@ const views = [
     {
         id: 1,
         date: "21112024",
-        order: 1,
         videoid: 2,
+        userid: 1,
         partid: null
+    },
+    {
+        id: 2,
+        date: "28112024",
+        videoid: 1,
+        userid: 1,
+        partid: null
+    },
+    {
+        id: 3,
+        date: "30112024",
+        videoid: 3,
+        userid: 1,
+        partid: 19
     }
 ]
 
