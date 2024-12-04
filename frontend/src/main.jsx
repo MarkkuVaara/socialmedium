@@ -63,13 +63,19 @@ const messages = [
         viewid: 1,
         title: "Toinen kerta",
         message: "Edelleen hyvä elokuva!"
+    },
+    {
+        id: 2,
+        viewid: 2,
+        title: "Ensimmäinen katselu",
+        message: "Russell Crowe on paras!"
     }
 ]
 
 const likes = [
     {
         id: 1,
-        viewid: null,
+        viewid: 1,
         messageid: 1,
         type: "like"
     }

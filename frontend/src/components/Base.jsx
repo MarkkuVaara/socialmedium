@@ -5,11 +5,12 @@ const Base = (props) => {
         <div className="nav">
             <h3>Base</h3>
             {props.views.map(view => 
-                <>
-                    <p>{view.date}</p>
+                <div className="baseview" key={view.id}>
+                    <p className="basedate">{view.date}</p>
                     {props.videos.map(video => 
                         <> 
                         {video.id === view.videoid &&
+                            <>
                             <div className="basevideo" key={video.id}>
                                 <h4>{video.name}</h4>
                                 <p>{video.year}</p>
@@ -21,16 +22,31 @@ const Base = (props) => {
                                 </p>
                                 <p>{video.length} min</p>
                             </div>
+                            <div className="basebottom"></div>
+                            </>
                         }
                         </>
                     )}
-                </>
-            )}
-            {props.messages.map(message => 
-                <p>{message.title}</p>
-            )}
-            {props.likes.map(like => 
-                <p>{like.type}</p>
+                    {props.messages.map(message => 
+                        <>
+                        {message.viewid === view.id &&
+                            <div className="basemessage">
+                                <h4>{message.title}</h4>
+                                <p>{message.message}</p>
+                            </div>
+                        }
+                        </>
+                    )}
+                    {props.likes.map(like => 
+                        <>
+                        {like.viewid === view.id &&
+                            <>
+                                <p>{like.type}</p>
+                            </>
+                        }
+                        </>
+                    )}
+                </div>
             )}
         </div>
     )
