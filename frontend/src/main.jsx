@@ -69,6 +69,18 @@ const messages = [
         viewid: 2,
         title: "Ensimmäinen katselu",
         message: "Russell Crowe on paras!"
+    },
+    {
+        id: 3,
+        viewid: 2,
+        title: "Vs: Ensimmäinen katselu",
+        message: "Joaquin Phoenix on kans aika hyvä, itse asiassa kaikki näyttelijät ovat hyviä.."
+    },
+    {
+        id: 4,
+        viewid: 2,
+        title: "Vs: Ensimmäinen katselu",
+        message: "Se Sons of Anarchy tyyppikin on tässä"
     }
 ]
 

@@ -161,8 +161,8 @@ p {
 
 .messageicon {
     cursor: pointer;
-    /* position:relative;
-    right: calc(25%); */
+    margin-left: 90%;
+    margin-right: 10%;
     bottom: 7px;
     height: 30px;
     width: 30px;
@@ -175,6 +175,14 @@ p {
     width: 40%;
     min-width: 150px;
     border: 2px solid gray;
+}
+
+.basemessage.open {
+    display: block;
+}
+
+.basemessage.closed {
+    display: none;
 }
 
 .basemessage > h4 {

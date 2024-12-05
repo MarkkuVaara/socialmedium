@@ -1,7 +1,11 @@
 
+import React, { useState } from 'react';
+
 import message from '../images/messageicon.png';
 
 const Base = (props) => {
+
+    const [isMessageOpen, setIsMessageOpen] = useState(null);
 
     return (
         <div className="nav">
@@ -23,7 +27,9 @@ const Base = (props) => {
                                     </span>)}
                                 </p>
                                 <p>{video.length} min</p>
-                                <img className="messageicon" src={message} alt={message}></img>
+                                <img className="messageicon" 
+                                    src={message} alt={message}
+                                    onClick={() => setIsMessageOpen(view.id)}></img>
                             </div>
                             <div className="basebottom"></div>
                             </>
@@ -32,8 +38,8 @@ const Base = (props) => {
                     )}
                     {props.messages.map(message => 
                         <>
-                        {message.viewid === view.id &&
-                            <div className="basemessage">
+                        {(message.viewid === view.id && isMessageOpen === view.id ) &&
+                            <div className={`basemessage ${isMessageOpen ? 'open' : 'closed'}`}>
                                 <h4>{message.title}</h4>
                                 <p>{message.message}</p>
                             </div>
