@@ -1,4 +1,6 @@
 
+import message from '../images/messageicon.png';
+
 const Base = (props) => {
 
     return (
@@ -21,6 +23,7 @@ const Base = (props) => {
                                     </span>)}
                                 </p>
                                 <p>{video.length} min</p>
+                                <img className="messageicon" src={message} alt={message}></img>
                             </div>
                             <div className="basebottom"></div>
                             </>

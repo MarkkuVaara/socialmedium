@@ -159,8 +159,31 @@ p {
     color: deepskyblue;
 }
 
+.messageicon {
+    cursor: pointer;
+    /* position:relative;
+    right: calc(25%); */
+    bottom: 7px;
+    height: 30px;
+    width: 30px;
+}
+
 .basemessage {
     margin-left: 20px;
+    padding-left: 20px;
+    background-color: #3F2207;
+    width: 40%;
+    min-width: 150px;
+    border: 2px solid gray;
+}
+
+.basemessage > h4 {
+    color: deepskyblue;
+    font-size: 16px;
+}
+
+.basemessage > p {
+    font-size: 12px;
 }
 
 
