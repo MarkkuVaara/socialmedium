@@ -36,16 +36,21 @@ const Base = (props) => {
                         }
                         </>
                     )}
-                    {props.messages.map(message => 
-                        <>
-                        {(message.viewid === view.id && isMessageOpen === view.id ) &&
-                            <div className={`basemessage ${isMessageOpen ? 'open' : 'closed'}`}>
-                                <h4>{message.title}</h4>
-                                <p>{message.message}</p>
-                            </div>
+                    <div className={`basemessage ${isMessageOpen ? 'open' : 'closed'}`}>
+                        {isMessageOpen === view.id &&
+                            <button className="navbutton" onClick={() => setIsMessageOpen(null)}>Close</button>
                         }
-                        </>
-                    )}
+                        {props.messages.map(message => 
+                            <div className="basemessageb" key={message.id}>
+                            {(message.viewid === view.id && isMessageOpen === view.id ) &&
+                                <div className="messagetop">
+                                    <h4>{message.title}</h4>
+                                    <p>{message.message}</p>
+                                </div>
+                            }
+                            </div>
+                        )}
+                    </div>
                     {props.likes.map(like => 
                         <>
                         {like.viewid === view.id &&

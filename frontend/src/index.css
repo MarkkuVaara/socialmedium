@@ -168,17 +168,31 @@ p {
     width: 30px;
 }
 
+.messagetop {
+    border-top: 2px solid gray;
+    padding-bottom: 10px;
+}
+
 .basemessage {
-    margin-left: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
     padding-left: 20px;
     background-color: #3F2207;
     width: 40%;
     min-width: 150px;
-    border: 2px solid gray;
+    transform: translateY(100%);
+}
+
+.messagetop:hover {
+    background-color: #3F2D17;
 }
 
 .basemessage.open {
     display: block;
+    border: 2px solid gray;
+    transform: translateY(0);
+    transition: transform 5s ease-out;
+    z-index: 1000; 
 }
 
 .basemessage.closed {
