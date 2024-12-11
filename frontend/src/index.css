@@ -169,43 +169,60 @@ p {
 }
 
 .messagetop {
-    border-top: 2px solid gray;
-    padding-bottom: 10px;
+    border-top: 2px solid black;
+    background-color: white;
+    padding: 10px;
+}
+
+.messagetop > h4 {
+    color: brown;
+    font-size: 18px;
+}
+
+.messagetop > p {
+    color: black;
+    font-size: 14px;
 }
 
 .basemessage {
     margin-left: 10px;
     margin-right: 10px;
-    padding-left: 20px;
-    background-color: #3F2207;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    color: black;
     width: 40%;
     min-width: 150px;
-    transform: translateY(100%);
-}
-
-.messagetop:hover {
-    background-color: #3F2D17;
+    border-radius: 20px;
 }
 
 .basemessage.open {
     display: block;
-    border: 2px solid gray;
+    border: 2px solid black;
     transform: translateY(0);
-    transition: transform 5s ease-out;
-    z-index: 1000; 
 }
 
 .basemessage.closed {
-    display: none;
+    transform: translateY(-100%);
+    transition: transform 5s ease-in-out;
+    z-index: 1000; 
 }
 
-.basemessage > h4 {
-    color: deepskyblue;
-    font-size: 16px;
+.messagetop:hover {
+    background-color: lightgray;
+    font-weight: bold;
 }
 
-.basemessage > p {
-    font-size: 12px;
+.basemessage > button {
+    background-color: gray;
+    color: black;
+    border-radius: 20px;
+    margin-top: 10px;
+}
+
+.basemessage > button:hover {
+    background-color: lightgray;
+    color: black;
 }
 
 
