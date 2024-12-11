@@ -27,9 +27,14 @@ const Base = (props) => {
                                     </span>)}
                                 </p>
                                 <p>{video.length} min</p>
-                                <img className="messageicon" 
-                                    src={message} alt={message}
-                                    onClick={() => setIsMessageOpen(view.id)}></img>
+                                <div className="image-container">
+                                    <img className="messageicon" 
+                                        src={message} alt={message}
+                                        onClick={() => setIsMessageOpen(view.id)}></img>
+                                    <div className="centered-text">
+                                        {props.messages.filter(message => message.viewid === view.id).length}
+                                    </div>
+                                </div>
                             </div>
                             <div className="basebottom"></div>
                             </>
