@@ -92,15 +92,36 @@ const messages = [
         title: "Vs: Toinen kerta",
         message: "On kyllä vähän liian hidas elokuva. Ja miksi tässä on typeriä Jawoja? Imperiumin orjiksi tuommoiset!",
         date: "22112024"
+    },
+    {
+        id: 6,
+        viewid: 3,
+        title: "Parhaat repliikit?",
+        message: "Walter: 'I am the one who knocks!'",
+        date: "01122024"
     }
 ]
 
 const likes = [
     {
         id: 1,
-        viewid: 1,
         messageid: 1,
         type: "like"
+    },
+    {
+        id: 2,
+        messageid: 1,
+        type: "love"
+    },
+    {
+        id: 3,
+        messageid: 4,
+        type: "like"
+    },
+    {
+        id: 4,
+        messageid: 5,
+        type: "unlike"
     }
 ]
 

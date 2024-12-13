@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 
 import message from '../images/messageicon.png';
+import likeicon from '../images/likeicon.png';
+import loveicon from '../images/loveicon.png';
+import unlikeicon from '../images/unlikeicon.png';
 
 const Base = (props) => {
 
@@ -52,20 +55,30 @@ const Base = (props) => {
                                     <p className="messagedate">{message.date}</p>
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
+                                    {props.likes.map(like => 
+                                        <>
+                                        {like.messageid === message.id &&
+                                            <>
+                                            <div className="reaction">
+                                                {like.type === "like" &&
+                                                    <img src={likeicon} alt={likeicon}></img>
+                                                }
+                                                {like.type === "love" &&
+                                                    <img src={loveicon} alt={loveicon}></img>
+                                                }
+                                                {like.type === "unlike" &&
+                                                    <img src={unlikeicon} alt={unlikeicon}></img>
+                                                }
+                                            </div>
+                                            </>
+                                        }
+                                        </>
+                                    )}
                                 </div>
                             }
                             </div>
                         )}
                     </div>
-                    {props.likes.map(like => 
-                        <>
-                        {like.viewid === view.id &&
-                            <>
-                                <p>{like.type}</p>
-                            </>
-                        }
-                        </>
-                    )}
                 </div>
             )}
         </div>

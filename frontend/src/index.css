@@ -219,6 +219,16 @@ p {
     font-size: 14px;
 }
 
+.reaction {
+    text-align: right;
+}
+
+.reaction > img {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
+
 .basemessage {
     margin-left: 20%;
     margin-right: 10px;
