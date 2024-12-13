@@ -201,6 +201,14 @@ p {
     padding: 10px;
 }
 
+.messagedate {
+    text-align: right;
+    padding: 0px;
+    margin: 0;
+    font-size: 10px;
+    font-weight: bold;
+}
+
 .messagetop > h4 {
     color: brown;
     font-size: 18px;

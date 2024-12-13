@@ -62,25 +62,36 @@ const messages = [
         id: 1,
         viewid: 1,
         title: "Toinen kerta",
-        message: "Edelleen hyvä elokuva!"
+        message: "Edelleen hyvä elokuva!",
+        date: "21112024"
     },
     {
         id: 2,
         viewid: 2,
         title: "Ensimmäinen katselu",
-        message: "Russell Crowe on paras!"
+        message: "Russell Crowe on paras!",
+        date: "28112024"
     },
     {
         id: 3,
         viewid: 2,
         title: "Vs: Ensimmäinen katselu",
-        message: "Joaquin Phoenix on kans aika hyvä, itse asiassa kaikki näyttelijät ovat hyviä.."
+        message: "Joaquin Phoenix on kans aika hyvä, itse asiassa kaikki näyttelijät ovat hyviä..",
+        date: "30112024"
     },
     {
         id: 4,
         viewid: 2,
         title: "Vs: Ensimmäinen katselu",
-        message: "Se Sons of Anarchy tyyppikin on tässä"
+        message: "Se Sons of Anarchy tyyppikin on tässä",
+        date: "30112024"
+    },
+    {
+        id: 5,
+        viewid: 1,
+        title: "Vs: Toinen kerta",
+        message: "On kyllä vähän liian hidas elokuva. Ja miksi tässä on typeriä Jawoja? Imperiumin orjiksi tuommoiset!",
+        date: "22112024"
     }
 ]
 

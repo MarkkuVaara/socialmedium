@@ -49,6 +49,7 @@ const Base = (props) => {
                             <div className="basemessageb" key={message.id}>
                             {(message.viewid === view.id && isMessageOpen === view.id ) &&
                                 <div className="messagetop">
+                                    <p className="messagedate">{message.date}</p>
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
                                 </div>
