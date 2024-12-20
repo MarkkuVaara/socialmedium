@@ -232,6 +232,11 @@ p {
     width: 30px;
 }
 
+.reaction-container > img:hover {
+    background-color: gray;
+    border-radius: 10px;
+}
+
 .reaction-container .side-text {
     position: relative;
     top: 10%;
@@ -277,6 +282,7 @@ p {
     color: black;
     border-radius: 20px;
     margin-top: 10px;
+    width: 100%;
 }
 
 .basemessage > button:hover {

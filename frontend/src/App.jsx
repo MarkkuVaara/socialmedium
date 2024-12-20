@@ -44,6 +44,7 @@ const App = (props) => {
 
   }, []);
 
+
   const addGladiator = () => {
 
     dispatch({
@@ -63,6 +64,34 @@ const App = (props) => {
         userid: 1,
         partid: null}
     });
+
+  }
+
+
+  const addComment = (viewId) => {
+
+    dispatch({
+      type: 'NEW_COMMENT',
+      payload: {id: messages.length + 1,
+        date: "20122024",
+        title: 'Testi',
+        message: 'Testiviesti',
+        viewid: viewId
+      }
+    });
+
+  }
+
+  const addLike = (messageId) => {
+
+    dispatch({
+      type: 'NEW_REACTION',
+      payload: {id: likes.length + 1,
+        type: 'like',
+        amount: 1,
+        messageid: messageId
+      }
+    })
 
   }
 
@@ -87,7 +116,7 @@ const App = (props) => {
         {pageTurner === 0
           &&
           <div className="base">
-            <Base videos={videos} views={views} messages={messages} likes={likes} />
+            <Base videos={videos} views={views} messages={messages} likes={likes} addComment={addComment} addLike={addLike} />
           </div>
         }
         {pageTurner === 1

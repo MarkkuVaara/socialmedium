@@ -55,6 +55,9 @@ const Base = (props) => {
                                     <p className="messagedate">{message.date}</p>
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
+                                    <div>
+                                        <button onClick={() => props.addComment(view.id)}>Reply</button>
+                                    </div>
                                     <div className="reactions">
                                         {props.likes.map(like => 
                                         <>
@@ -62,7 +65,8 @@ const Base = (props) => {
                                             <div className="reaction">
                                                 {like.type === "like" &&
                                                     <div className="reaction-container">
-                                                        <img className="likeicon" src={likeicon} alt={likeicon}></img>
+                                                        <img className="likeicon" src={likeicon} alt={likeicon} 
+                                                            onClick={() => props.addLike(message.id)}></img>
                                                         <div className="side-text">
                                                             {like.amount}
                                                         </div>
