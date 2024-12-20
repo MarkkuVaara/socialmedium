@@ -179,7 +179,7 @@ p {
 .image-container img {
     display: block;
     height: auto;
- }
+}
 
 .image-container .centered-text {
     position: absolute;
@@ -219,14 +219,28 @@ p {
     font-size: 14px;
 }
 
-.reaction {
+.reactions {
     text-align: right;
 }
 
-.reaction > img {
+.reaction {
     display: inline-block;
+}
+
+.reaction-container > img {
     height: 30px;
     width: 30px;
+}
+
+.reaction-container .side-text {
+    position: relative;
+    top: 10%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    pointer-events: none;
 }
 
 .basemessage {

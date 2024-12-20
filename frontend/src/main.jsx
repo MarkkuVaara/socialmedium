@@ -106,22 +106,26 @@ const likes = [
     {
         id: 1,
         messageid: 1,
-        type: "like"
+        type: "like",
+        amount: 3
     },
     {
         id: 2,
         messageid: 1,
-        type: "love"
+        type: "love",
+        amount: 1
     },
     {
         id: 3,
         messageid: 4,
-        type: "like"
+        type: "like",
+        amount: 1
     },
     {
         id: 4,
         messageid: 5,
-        type: "unlike"
+        type: "unlike",
+        amount: 1
     }
 ]
 

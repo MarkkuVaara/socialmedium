@@ -55,25 +55,40 @@ const Base = (props) => {
                                     <p className="messagedate">{message.date}</p>
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
-                                    {props.likes.map(like => 
+                                    <div className="reactions">
+                                        {props.likes.map(like => 
                                         <>
                                         {like.messageid === message.id &&
-                                            <>
                                             <div className="reaction">
                                                 {like.type === "like" &&
-                                                    <img src={likeicon} alt={likeicon}></img>
+                                                    <div className="reaction-container">
+                                                        <img className="likeicon" src={likeicon} alt={likeicon}></img>
+                                                        <div className="side-text">
+                                                            {like.amount}
+                                                        </div>
+                                                    </div>
                                                 }
                                                 {like.type === "love" &&
-                                                    <img src={loveicon} alt={loveicon}></img>
+                                                    <div className="reaction-container">
+                                                        <img src={loveicon} alt={loveicon}></img>
+                                                        <div className="side-text">
+                                                            {like.amount}
+                                                        </div>
+                                                    </div>
                                                 }
                                                 {like.type === "unlike" &&
-                                                    <img src={unlikeicon} alt={unlikeicon}></img>
+                                                    <div className="reaction-container">
+                                                        <img src={unlikeicon} alt={unlikeicon}></img>
+                                                        <div className="side-text">
+                                                            {like.amount}
+                                                        </div>
+                                                    </div>
                                                 }
                                             </div>
-                                            </>
                                         }
                                         </>
-                                    )}
+                                        )}
+                                    </div>
                                 </div>
                             }
                             </div>
