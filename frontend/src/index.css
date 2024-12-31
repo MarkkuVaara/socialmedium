@@ -37,7 +37,7 @@ p {
 /* Main components */
 
 .mainapp {
-    background-color: #3F2D17;
+    background-color: black;
     background-attachment: fixed;
     background-position: center;
     width: 100%;
@@ -51,7 +51,7 @@ p {
     margin-left: 5%;
     margin-right: 5%;
     padding: 20px;
-    background-color: #3F2D17;
+    background-color: black;
     border-bottom: 2px solid gray;
 }
 
@@ -61,7 +61,7 @@ p {
     padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #3F2D17;
+    background-color: black;
     border-bottom: 2px solid gray;
 }
 
@@ -74,7 +74,7 @@ p {
     margin: 20px;
     margin-left: 10%;
     margin-right: 10%;
-    background-color: #3F2D17;
+    background-color: black;
 }
 
 
@@ -102,7 +102,7 @@ p {
     padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #3F2D17;
+    background-color: black;
     border-bottom: 2px solid gray;
 }
 
@@ -169,6 +169,11 @@ p {
     width: 30px;
 }
 
+.messageicon:hover {
+    background-color: gray;
+    border-radius: 10px;
+}
+
 .image-container {
     position: relative;
     display: inline-block;
@@ -219,8 +224,23 @@ p {
     font-size: 14px;
 }
 
+.replybutton {
+    background-color: lightgray;
+    color: black;
+    padding: 5px;
+    border-radius: 5px;
+    max-height: 30px;
+}
+
+.replybutton:hover {
+    background-color: gray;
+    border-radius: 7px;
+}
+
 .reactions {
-    text-align: right;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
 }
 
 .reaction {
@@ -297,7 +317,7 @@ p {
     padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #3F2D17;
+    background-color: black;
     border-bottom: 2px solid gray;
 }
 
@@ -310,7 +330,7 @@ p {
     padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
-    background-color: #3F2D17;
+    background-color: black;
     border-bottom: 2px solid gray;
 }
 
