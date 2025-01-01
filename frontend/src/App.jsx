@@ -14,13 +14,12 @@ import Filmreel from './images/filmreel.png';
 
 const App = (props) => {
 
-  const [user, setUser] = useState(null);
-
   const pageTurner = useSelector((state) => state.pageTurner);
   const videos = useSelector((state) => state.videoReducer);
   const views = useSelector((state) => state.viewReducer);
   const messages = useSelector((state) => state.commentReducer);
   const likes = useSelector((state) => state.reactionReducer);
+  const users = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,6 +39,10 @@ const App = (props) => {
     dispatch({
       type: 'ALL_REACTIONS',
       payload: props.likes
+    });
+    dispatch({
+      type: 'ALL_USERS',
+      payload: props.users
     });
 
   }, []);

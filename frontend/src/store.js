@@ -14,10 +14,21 @@ const pageTurner = (state = 0, action) => {
   }
 };
 
+const userReducer = (state = [], action) => {
+  if (action.type === 'NEW_USER') {
+    return state.concat(action.payload)
+  }
+  if (action.type === 'ALL_USERS') {
+    state = action.payload
+    return state
+  }
+
+  return state
+}
+
 const videoReducer = (state = [], action) => {
   if (action.type === 'NEW_VIDEO') {
-    state.push(action.payload)
-    return state
+    return state.concat(action.payload)
   }
   if (action.type === 'ALL_VIDEOS') {
     state = action.payload
@@ -29,8 +40,7 @@ const videoReducer = (state = [], action) => {
 
 const viewReducer = (state = [], action) => {
   if (action.type === 'NEW_VIEW') {
-    state.push(action.payload)
-    return state
+    return state.concat(action.payload)
   }
   if (action.type === 'ALL_VIEWS') {
     state = action.payload
@@ -42,8 +52,7 @@ const viewReducer = (state = [], action) => {
 
 const commentReducer = (state = [], action) => {
   if (action.type === 'NEW_COMMENT') {
-    state.push(action.payload)
-    return state
+    return state.concat(action.payload)
   }
   if (action.type === 'ALL_COMMENTS') {
     state = action.payload
@@ -55,8 +64,7 @@ const commentReducer = (state = [], action) => {
 
 const reactionReducer = (state = [], action) => {
   if (action.type === 'NEW_REACTION') {
-    state.push(action.payload)
-    return state
+    return state.concat(action.payload)
   }
   if (action.type === 'ALL_REACTIONS') {
     state = action.payload
@@ -68,6 +76,7 @@ const reactionReducer = (state = [], action) => {
 
 const rootReducer = combineReducers({
   pageTurner: pageTurner, 
+  userReducer: userReducer,
   videoReducer: videoReducer,
   viewReducer: viewReducer,
   commentReducer: commentReducer,
