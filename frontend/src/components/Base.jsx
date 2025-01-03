@@ -12,7 +12,7 @@ const Base = (props) => {
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [isCommentOpen, setIsCommentOpen] = useState(false);
 
-    const addComment = (id) => {
+    const sendMessage = () => {
         alert("New comment");
     }
 
@@ -118,9 +118,11 @@ const Base = (props) => {
                             }
                             </div>
                         )}
-                        <div className={`newcomment ${isCommentOpen ? 'open' : 'closed'}`}>
-                            <NewComment />
-                        </div>
+                        {isMessageOpen === view.id &&
+                            <div className={`newcomment ${isCommentOpen ? 'open' : 'closed'}`}>
+                                <NewComment sendMessage={sendMessage} />
+                            </div>
+                        }
                     </div>
 
                 </div>
