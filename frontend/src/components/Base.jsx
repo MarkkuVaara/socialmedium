@@ -5,10 +5,16 @@ import message from '../images/messageicon.png';
 import likeicon from '../images/likeicon.png';
 import loveicon from '../images/loveicon.png';
 import unlikeicon from '../images/unlikeicon.png';
+import NewComment from '../components/NewComment';
 
 const Base = (props) => {
 
     const [isMessageOpen, setIsMessageOpen] = useState(null);
+    const [isCommentOpen, setIsCommentOpen] = useState(false);
+
+    const addComment = (id) => {
+        alert("New comment");
+    }
 
     return (
 
@@ -70,7 +76,7 @@ const Base = (props) => {
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
                                     <div className="reactions">
-                                        <button className="replybutton" onClick={() => props.addComment(view.id)}>Reply</button>
+                                        <button className="replybutton" onClick={() => setIsCommentOpen(!isCommentOpen)}>Reply</button>
                                         <div>
                                             {props.likes.map(like => 
                                             <>
@@ -107,11 +113,14 @@ const Base = (props) => {
                                             )}
                                         </div>
                                     </div>
+    
                                 </div>
                             }
                             </div>
                         )}
-
+                        <div className={`newcomment ${isCommentOpen ? 'open' : 'closed'}`}>
+                            <NewComment />
+                        </div>
                     </div>
 
                 </div>

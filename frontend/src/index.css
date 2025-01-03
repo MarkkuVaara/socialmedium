@@ -209,7 +209,7 @@ p {
 
 .messageup {
     display: flex;
-    align-items:baseline;
+    align-items: baseline;
 }
 
 .messageuser {
@@ -247,6 +247,7 @@ p {
     background-color: lightgray;
     color: black;
     padding: 5px;
+    border: 2px solid gray;
     border-radius: 5px;
     max-height: 30px;
 }
@@ -286,15 +287,16 @@ p {
 }
 
 .basemessage > button {
-    background-color: gray;
+    background-color: lightgray;
     color: black;
+    border: 2px solid gray;
     border-radius: 20px;
     margin-top: 10px;
     width: 100%;
 }
 
 .basemessage > button:hover {
-    background-color: lightgray;
+    background-color: gray;
     color: black;
 }
 
@@ -331,6 +333,34 @@ p {
     font-size: 16px;
     font-weight: bold;
     pointer-events: none;
+}
+
+
+/* Base-addcomment */
+
+.newcomment {
+    margin-left: 20%;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.newcomment.open {
+    position: absolute;
+    top: 20px;
+    right: -50%;
+    display: block;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.newcomment.closed {
+    display: none;
+}
+
+.newcomment > * > h4 {
+    color: black;
 }
 
 
