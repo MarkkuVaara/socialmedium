@@ -207,10 +207,28 @@ p {
     padding-bottom: 0px;
 }
 
-.messagedate {
-    text-align: right;
+.messageup {
+    display: flex;
+    align-items:baseline;
+}
+
+.messageuser {
+    text-align: left;
     padding: 0px;
     margin: 0;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.messageuser > p {
+    color: black;
+}
+
+.messagedate {
+    padding: 0px;
+    padding-left: 50%;
+    margin: 0;
+    color: black;
     font-size: 10px;
     font-weight: bold;
 }
@@ -236,38 +254,6 @@ p {
 .replybutton:hover {
     background-color: gray;
     border-radius: 7px;
-}
-
-.reactions {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 20px;
-    padding-bottom: 10px;
-}
-
-.reaction {
-    display: inline-block;
-}
-
-.reaction-container > img {
-    height: 30px;
-    width: 30px;
-}
-
-.reaction-container > img:hover {
-    background-color: gray;
-    border-radius: 10px;
-}
-
-.reaction-container .side-text {
-    position: relative;
-    top: 10%;
-    left: 80%;
-    transform: translate(-50%, -50%);
-    color: black;
-    font-size: 16px;
-    font-weight: bold;
-    pointer-events: none;
 }
 
 .basemessage {
@@ -310,6 +296,41 @@ p {
 .basemessage > button:hover {
     background-color: lightgray;
     color: black;
+}
+
+
+/* Base-reaction styles */
+
+.reactions {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.reaction {
+    display: inline-block;
+}
+
+.reaction-container > img {
+    height: 30px;
+    width: 30px;
+}
+
+.reaction-container > img:hover {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+.reaction-container .side-text {
+    position: relative;
+    top: 10%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    pointer-events: none;
 }
 
 

@@ -11,11 +11,14 @@ const Base = (props) => {
     const [isMessageOpen, setIsMessageOpen] = useState(null);
 
     return (
+
         <div className="nav">
             <h3>Base</h3>
+
             {props.views.map(view => 
                 <div className="baseview" key={view.id}>
                     <p className="basedate">{view.date}</p>
+
                     {props.videos.map(video => 
                         <> 
                         {video.id === view.videoid &&
@@ -44,15 +47,26 @@ const Base = (props) => {
                         }
                         </>
                     )}
+
                     <div className={`basemessage ${isMessageOpen ? 'open' : 'closed'}`}>
                         {isMessageOpen === view.id &&
                             <button className="navbutton" onClick={() => setIsMessageOpen(null)}>Close</button>
                         }
+
                         {props.messages.map(message => 
                             <div className="basemessageb" key={message.id}>
                             {(message.viewid === view.id && isMessageOpen === view.id ) &&
                                 <div className="messagetop">
+                                    <div className="messageup">
+                                    {props.users.map(user => 
+                                        <div className="messageuser" key={user.id}>
+                                        {message.userid === user.id &&
+                                            <p>{user.name}</p>
+                                        }
+                                        </div>
+                                    )}
                                     <p className="messagedate">{message.date}</p>
+                                    </div>
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
                                     <div className="reactions">
@@ -97,9 +111,12 @@ const Base = (props) => {
                             }
                             </div>
                         )}
+
                     </div>
+
                 </div>
             )}
+
         </div>
     )
 

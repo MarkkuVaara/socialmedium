@@ -119,7 +119,7 @@ const App = (props) => {
         {pageTurner === 0
           &&
           <div className="base">
-            <Base videos={videos} views={views} messages={messages} likes={likes} addComment={addComment} addLike={addLike} />
+            <Base users={users} videos={videos} views={views} messages={messages} likes={likes} addComment={addComment} addLike={addLike} />
           </div>
         }
         {pageTurner === 1
