@@ -18,10 +18,9 @@ const Base = (props) => {
 
         const title = event.target.title.value;
         const message = event.target.message.value;
-        console.log(title);
-        console.log(message);
 
         setIsCommentOpen(false);
+        props.addComment({title, message, isMessageOpen});
 
     }
 

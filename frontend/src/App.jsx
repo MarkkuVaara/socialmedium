@@ -71,15 +71,16 @@ const App = (props) => {
   }
 
 
-  const addComment = (viewId) => {
+  const addComment = ({title, message, isMessageOpen}) => {
 
     dispatch({
       type: 'NEW_COMMENT',
       payload: {id: messages.length + 1,
+        userid: 1,
         date: "20122024",
-        title: 'Testi',
-        message: 'Testiviesti',
-        viewid: viewId
+        title: title,
+        message: message,
+        viewid: isMessageOpen
       }
     });
 
