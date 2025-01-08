@@ -4,15 +4,15 @@ const NewComment = (props) => {
 
     return (
         <div>
-            <h4>New comment</h4>
-            <form onSubmit={() => props.sendMessage()}>
+            <h4>Add new comment</h4>
+            <form onSubmit={props.sendMessage}>
                 <div className="formfield">
                     <label>Title</label>
-                    <input></input>
+                    <input name="title"></input>
                     <label>Message</label>
-                    <textarea></textarea>
-                    <button type="submit">Send</button>
-                    <button type="reset">Clear</button>
+                    <textarea name="message"></textarea>
+                    <button className="sendbutton" type="submit">Send</button>
+                    <button className="closebutton" type="button" onClick={props.closeMessage}>Close</button>
                 </div>
             </form>
         </div>

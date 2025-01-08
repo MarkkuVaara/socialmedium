@@ -253,8 +253,9 @@ p {
 }
 
 .replybutton:hover {
-    background-color: gray;
+    background-color: lightgreen;
     border-radius: 7px;
+    font-weight: bold;
 }
 
 .basemessage {
@@ -296,8 +297,9 @@ p {
 }
 
 .basemessage > button:hover {
-    background-color: gray;
+    background-color: lightsalmon;
     color: black;
+    font-weight: bold;
 }
 
 
@@ -361,6 +363,8 @@ p {
 
 .newcomment > * > h4 {
     color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .formfield {
@@ -389,14 +393,22 @@ p {
     color: black;
     padding: 5px;
     margin-bottom: 10px;
+    margin-right: 5px;
     border: 2px solid gray;
     border-radius: 5px;
     max-height: 30px;
 }
 
-.formfield > button:hover {
-    background-color: gray;
+.sendbutton:hover {
+    background-color: lightgreen;
     border-radius: 7px;
+    font-weight: bold;
+}
+
+.closebutton:hover {
+    background-color: lightsalmon;
+    border-radius: 7px;
+    font-weight: bold;
 }
 
 

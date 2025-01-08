@@ -12,8 +12,17 @@ const Base = (props) => {
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [isCommentOpen, setIsCommentOpen] = useState(false);
 
-    const sendMessage = () => {
-        alert("New comment");
+    const sendMessage = (event) => {
+
+        event.preventDefault();
+
+        const title = event.target.title.value;
+        const message = event.target.message.value;
+        console.log(title);
+        console.log(message);
+
+        setIsCommentOpen(false);
+
     }
 
     return (
@@ -76,12 +85,12 @@ const Base = (props) => {
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
                                     <div className="reactions">
-                                        <button className="replybutton" onClick={() => setIsCommentOpen(!isCommentOpen)}>Reply</button>
+                                        <button className="replybutton" onClick={() => setIsCommentOpen(true)}>Reply</button>
                                         <div>
                                             {props.likes.map(like => 
                                             <>
                                                 {like.messageid === message.id &&
-                                                    <div className="reaction">
+                                                    <div className="reaction" key={like.id}>
                                                         {like.type === "like" &&
                                                         <div className="reaction-container">
                                                             <img className="likeicon" src={likeicon} alt={likeicon} 
@@ -120,7 +129,7 @@ const Base = (props) => {
                         )}
                         {isMessageOpen === view.id &&
                             <div className={`newcomment ${isCommentOpen ? 'open' : 'closed'}`}>
-                                <NewComment sendMessage={sendMessage} />
+                                <NewComment sendMessage={sendMessage} closeMessage={() => setIsCommentOpen(false)} />
                             </div>
                         }
                     </div>
