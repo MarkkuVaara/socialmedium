@@ -99,6 +99,32 @@ const App = (props) => {
 
   }
 
+  const addLove = (messageId) => {
+
+    dispatch({
+      type: 'NEW_REACTION',
+      payload: {id: likes.length + 1,
+        type: 'love',
+        amount: 1,
+        messageid: messageId
+      }
+    })
+
+  }
+
+  const addUnlike = (messageId) => {
+
+    dispatch({
+      type: 'NEW_REACTION',
+      payload: {id: likes.length + 1,
+        type: 'unlike',
+        amount: 1,
+        messageid: messageId
+      }
+    })
+
+  }
+
 
   return (
 
@@ -120,19 +146,22 @@ const App = (props) => {
         {pageTurner === 0
           &&
           <div className="base">
-            <Base users={users} videos={videos} views={views} messages={messages} likes={likes} addComment={addComment} addLike={addLike} />
+            <Base users={users} videos={videos} views={views} messages={messages} likes={likes} 
+              addComment={addComment} addLike={addLike} addLove={addLove} addUnlike={addUnlike} />
           </div>
         }
         {pageTurner === 1
           && 
           <div className="timeline">
-            <Timeline videos={videos} views={views} messages={messages} likes={likes} />
+            <Timeline users={users} videos={videos} views={views} messages={messages} likes={likes} 
+              addComment={addComment} addLike={addLike} addLove={addLove} addUnlike={addUnlike} />
           </div>
         }
         {pageTurner === 2
           && 
           <div className="interaction">
-            <Interaction videos={videos} views={views} messages={messages} likes={likes} />
+            <Interaction users={users} videos={videos} views={views} messages={messages} likes={likes} 
+              addComment={addComment} addLike={addLike} addLove={addLove} addUnlike={addUnlike}/>
           </div>
         }
       </div>

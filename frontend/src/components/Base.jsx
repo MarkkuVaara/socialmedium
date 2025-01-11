@@ -24,6 +24,12 @@ const Base = (props) => {
 
     }
 
+    const sendReaction = () => {
+
+        alert("Reaction sent!")
+
+    }
+
     return (
 
         <div className="nav">
@@ -101,7 +107,8 @@ const Base = (props) => {
                                                         }
                                                         {like.type === "love" &&
                                                         <div className="reaction-container">
-                                                            <img src={loveicon} alt={loveicon}></img>
+                                                            <img className="likeicon" src={loveicon} alt={loveicon}  
+                                                                onClick={() => props.addLove(message.id)}></img>
                                                             <div className="side-text">
                                                                 {like.amount}
                                                             </div>
@@ -109,7 +116,8 @@ const Base = (props) => {
                                                         }
                                                         {like.type === "unlike" &&
                                                         <div className="reaction-container">
-                                                            <img src={unlikeicon} alt={unlikeicon}></img>
+                                                            <img className="likeicon" src={unlikeicon} alt={unlikeicon}
+                                                                onClick={() => props.addUnlike(message.id)}></img>
                                                             <div className="side-text">
                                                                 {like.amount}
                                                             </div>
