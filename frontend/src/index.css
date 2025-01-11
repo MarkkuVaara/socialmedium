@@ -293,16 +293,22 @@ p {
     font-weight: bold;
 }
 
-.basemessage > button {
+.topbuttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.topbuttons > button {
     background-color: lightgray;
     color: black;
     border: 2px solid gray;
     border-radius: 20px;
     margin-top: 10px;
+    margin-right: 5px;
     width: 100%;
 }
 
-.basemessage > button:hover {
+.topbuttons > button:hover {
     background-color: lightsalmon;
     color: black;
     font-weight: bold;
