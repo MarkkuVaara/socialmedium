@@ -299,19 +299,29 @@ p {
 }
 
 .topbuttons > button {
+    padding: 10px;
+    font-size: 20px;
     background-color: lightgray;
     color: black;
     border: 2px solid gray;
     border-radius: 20px;
     margin-top: 10px;
+    margin-bottom: 10px;
     margin-right: 5px;
     width: 100%;
 }
 
 .topbuttons > button:hover {
-    background-color: lightsalmon;
     color: black;
     font-weight: bold;
+}
+
+.commbutton:hover {
+    background-color: lightgreen;
+}
+
+.commclosebutton:hover {
+    background-color: lightsalmon;
 }
 
 

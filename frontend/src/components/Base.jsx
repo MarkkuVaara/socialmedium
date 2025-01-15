@@ -12,9 +12,14 @@ const Base = (props) => {
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [isCommentOpen, setIsCommentOpen] = useState(false);
     const [messageTitle, setMessageTitle] = useState("");
+    const [messageMessage, setMessageMessage] = useState("");
 
     const handleDataChange = (event) => {
         setMessageTitle(event.target.value);
+    };
+
+    const handleDataChange2 = (event) => {
+        setMessageMessage(event.target.value);
     };
 
     const sendMessage = (event) => {
@@ -76,8 +81,8 @@ const Base = (props) => {
                     <div className={`basemessage ${isMessageOpen ? 'open' : 'closed'}`}>
                         {isMessageOpen === view.id &&
                             <div className="topbuttons">
-                                <button className="navbutton" onClick={() => { setIsCommentOpen(true); setMessageTitle(""); }}>Comment</button>
-                                <button className="navbutton" onClick={() => setIsMessageOpen(null)}>Close</button>
+                                <button className="commbutton" onClick={() => { setIsCommentOpen(true); setMessageTitle(""); setMessageMessage(""); }}>Comment</button>
+                                <button className="commclosebutton" onClick={() => setIsMessageOpen(null)}>Close</button>
                             </div>
                         }
 
@@ -98,7 +103,7 @@ const Base = (props) => {
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
                                     <div className="reactions">
-                                        <button className="replybutton" onClick={() => { setIsCommentOpen(true); setMessageTitle("Vs:" + message.title); } }>Reply</button>
+                                        <button className="replybutton" onClick={() => { setIsCommentOpen(true); setMessageTitle("Vs:" + message.title); setMessageMessage(">> " + message.message + "\n\n"); } }>Reply</button>
                                         <div>
                                             {props.likes.map(like => 
                                             <>
@@ -144,7 +149,9 @@ const Base = (props) => {
                         )}
                         {isMessageOpen === view.id &&
                             <div className={`newcomment ${isCommentOpen ? 'open' : 'closed'}`}>
-                                <NewComment messageTitle={messageTitle} handleDataChange={handleDataChange} sendMessage={sendMessage} closeMessage={() => setIsCommentOpen(false)} />
+                                <NewComment messageTitle={messageTitle} messageMessage={messageMessage} 
+                                    handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
+                                    sendMessage={sendMessage} closeMessage={() => setIsCommentOpen(false)} />
                             </div>
                         }
                     </div>

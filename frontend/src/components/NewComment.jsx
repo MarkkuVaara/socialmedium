@@ -10,7 +10,7 @@ const NewComment = (props) => {
                     <label>Title</label>
                     <input name="title" onChange={props.handleDataChange} value={props.messageTitle}></input>
                     <label>Message</label>
-                    <textarea name="message"></textarea>
+                    <textarea name="message" onChange={props.handleDataChange2} value={props.messageMessage}></textarea>
                     <button className="sendbutton" type="submit">Send</button>
                     <button className="closebutton" type="button" onClick={props.closeMessage}>Close</button>
                 </div>
