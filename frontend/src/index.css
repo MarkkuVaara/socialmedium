@@ -411,6 +411,11 @@ p {
     font-size: 12px;
 }
 
+.formfield > textarea {
+    max-height: 250px;
+    max-width: 200px;
+}
+
 .formfield > button {
     background-color: lightgray;
     color: black;

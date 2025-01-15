@@ -136,15 +136,75 @@ const likes = [
     },
     {
         id: 3,
+        messageid: 1,
+        type: "unlike",
+        amount: 0
+    },
+    {
+        id: 4,
+        messageid: 2,
+        type: "like",
+        amount: 1
+    },
+    {
+        id: 5,
+        messageid: 2,
+        type: "love",
+        amount: 2
+    },
+    {
+        id: 6,
+        messageid: 2,
+        type: "unlike",
+        amount: 0
+    },
+    {
+        id: 7,
+        messageid: 3,
+        type: "like",
+        amount: 1
+    },
+    {
+        id: 8,
         messageid: 4,
         type: "like",
         amount: 1
     },
     {
-        id: 4,
+        id: 9,
+        messageid: 5,
+        type: "like",
+        amount: 0
+    },
+    {
+        id: 10,
+        messageid: 5,
+        type: "love",
+        amount: 0
+    },
+    {
+        id: 11,
         messageid: 5,
         type: "unlike",
+        amount: 3
+    },
+    {
+        id: 12,
+        messageid: 6,
+        type: "like",
+        amount: 0
+    },
+    {
+        id: 13,
+        messageid: 6,
+        type: "love",
         amount: 1
+    },
+    {
+        id: 14,
+        messageid: 6,
+        type: "unlike",
+        amount: 0
     }
 ]
 

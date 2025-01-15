@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 
 import message from '../images/messageicon.png';
 import likeicon from '../images/likeicon.png';
+import fadelikeicon from '../images/fadelikeicon.png';
 import loveicon from '../images/loveicon.png';
 import unlikeicon from '../images/unlikeicon.png';
+import fadeunlikeicon from '../images/fadeunlikeicon.png';
 import NewComment from '../components/NewComment';
 
 const Base = (props) => {
@@ -111,8 +113,14 @@ const Base = (props) => {
                                                     <div className="reaction" key={like.id}>
                                                         {like.type === "like" &&
                                                         <div className="reaction-container">
-                                                            <img className="likeicon" src={likeicon} alt={likeicon} 
+                                                            {like.amount === 0 &&
+                                                                <img className="likeicon" src={fadelikeicon} alt={fadelikeicon} 
                                                                 onClick={() => props.addLike(message.id)}></img>
+                                                            }
+                                                            {like.amount > 0 &&
+                                                                <img className="likeicon" src={likeicon} alt={likeicon} 
+                                                                    onClick={() => props.addLike(message.id)}></img>
+                                                            }
                                                             <div className="side-text">
                                                                 {like.amount}
                                                             </div>
@@ -129,8 +137,14 @@ const Base = (props) => {
                                                         }
                                                         {like.type === "unlike" &&
                                                         <div className="reaction-container">
+                                                            {like.amount === 0 &&
+                                                            <img className="likeicon" src={fadeunlikeicon} alt={fadeunlikeicon}
+                                                                onClick={() => props.addUnlike(message.id)}></img>
+                                                            }
+                                                            {like.amount > 0 &&
                                                             <img className="likeicon" src={unlikeicon} alt={unlikeicon}
                                                                 onClick={() => props.addUnlike(message.id)}></img>
+                                                            }
                                                             <div className="side-text">
                                                                 {like.amount}
                                                             </div>
