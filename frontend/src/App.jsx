@@ -48,7 +48,7 @@ const App = (props) => {
   }, []);
 
 
-  const addGladiator = () => {
+  const addNewView = () => {
 
     dispatch({
       type: 'NEW_VIDEO',
@@ -136,10 +136,10 @@ const App = (props) => {
       </div>
       <div className="nav">
         <div className="subnav">
+          <h3>Feedviews:</h3>
           <button className="navbutton" onClick={() => dispatch({type: 'BASE'})}>Base</button>
           <button className="navbutton" onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
           <button className="navbutton" onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
-          <button className="navbutton" onClick={() => addGladiator()} >Add Gladiator</button>
         </div>
       </div>
       <div className="main">

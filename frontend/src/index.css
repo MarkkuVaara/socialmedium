@@ -440,6 +440,36 @@ p {
 }
 
 
+/* Add view */
+
+.newview {
+    margin-left: 20%;
+    margin-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.newview.open {
+    position: absolute;
+    bottom: 50%;
+    right: 50%;
+    display: block;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+.newview.closed {
+    display: none;
+}
+
+.newview > * > h4 {
+    color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
 /* Timeline-subpage styles */
 
 .timeline {

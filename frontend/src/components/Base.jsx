@@ -8,11 +8,14 @@ import loveicon from '../images/loveicon.png';
 import unlikeicon from '../images/unlikeicon.png';
 import fadeunlikeicon from '../images/fadeunlikeicon.png';
 import NewComment from '../components/NewComment';
+import NewView from '../components/NewView';
 
 const Base = (props) => {
 
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [isCommentOpen, setIsCommentOpen] = useState(false);
+    const [isViewOpen, setIsViewOpen] = useState(false);
+
     const [messageTitle, setMessageTitle] = useState("");
     const [messageMessage, setMessageMessage] = useState("");
 
@@ -36,16 +39,18 @@ const Base = (props) => {
 
     }
 
-    const sendReaction = () => {
+    const sendView = () => {
 
-        alert("Reaction sent!")
+        alert("New view!");
 
     }
+
 
     return (
 
         <div className="nav">
             <h3>Base</h3>
+            <button className="navbutton" onClick={() => setIsViewOpen(true)}>Add new view</button>
 
             {props.views.map(view => 
                 <div className="baseview" key={view.id}>
@@ -172,6 +177,12 @@ const Base = (props) => {
 
                 </div>
             )}
+            {isViewOpen === true &&
+                <div className={`newview ${isViewOpen ? 'open' : 'closed'}`}>
+                    <NewView handleDataChange={handleDataChange}
+                        sendView={sendView} closeView={() => setIsViewOpen(false)}/>
+                </div>
+            }
 
         </div>
     )
