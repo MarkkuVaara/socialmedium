@@ -48,22 +48,12 @@ const App = (props) => {
   }, []);
 
 
-  const addNewView = () => {
+  const addNewView = ({title, date}) => {
 
     dispatch({
-      type: 'NEW_VIDEO',
-      payload: {id: 20, name: "Gladiator",
-        type: "movie",
-        director: "Ridley Scott",
-        actors: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
-        year: 2000,
-        length: 130}
-    }); 
-    
-    dispatch({
       type: 'NEW_VIEW',
-      payload: {id: 1000, date: "04122024",
-        videoid: 1,
+      payload: {id: 1000 + videos.length, date: date,
+        videoid: Number(title),
         userid: 1,
         partid: null}
     });
@@ -147,7 +137,7 @@ const App = (props) => {
           &&
           <div className="base">
             <Base users={users} videos={videos} views={views} messages={messages} likes={likes} 
-              addComment={addComment} addLike={addLike} addLove={addLove} addUnlike={addUnlike} />
+              addComment={addComment} addLike={addLike} addLove={addLove} addUnlike={addUnlike} addView={addNewView} />
           </div>
         }
         {pageTurner === 1

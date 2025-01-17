@@ -39,9 +39,15 @@ const Base = (props) => {
 
     }
 
-    const sendView = () => {
+    const sendView = (event) => {
 
-        alert("New view!");
+        event.preventDefault();
+
+        const date = event.target.date.value;
+        const title = event.target.title.value;
+
+        setIsViewOpen(false);
+        props.addView({title, date});
 
     }
 
@@ -179,7 +185,7 @@ const Base = (props) => {
             )}
             {isViewOpen === true &&
                 <div className={`newview ${isViewOpen ? 'open' : 'closed'}`}>
-                    <NewView handleDataChange={handleDataChange}
+                    <NewView videos={props.videos} handleDataChange={handleDataChange}
                         sendView={sendView} closeView={() => setIsViewOpen(false)}/>
                 </div>
             }
