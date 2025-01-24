@@ -64,7 +64,15 @@ const commentReducer = (state = [], action) => {
 
 const reactionReducer = (state = [], action) => {
   if (action.type === 'NEW_REACTION') {
-    return state.concat(action.payload)
+      const id = action.payload.likeId
+      const reactionToChange = state.find(reaction => reaction.id === id)
+      const changedReaction = { 
+        ...reactionToChange, 
+        amount: reactionToChange.amount + 1 
+      }
+      return state.map(reaction =>
+        reaction.id !== id ? reaction : changedReaction 
+      )
   }
   if (action.type === 'ALL_REACTIONS') {
     state = action.payload

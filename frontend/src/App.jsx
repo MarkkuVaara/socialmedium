@@ -76,41 +76,29 @@ const App = (props) => {
 
   }
 
-  const addLike = (messageId) => {
+  const addLike = (likeId) => {
 
     dispatch({
       type: 'NEW_REACTION',
-      payload: {id: likes.length + 1,
-        type: 'like',
-        amount: 1,
-        messageid: messageId
-      }
+      payload: { likeId }
     })
 
   }
 
-  const addLove = (messageId) => {
+  const addLove = (likeId) => {
 
     dispatch({
       type: 'NEW_REACTION',
-      payload: {id: likes.length + 1,
-        type: 'love',
-        amount: 1,
-        messageid: messageId
-      }
+      payload: { likeId }
     })
 
   }
 
-  const addUnlike = (messageId) => {
+  const addUnlike = (likeId) => {
 
     dispatch({
       type: 'NEW_REACTION',
-      payload: {id: likes.length + 1,
-        type: 'unlike',
-        amount: 1,
-        messageid: messageId
-      }
+      payload: { likeId }
     })
 
   }

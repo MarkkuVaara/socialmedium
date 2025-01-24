@@ -128,11 +128,11 @@ const Base = (props) => {
                                                         <div className="reaction-container">
                                                             {like.amount === 0 &&
                                                                 <img className="likeicon" src={fadelikeicon} alt={fadelikeicon} 
-                                                                onClick={() => props.addLike(message.id)}></img>
+                                                                onClick={() => props.addLike(like.id)}></img>
                                                             }
                                                             {like.amount > 0 &&
                                                                 <img className="likeicon" src={likeicon} alt={likeicon} 
-                                                                    onClick={() => props.addLike(message.id)}></img>
+                                                                    onClick={() => props.addLike(like.id)}></img>
                                                             }
                                                             <div className="side-text">
                                                                 {like.amount}
@@ -142,7 +142,7 @@ const Base = (props) => {
                                                         {like.type === "love" &&
                                                         <div className="reaction-container">
                                                             <img className="likeicon" src={loveicon} alt={loveicon}  
-                                                                onClick={() => props.addLove(message.id)}></img>
+                                                                onClick={() => props.addLove(like.id)}></img>
                                                             <div className="side-text">
                                                                 {like.amount}
                                                             </div>
@@ -152,11 +152,11 @@ const Base = (props) => {
                                                         <div className="reaction-container">
                                                             {like.amount === 0 &&
                                                             <img className="likeicon" src={fadeunlikeicon} alt={fadeunlikeicon}
-                                                                onClick={() => props.addUnlike(message.id)}></img>
+                                                                onClick={() => props.addUnlike(like.id)}></img>
                                                             }
                                                             {like.amount > 0 &&
                                                             <img className="likeicon" src={unlikeicon} alt={unlikeicon}
-                                                                onClick={() => props.addUnlike(message.id)}></img>
+                                                                onClick={() => props.addUnlike(like.id)}></img>
                                                             }
                                                             <div className="side-text">
                                                                 {like.amount}
