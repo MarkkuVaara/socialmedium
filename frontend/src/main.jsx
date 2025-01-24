@@ -43,6 +43,42 @@ const videos = [
         type: "tv",
         director: "Various",
         actors: ["Bryan Cranston"]
+    },
+    {
+        id: 4,
+        name: "Deadpool & Wolverine",
+        type: "movie",
+        director: "Sean Lewy",
+        actors: ["Ryan Reynolds", "Hugh Jackman"],
+        year: 2024,
+        length: 135
+    },
+    {
+        id: 5,
+        name: "Nosferatu",
+        type: "movie",
+        director: "Robert Eggers",
+        actors: ["Nicholas Hoult", "Lily Rose-Depp", "Bill Skarsgard"],
+        year: 2024,
+        length: 135
+    },
+    {
+        id: 6,
+        name: "The Substance",
+        type: "movie",
+        director: "Nicol Farbege",
+        actors: ["Demi Moore"],
+        year: 2024,
+        length: 145
+    },
+    {
+        id: 7,
+        name: "The Batman",
+        type: "movie",
+        director: "Matt Reeves",
+        actors: ["Robert Pattinson"],
+        year: 2022,
+        length: 180
     }
 ]
 

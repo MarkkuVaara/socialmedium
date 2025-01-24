@@ -84,8 +84,9 @@ p {
     padding: 10px;
     color: white;
     font-size: 20px;
-    background-color: transparent;
+    background-color: #3F0207;
     margin-bottom: 10px;
+    width: 300px;
 }
 
 .navbutton:hover,
@@ -361,7 +362,7 @@ p {
 }
 
 
-/* Base-addcomment */
+/* Base-addcomment and basic form styles */
 
 .newcomment {
     margin-left: 20%;
@@ -444,6 +445,18 @@ p {
 
 
 /* Add view */
+
+.newviewbutton {
+    position: absolute;
+    left: 5%;
+}
+
+.newviewbutton > button {
+    background-color: #3F2D17;
+    font-size: 14px;
+    border-left: 0px;
+    width: 100%;
+}
 
 .newview {
     margin-left: 20%;

@@ -52,7 +52,7 @@ const App = (props) => {
 
     dispatch({
       type: 'NEW_VIEW',
-      payload: {id: 1000 + videos.length, date: date,
+      payload: {id: 1000 + views.length, date: date,
         videoid: Number(title),
         userid: 1,
         partid: null}
@@ -126,10 +126,11 @@ const App = (props) => {
       </div>
       <div className="nav">
         <div className="subnav">
-          <h3>Feedviews:</h3>
+          <div>
           <button className="navbutton" onClick={() => dispatch({type: 'BASE'})}>Base</button>
           <button className="navbutton" onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
           <button className="navbutton" onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
+          </div>
         </div>
       </div>
       <div className="main">

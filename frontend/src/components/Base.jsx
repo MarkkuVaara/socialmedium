@@ -56,7 +56,9 @@ const Base = (props) => {
 
         <div className="nav">
             <h3>Base</h3>
-            <button className="navbutton" onClick={() => setIsViewOpen(true)}>Add new view</button>
+            <div className="newviewbutton">
+                <button className="navbutton" onClick={() => setIsViewOpen(true)}>Add new view</button>
+            </div>
 
             {props.views.map(view => 
                 <div className="baseview" key={view.id}>
