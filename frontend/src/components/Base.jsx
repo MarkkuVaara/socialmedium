@@ -5,6 +5,7 @@ import message from '../images/messageicon.png';
 import likeicon from '../images/likeicon.png';
 import fadelikeicon from '../images/fadelikeicon.png';
 import loveicon from '../images/loveicon.png';
+import fadeloveicon from '../images/fadeloveicon.png';
 import unlikeicon from '../images/unlikeicon.png';
 import fadeunlikeicon from '../images/fadeunlikeicon.png';
 import NewComment from '../components/NewComment';
@@ -146,11 +147,22 @@ const Base = (props) => {
                                                         }
                                                         {like.type === "love" &&
                                                         <div className="reaction-container">
-                                                            <img className="likeicon" src={loveicon} alt={loveicon}  
-                                                                onClick={() => props.addLike(like.id)}></img>
-                                                            <div className="side-text">
-                                                                {like.amount}
-                                                            </div>
+                                                            {like.amount === 0 && <>
+                                                                <img className="likeicon" src={fadeloveicon} alt={fadeloveicon}  
+                                                                    onClick={() => props.addLike(like.id)}></img>
+                                                                <div className="side-text whitetext">
+                                                                    {like.amount}
+                                                                </div>
+                                                                </>
+                                                            }
+                                                            {like.amount > 0 && <>
+                                                                <img className="likeicon" src={loveicon} alt={loveicon}  
+                                                                    onClick={() => props.addLike(like.id)}></img>
+                                                                <div className="side-text">
+                                                                    {like.amount}
+                                                                </div>
+                                                                </>
+                                                            }
                                                         </div>
                                                         }
                                                         {like.type === "unlike" &&

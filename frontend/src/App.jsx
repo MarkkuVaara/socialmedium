@@ -63,9 +63,11 @@ const App = (props) => {
 
   const addComment = ({title, message, isMessageOpen}) => {
 
+    const id = messages.length + 1;
+
     dispatch({
       type: 'NEW_COMMENT',
-      payload: {id: messages.length + 1,
+      payload: {id: id,
         userid: 1,
         date: "20122024",
         title: title,
@@ -73,6 +75,31 @@ const App = (props) => {
         viewid: isMessageOpen
       }
     });
+
+    dispatch({
+      type: 'NEW_BASEREACTION',
+      payload: {id: likes.length + 1,
+        messageid: id,
+        type: "like",
+        amount: 0
+      }
+    })
+    dispatch({
+      type: 'NEW_BASEREACTION',
+      payload: {id: likes.length + 2,
+        messageid: id,
+        type: "love",
+        amount: 0
+      }
+    })
+    dispatch({
+      type: 'NEW_BASEREACTION',
+      payload: {id: likes.length + 3,
+        messageid: id,
+        type: "unlike",
+        amount: 0
+      }
+    })
 
   }
 
