@@ -126,23 +126,28 @@ const Base = (props) => {
                                                     <div className="reaction" key={like.id}>
                                                         {like.type === "like" &&
                                                         <div className="reaction-container">
-                                                            {like.amount === 0 &&
+                                                            {like.amount === 0 && <>
                                                                 <img className="likeicon" src={fadelikeicon} alt={fadelikeicon} 
-                                                                onClick={() => props.addLike(like.id)}></img>
+                                                                    onClick={() => props.addLike(like.id)}></img>
+                                                                <div className="side-text whitetext">
+                                                                    {like.amount}
+                                                                </div> 
+                                                                </>
                                                             }
-                                                            {like.amount > 0 &&
+                                                            {like.amount > 0 && <>
                                                                 <img className="likeicon" src={likeicon} alt={likeicon} 
                                                                     onClick={() => props.addLike(like.id)}></img>
+                                                                <div className="side-text">
+                                                                    {like.amount}
+                                                                </div>
+                                                                </>
                                                             }
-                                                            <div className="side-text">
-                                                                {like.amount}
-                                                            </div>
                                                         </div>
                                                         }
                                                         {like.type === "love" &&
                                                         <div className="reaction-container">
                                                             <img className="likeicon" src={loveicon} alt={loveicon}  
-                                                                onClick={() => props.addLove(like.id)}></img>
+                                                                onClick={() => props.addLike(like.id)}></img>
                                                             <div className="side-text">
                                                                 {like.amount}
                                                             </div>
@@ -150,17 +155,22 @@ const Base = (props) => {
                                                         }
                                                         {like.type === "unlike" &&
                                                         <div className="reaction-container">
-                                                            {like.amount === 0 &&
-                                                            <img className="likeicon" src={fadeunlikeicon} alt={fadeunlikeicon}
-                                                                onClick={() => props.addUnlike(like.id)}></img>
+                                                            {like.amount === 0 && <>
+                                                                <img className="likeicon" src={fadeunlikeicon} alt={fadeunlikeicon}
+                                                                    onClick={() => props.addLike(like.id)}></img>
+                                                                <div className="side-text whitetext">
+                                                                    {like.amount}
+                                                                </div>
+                                                                </>
                                                             }
-                                                            {like.amount > 0 &&
-                                                            <img className="likeicon" src={unlikeicon} alt={unlikeicon}
-                                                                onClick={() => props.addUnlike(like.id)}></img>
+                                                            {like.amount > 0 && <>
+                                                                <img className="likeicon" src={unlikeicon} alt={unlikeicon}
+                                                                    onClick={() => props.addLike(like.id)}></img>
+                                                                <div className="side-text">
+                                                                    {like.amount}
+                                                                </div>
+                                                                </>
                                                             }
-                                                            <div className="side-text">
-                                                                {like.amount}
-                                                            </div>
                                                         </div>
                                                         }
                                                     </div>

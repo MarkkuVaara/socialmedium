@@ -361,6 +361,10 @@ p {
     pointer-events: none;
 }
 
+.reaction-container .whitetext {
+    color: transparent;
+}
+
 
 /* Base-addcomment and basic form styles */
 

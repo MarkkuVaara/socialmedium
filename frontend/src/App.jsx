@@ -85,24 +85,6 @@ const App = (props) => {
 
   }
 
-  const addLove = (likeId) => {
-
-    dispatch({
-      type: 'NEW_REACTION',
-      payload: { likeId }
-    })
-
-  }
-
-  const addUnlike = (likeId) => {
-
-    dispatch({
-      type: 'NEW_REACTION',
-      payload: { likeId }
-    })
-
-  }
-
 
   return (
 
@@ -126,21 +108,21 @@ const App = (props) => {
           &&
           <div className="base">
             <Base users={users} videos={videos} views={views} messages={messages} likes={likes} 
-              addComment={addComment} addLike={addLike} addLove={addLove} addUnlike={addUnlike} addView={addNewView} />
+              addComment={addComment} addLike={addLike} addView={addNewView} />
           </div>
         }
         {pageTurner === 1
           && 
           <div className="timeline">
             <Timeline users={users} videos={videos} views={views} messages={messages} likes={likes} 
-              addComment={addComment} addLike={addLike} addLove={addLove} addUnlike={addUnlike} />
+              addComment={addComment} addLike={addLike} />
           </div>
         }
         {pageTurner === 2
           && 
           <div className="interaction">
             <Interaction users={users} videos={videos} views={views} messages={messages} likes={likes} 
-              addComment={addComment} addLike={addLike} addLove={addLove} addUnlike={addUnlike}/>
+              addComment={addComment} addLike={addLike} />
           </div>
         }
       </div>
