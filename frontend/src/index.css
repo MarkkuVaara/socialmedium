@@ -1,34 +1,49 @@
 
-/* Texts and fonts */
+/* Fonts and texts */
+
+@font-face {
+    font-family: 'Lato Regular';
+    src: url('./fonts/Lato-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins Semibold';
+    src: url('./fonts/Poppins-SemiBold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Poppins Medium';
+    src: url('./fonts/Poppins-Medium.ttf') format('truetype');
+}
 
 h1 {
     text-align: left;
     color: white;
-    font-family: Verdana;
+    font-family: 'Poppins Semibold';
     font-size: 35px;
     text-shadow: 4px 4px 5px black;
 }
 
 h2 {
-    font-family: Ubuntu sans-serif;
+    font-family: 'Poppins Semibold';
     color: white;
     font-size: 30px;
 }
 
 h3 {
-    font-family: Ubuntu sans-serif;
+    font-family: 'Poppins Semibold';
     color: white;
     font-size: 25px;
 }
 
 h4 {
-    font-family: Ubuntu sans-serif;
+    font-family: 'Poppins Semibold';
     color: white;
     font-size: 20px;
 }
 
 p {
-    font-family: Ubuntu sans-serif;
+    font-family: 'Lato Regular';
     color: white;
     font-size: 16px;
 }
@@ -83,6 +98,7 @@ p {
 .navbutton {
     padding: 10px;
     color: white;
+    font-family: 'Poppins Medium';
     font-size: 20px;
     background-color: #3F0207;
     margin-bottom: 10px;
@@ -193,6 +209,7 @@ p {
     left: 50%;
     transform: translate(-50%, -50%);
     color: black;
+    font-family: 'Lato Regular';
     font-size: 16px;
     font-weight: bold;
     pointer-events: none;
@@ -257,6 +274,7 @@ p {
     border: 2px solid gray;
     border-radius: 5px;
     max-height: 30px;
+    font-family: 'Poppins Medium';
 }
 
 .replybutton:hover {
@@ -301,6 +319,7 @@ p {
 
 .topbuttons > button {
     padding: 10px;
+    font-family: 'Poppins Medium';
     font-size: 20px;
     background-color: lightgray;
     color: black;
@@ -356,6 +375,7 @@ p {
     left: 80%;
     transform: translate(-50%, -50%);
     color: black;
+    font-family: 'Lato Regular';
     font-size: 16px;
     font-weight: bold;
     pointer-events: none;
@@ -407,6 +427,7 @@ p {
 .formfield > label {
     grid-column: labels;
     padding: 5px;
+    font-family: 'Lato Regular';
     font-size: 14px;
 }
 
@@ -427,7 +448,9 @@ p {
 .formfield > button {
     background-color: lightgray;
     color: black;
+    font-family: 'Poppins Medium';
     padding: 5px;
+    padding-bottom: 10px;
     margin-bottom: 10px;
     margin-right: 5px;
     border: 2px solid gray;

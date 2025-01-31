@@ -33,7 +33,13 @@ const Base = (props) => {
         event.preventDefault();
 
         const title = event.target.title.value;
-        const message = event.target.message.value;
+        const premessage = event.target.message.value;
+        const message = premessage.split("\n").map((line, index) => (
+            <React.Fragment key={index}>
+              {line}
+              <br />
+            </React.Fragment>
+        ));
 
         setIsCommentOpen(false);
         props.addComment({title, message, isMessageOpen});
@@ -119,7 +125,9 @@ const Base = (props) => {
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
                                     <div className="reactions">
-                                        <button className="replybutton" onClick={() => { setIsCommentOpen(true); setMessageTitle("Vs:" + message.title); setMessageMessage(">> " + message.message + "\n\n"); } }>Reply</button>
+                                        <button className="replybutton" onClick={() => { setIsCommentOpen(true); 
+                                            setMessageTitle("Vs:" + message.title); 
+                                            setMessageMessage(">> " + message.message.replace(/<br\s*\/?>/gi, "\n").trim() + "\n\n"); } }>Reply</button>
                                         <div>
                                             {props.likes.map(like => 
                                             <>
