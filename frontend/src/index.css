@@ -87,8 +87,9 @@ p {
 
 .main {
     margin: 20px;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin-top: 40px;
+    margin-left: 5%;
+    margin-right: 5%;
     background-color: black;
 }
 
@@ -110,12 +111,16 @@ p {
     background-color: #3F2207;
 }
 
+.bar {
+    border-bottom: 10px gray solid;
+}
+
 
 /* Base-video styles */
 
 .base {
-    margin-left: 5%;
-    margin-right: 5%;
+    margin-left: 2%;
+    margin-right: 2%;
     padding-bottom: 5px;
     padding-left: 20px;
     padding-right: 20px;
@@ -123,9 +128,30 @@ p {
     border-bottom: 2px solid gray;
 }
 
-.basevideo {
-    height: 60%;
+.basefeed {
+    display: flex;
+    justify-content: space-around;
+}
+
+.leftbase {
+    width: 20%;
+    border-right: 1px gray solid;
+}
+
+.centerbase {
     width: 60%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.rightbase {
+    width: 20%;
+    border-left: 1px gray solid;
+}
+
+.basevideo {
+    height: 90%;
+    width: 90%;
     min-height: 200px;
     min-width: 200px;
     padding: 10px;
@@ -164,7 +190,7 @@ p {
 
 .basebottom {
     background-color: gray;
-    width: 60%;
+    width: 90%;
     min-width: 200px;
     padding-left: 20px;
     padding-right: 20px;
@@ -290,7 +316,7 @@ p {
     padding-right: 10px;
     background-color: white;
     color: black;
-    width: 40%;
+    width: 60%;
     min-width: 150px;
     border-radius: 20px;
 }
@@ -474,14 +500,13 @@ p {
 /* Add view */
 
 .newviewbutton {
-    position: absolute;
-    left: 5%;
+    justify-content: center;
+    margin-right: 10px;
 }
 
 .newviewbutton > button {
     background-color: #3F2D17;
     font-size: 14px;
-    border-left: 0px;
     width: 100%;
 }
 

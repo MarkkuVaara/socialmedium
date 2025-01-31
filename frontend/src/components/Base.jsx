@@ -61,12 +61,15 @@ const Base = (props) => {
 
     return (
 
-        <div className="nav">
-            <h3>Base</h3>
-            <div className="newviewbutton">
-                <button className="navbutton" onClick={() => setIsViewOpen(true)}>Add new view</button>
+        <div className="basefeed">
+            
+            <div className="leftbase">
+                <div className="newviewbutton">
+                    <button className="navbutton" onClick={() => setIsViewOpen(true)}>Add new view</button>
+                </div>    
             </div>
 
+            <div className="centerbase">
             {props.views.map(view => 
                 <div className="baseview" key={view.id}>
                     <p className="basedate">{view.date}</p>
@@ -221,6 +224,10 @@ const Base = (props) => {
                         sendView={sendView} closeView={() => setIsViewOpen(false)}/>
                 </div>
             }
+            </div>
+
+            <div className="rightbase">
+            </div>
 
         </div>
     )
