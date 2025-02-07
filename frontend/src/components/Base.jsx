@@ -66,7 +66,13 @@ const Base = (props) => {
             <div className="leftbase">
                 <div className="newviewbutton">
                     <button className="navbutton" onClick={() => setIsViewOpen(true)}>Add new view</button>
-                </div>    
+                </div>
+                <div className="newviewbutton">
+                    <button className="navbutton">A</button>
+                </div>
+                <div className="newviewbutton">
+                    <button className="navbutton">V</button>
+                </div> 
             </div>
 
             <div className="centerbase">
