@@ -86,14 +86,14 @@ const Base = (props) => {
                             <>
                             <div className="basevideo" key={video.id}>
                                 <h4>{video.name}</h4>
-                                <p>{video.year}</p>
-                                <p>{video.director}</p>
-                                <p>{video.actors.map(actor => 
+                                <p>Year: {video.year}</p>
+                                <p>Director: {video.director}</p>
+                                <p>Actors: {video.actors.map(actor => 
                                     <span className="videoactor" key={video.id}>
                                         <p>{actor}</p>
                                     </span>)}
                                 </p>
-                                <p>{video.length} min</p>
+                                <p>Length: {video.length} min</p>
                                 <div className="image-container">
                                     <img className="messageicon" 
                                         src={message} alt={message}
@@ -233,6 +233,15 @@ const Base = (props) => {
             </div>
 
             <div className="rightbase">
+                <div className="newviewbutton">
+                    <button className="navbutton">O</button>
+                </div>
+                <div className="newviewbutton">
+                    <button className="navbutton">A</button>
+                </div>
+                <div className="newviewbutton">
+                    <button className="navbutton">V</button>
+                </div> 
             </div>
 
         </div>

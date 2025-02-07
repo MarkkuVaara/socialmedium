@@ -11,6 +11,7 @@ import Timeline from './components/Timeline';
 import Interaction from './components/Interaction';
 
 import Filmreel from './images/filmreel.png';
+import MediaSocial from './images/Media Social.png';
 
 const App = (props) => {
 
@@ -117,7 +118,7 @@ const App = (props) => {
 
     <div className="mainapp">
       <div className="banner">
-        <h1>Media social</h1>
+        <img className="mediasocial" src={MediaSocial} alt={MediaSocial}></img>>
         <p>Welcome to the social media for movie, tv and streaming watchers!</p>
         <img className="filmlogo" src={Filmreel} alt={Filmreel}></img>
       </div>
