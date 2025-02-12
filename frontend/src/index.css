@@ -48,6 +48,14 @@ p {
     font-size: 16px;
 }
 
+@media only screen and (max-width: 800px) {
+    h1 { font-size: 30px; }
+    h2 { font-size: 25px; }
+    h3 { font-size: 20px; }
+    h4 { font-size: 12px; }
+    p { font-size: 12px; }
+}
+
 
 /* Main components */
 
@@ -74,6 +82,8 @@ p {
 
 .banner > p {
     padding-top: 3%;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .nav {
@@ -100,6 +110,17 @@ p {
     background-color: transparent;
 }
 
+@media only screen and (max-width: 800px) {
+    .banner {
+        justify-content: space-around;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .banner > p {
+        width: 50%;
+    }
+}
+
 
 /* Nav buttons */
 
@@ -121,6 +142,12 @@ p {
 
 .bar {
     border-bottom: 10px gray solid;
+}
+
+@media only screen and (max-width: 800px) {
+    .navbutton {
+        font-size: 16px;
+    }
 }
 
 
@@ -215,6 +242,22 @@ p {
     font-size: 18px;
 }
 
+@media only screen and (max-width: 800px) {
+    .leftbase { width: 20%; }
+    .centerbase { width: 75%; }
+    .rightbase { width: 5%; }
+    .basevideo {
+        height: 80%;
+        width: 80%;
+        min-width: 75px;
+    }
+    .basebottom { 
+        width: 80%; 
+        min-width: 60%; 
+    }
+    .basedate { font-size: 14px; }
+}
+
 
 /* Base-message icon */
 
@@ -252,6 +295,12 @@ p {
     font-size: 16px;
     font-weight: bold;
     pointer-events: none;
+}
+
+@media only screen and (max-width: 800px) {
+    .image-container .centered-text {
+        font-size: 12px;
+    }
 }
 
 
@@ -384,6 +433,22 @@ p {
     background-color: lightsalmon;
 }
 
+@media only screen and (max-width: 800px) {
+    .topbuttons > button {
+        font-size: 12px;
+        border-radius: 10px;
+    }
+    .basemessage {
+        width: 70%;
+        margin-left: 10%;
+    }
+    .messagedate {
+        padding-left: 25%;
+    }
+    .messagetop > h4 { font-size: 14px; }
+    .messagetop > p { font-size: 12px; }
+}
+
 
 /* Base-reaction styles */
 
@@ -423,6 +488,14 @@ p {
 
 .reaction-container .whitetext {
     color: transparent;
+}
+
+@media only screen and (max-width: 800px) {
+    .reaction-container > img {
+        height: 20px;
+        width: 20px;
+    }
+    .reaction-container .side-text { font-size: 12px; }
 }
 
 
@@ -589,4 +662,13 @@ p {
 
 .filmlogo {
     width: 200px;
+}
+
+@media only screen and (max-width: 800px) {
+    .mediasocial {
+        width: 25%;
+    }
+    .filmlogo {
+        width: 25%;
+    }
 }
