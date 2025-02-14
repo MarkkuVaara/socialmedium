@@ -243,12 +243,31 @@ p {
 }
 
 @media only screen and (max-width: 800px) {
-    .leftbase { width: 20%; }
-    .centerbase { width: 75%; }
-    .rightbase { width: 5%; }
+    .basefeed { display: inline-block; }
+    .leftbase { 
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        border: 0;
+    }
+    .newviewbutton {
+        min-width: 100px;
+    }
+    .centerbase { 
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .rightbase { 
+        display: flex;
+        justify-content: space-evenly;
+        width: 100%;
+        border: 0;
+        margin-top: 20px;
+    }
     .basevideo {
         height: 80%;
-        width: 80%;
+        width: 90%;
         min-width: 75px;
     }
     .basebottom { 
@@ -584,6 +603,12 @@ p {
     font-weight: bold;
 }
 
+@media only screen and (max-width: 800px) {
+    .newcomment.open {
+        right: 0;
+    }
+}
+
 
 /* Add view */
 
@@ -627,6 +652,12 @@ p {
     margin-bottom: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid gray;
+}
+
+@media only screen and (max-width: 800px) {
+    .newview.open {
+        right: 30%;
+    }
 }
 
 
