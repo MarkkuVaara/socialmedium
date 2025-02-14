@@ -85,21 +85,21 @@ const videos = [
 const views = [
     {
         id: 1,
-        date: "21112024",
+        date: "11/21/2024 9:00:00 PM",
         videoid: 2,
         userid: 1,
         partid: null
     },
     {
         id: 2,
-        date: "28112024",
+        date: "11/28/2024 8:12:00 PM",
         videoid: 1,
         userid: 1,
         partid: null
     },
     {
         id: 3,
-        date: "30112024",
+        date: "11/30/2024 6:18:00 PM",
         videoid: 3,
         userid: 1,
         partid: 19
@@ -113,7 +113,7 @@ const messages = [
         userid: 1,
         title: "Toinen kerta",
         message: "Edelleen hyvä elokuva!",
-        date: "21112024"
+        date: "11/21/2024 11:00:00 PM"
     },
     {
         id: 2,
@@ -121,7 +121,7 @@ const messages = [
         userid: 1,
         title: "Ensimmäinen katselu",
         message: "Russell Crowe on paras!",
-        date: "28112024"
+        date: "11/28/2024 11:02:00 PM"
     },
     {
         id: 3,
@@ -129,7 +129,7 @@ const messages = [
         userid: 2,
         title: "Vs: Ensimmäinen katselu",
         message: "Joaquin Phoenix on kans aika hyvä, itse asiassa kaikki näyttelijät ovat hyviä..",
-        date: "30112024"
+        date: "11/30/2024 8:18:00 AM"
     },
     {
         id: 4,
@@ -137,7 +137,7 @@ const messages = [
         userid: 1,
         title: "Vs: Ensimmäinen katselu",
         message: "Se Sons of Anarchy tyyppikin on tässä",
-        date: "30112024"
+        date: "11/30/2024 8:30:00 AM"
     },
     {
         id: 5,
@@ -145,7 +145,7 @@ const messages = [
         userid: 2,
         title: "Vs: Toinen kerta",
         message: "On kyllä vähän liian hidas elokuva. Ja miksi tässä on typeriä Jawoja? Imperiumin orjiksi tuommoiset!",
-        date: "22112024"
+        date: "11/22/2024 3:00:00 PM"
     },
     {
         id: 6,
@@ -153,7 +153,7 @@ const messages = [
         userid: 1,
         title: "Parhaat repliikit?",
         message: "Walter: 'I am the one who knocks!'",
-        date: "01122024"
+        date: "12/1/2024 9:00:00 PM"
     }
 ]
 

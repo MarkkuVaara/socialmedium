@@ -146,6 +146,7 @@ p {
 
 @media only screen and (max-width: 800px) {
     .navbutton {
+        display: block;
         font-size: 16px;
     }
 }
@@ -267,7 +268,7 @@ p {
     }
     .basevideo {
         height: 80%;
-        width: 90%;
+        width: 85%;
         min-width: 75px;
     }
     .basebottom { 
@@ -574,6 +575,7 @@ p {
 }
 
 .formfield > textarea {
+    height: 120px;
     max-height: 250px;
     max-width: 200px;
 }
@@ -606,6 +608,9 @@ p {
 @media only screen and (max-width: 800px) {
     .newcomment.open {
         right: 0;
+    }
+    .formfield > textarea {
+        height: 80px;
     }
 }
 
@@ -656,7 +661,7 @@ p {
 
 @media only screen and (max-width: 800px) {
     .newview.open {
-        right: 30%;
+        right: 0%;
     }
 }
 

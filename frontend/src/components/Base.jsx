@@ -78,7 +78,7 @@ const Base = (props) => {
             <div className="centerbase">
             {props.views.map(view => 
                 <div className="baseview" key={view.id}>
-                    <p className="basedate">{view.date}</p>
+                    <p className="basedate">{view.date.substring(0, 10)}</p>
 
                     {props.videos.map(video => 
                         <> 
@@ -129,7 +129,7 @@ const Base = (props) => {
                                         }
                                         </div>
                                     )}
-                                    <p className="messagedate">{message.date}</p>
+                                    <p className="messagedate">{message.date.substring(0, 10)}</p>
                                     </div>
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
@@ -226,7 +226,7 @@ const Base = (props) => {
             )}
             {isViewOpen === true &&
                 <div className={`newview ${isViewOpen ? 'open' : 'closed'}`}>
-                    <NewView videos={props.videos} handleDataChange={handleDataChange}
+                    <NewView videos={props.videos}
                         sendView={sendView} closeView={() => setIsViewOpen(false)}/>
                 </div>
             }

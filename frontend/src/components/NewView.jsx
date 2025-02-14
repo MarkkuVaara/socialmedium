@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 const NewView = (props) => {
+
+    const [startDate, setStartDate] = useState(Date.now());
 
     return (
         <div>
@@ -14,7 +19,7 @@ const NewView = (props) => {
                         )}
                     </select>
                     <label>Date</label>
-                    <input name="date" onChange={props.handleDataChange} value={props.date}></input>
+                    <DatePicker name="date" selected={startDate} onChange={(date) => setStartDate(date)} />
                     <button className="sendbutton" type="submit">Add</button>
                     <button className="closebutton" type="button" onClick={props.closeView}>Close</button>
                 </div>

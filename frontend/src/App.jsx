@@ -70,7 +70,7 @@ const App = (props) => {
       type: 'NEW_COMMENT',
       payload: {id: id,
         userid: 1,
-        date: "20122024",
+        date: "1/21/2025 11:00:00 PM",
         title: title,
         message: message,
         viewid: isMessageOpen
