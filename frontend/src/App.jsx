@@ -31,7 +31,11 @@ const App = (props) => {
     });
     dispatch({
       type: 'ALL_VIEWS',
-      payload: props.views
+      payload: props.views.sort( function(a, b){
+        let x = new Date(a.date);
+        let y = new Date(b.date);
+        return y-x;
+        })
     });
     dispatch({
       type: 'ALL_COMMENTS',
@@ -122,12 +126,18 @@ const App = (props) => {
 
   }
 
+  const changeViewOrder = () => {
+
+    alert("Changed view order!");
+
+  }
+
 
   return (
 
     <div className="mainapp">
       <div className="banner">
-        <img className="mediasocial" src={MediaSocial} alt={MediaSocial}></img>>
+        <img className="mediasocial" src={MediaSocial} alt={MediaSocial}></img>
         <p>Welcome to the social media for movie, tv and streaming watchers!</p>
         <img className="filmlogo" src={Filmreel} alt={Filmreel}></img>
       </div>
@@ -145,7 +155,7 @@ const App = (props) => {
           &&
           <div className="base">
             <Base users={users} videos={videos} views={views} messages={messages} likes={likes} 
-              addComment={addComment} addLike={addLike} addView={addNewView} />
+              addComment={addComment} addLike={addLike} addView={addNewView} changeViewOrder={changeViewOrder} />
           </div>
         }
         {pageTurner === 1

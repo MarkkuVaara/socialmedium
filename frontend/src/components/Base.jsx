@@ -58,6 +58,12 @@ const Base = (props) => {
 
     }
 
+    const changeOrder = () => {
+
+        props.changeViewOrder();
+
+    }
+
 
     return (
 
@@ -68,10 +74,10 @@ const Base = (props) => {
                     <button className="navbutton" onClick={() => setIsViewOpen(true)}>Add new view</button>
                 </div>
                 <div className="newviewbutton">
-                    <button className="navbutton">A</button>
+                    <button className="navbutton" onClick={() => changeOrder()}>Latest to the top</button>
                 </div>
                 <div className="newviewbutton">
-                    <button className="navbutton">V</button>
+                    <button className="navbutton" onClick={() => changeOrder()}>Earliest to the top</button>
                 </div> 
             </div>
 
@@ -236,13 +242,13 @@ const Base = (props) => {
 
             <div className="rightbase">
                 <div className="newviewbutton">
-                    <button className="navbutton">O</button>
+                    <button className="navbutton">TBD</button>
                 </div>
                 <div className="newviewbutton">
-                    <button className="navbutton">A</button>
+                    <button className="navbutton">TBD</button>
                 </div>
                 <div className="newviewbutton">
-                    <button className="navbutton">V</button>
+                    <button className="navbutton">TBD</button>
                 </div> 
             </div>
 

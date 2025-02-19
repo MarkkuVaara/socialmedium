@@ -40,7 +40,11 @@ const videoReducer = (state = [], action) => {
 
 const viewReducer = (state = [], action) => {
   if (action.type === 'NEW_VIEW') {
-    return state.concat(action.payload)
+    return state.concat(action.payload).sort( function(a, b){
+      let x = new Date(a.date);
+      let y = new Date(b.date);
+      return y-x;
+      })
   }
   if (action.type === 'ALL_VIEWS') {
     state = action.payload
