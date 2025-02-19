@@ -97,7 +97,7 @@ const Base = (props) => {
                                 <div className="image-container">
                                     <img className="messageicon" 
                                         src={message} alt={message}
-                                        onClick={() => setIsMessageOpen(view.id)}></img>
+                                        onClick={() => { setIsMessageOpen(view.id); setIsCommentOpen(false); }}></img>
                                     <div className="centered-text">
                                         {props.messages.filter(message => message.viewid === view.id).length}
                                     </div>
@@ -113,7 +113,7 @@ const Base = (props) => {
                         {isMessageOpen === view.id &&
                             <div className="topbuttons">
                                 <button className="commbutton" onClick={() => { setIsCommentOpen(true); setMessageTitle(""); setMessageMessage(""); }}>Comment</button>
-                                <button className="commclosebutton" onClick={() => setIsMessageOpen(null)}>Close</button>
+                                <button className="commclosebutton" onClick={() => { setIsMessageOpen(null); setIsCommentOpen(false); }}>Close</button>
                             </div>
                         }
 
@@ -129,7 +129,10 @@ const Base = (props) => {
                                         }
                                         </div>
                                     )}
-                                    <p className="messagedate">{message.date.substring(0, 10)}</p>
+                                    <div className="messagedate">
+                                        <p>{message.date.substring(0, 10)}</p>
+                                        <p>{message.date.substring(11)}</p>
+                                    </div>
                                     </div>
                                     <h4>{message.title}</h4>
                                     <p>{message.message}</p>
@@ -226,8 +229,7 @@ const Base = (props) => {
             )}
             {isViewOpen === true &&
                 <div className={`newview ${isViewOpen ? 'open' : 'closed'}`}>
-                    <NewView videos={props.videos}
-                        sendView={sendView} closeView={() => setIsViewOpen(false)}/>
+                    <NewView videos={props.videos} sendView={sendView} closeView={() => setIsViewOpen(false)}/>
                 </div>
             }
             </div>

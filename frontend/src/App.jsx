@@ -66,11 +66,20 @@ const App = (props) => {
 
     const id = messages.length + 1;
 
+    const currentDate = new Date();
+    const formatter = new Intl.DateTimeFormat('en-us', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const formattedTime = formatter.format(currentDate);
+    const dd = String(currentDate.getDate()).padStart(2, '0');
+    const mm = String(currentDate.getMonth()+1).padStart(2, '0');
+    const yyyy = currentDate.getFullYear();
+  
+    const today = mm + '/' + dd + '/' + yyyy + ' ' + formattedTime;
+
     dispatch({
       type: 'NEW_COMMENT',
       payload: {id: id,
         userid: 1,
-        date: "1/21/2025 11:00:00 PM",
+        date: today,
         title: title,
         message: message,
         viewid: isMessageOpen
