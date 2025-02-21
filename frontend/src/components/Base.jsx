@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 
+import filmimage from '../images/filmreel2.png';
 import message from '../images/messageicon.png';
 import likeicon from '../images/likeicon.png';
 import fadelikeicon from '../images/fadelikeicon.png';
@@ -8,6 +9,7 @@ import loveicon from '../images/loveicon.png';
 import fadeloveicon from '../images/fadeloveicon.png';
 import unlikeicon from '../images/unlikeicon.png';
 import fadeunlikeicon from '../images/fadeunlikeicon.png';
+
 import NewComment from '../components/NewComment';
 import NewView from '../components/NewView';
 
@@ -55,6 +57,7 @@ const Base = (props) => {
         const title = event.target.title.value;
 
         setIsViewOpen(false);
+        setOrder(false);
         props.addView({title, date});
 
     }
@@ -94,7 +97,10 @@ const Base = (props) => {
                         {video.id === view.videoid &&
                             <>
                             <div className="basevideo" key={video.id}>
-                                <h4>{video.name}</h4>
+                                <div className="videoname">
+                                    <h4>{video.name}</h4>
+                                    <img className="film-image" src={filmimage} alt={filmimage}></img>
+                                </div>
                                 <p>Year: {video.year}</p>
                                 <p>Director: {video.director}</p>
                                 <p>Actors: {video.actors.map(actor => 
