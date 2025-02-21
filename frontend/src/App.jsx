@@ -127,9 +127,15 @@ const App = (props) => {
   }
 
   const changeViewOrder = () => {
+    dispatch({
+      type: 'SORT_VIEWS_ASCENDING'
+    })
+  }
 
-    alert("Changed view order!");
-
+  const changeViewOrderD = () => {
+    dispatch({
+      type: 'SORT_VIEWS_DESCENDING'
+    })
   }
 
 
@@ -155,7 +161,8 @@ const App = (props) => {
           &&
           <div className="base">
             <Base users={users} videos={videos} views={views} messages={messages} likes={likes} 
-              addComment={addComment} addLike={addLike} addView={addNewView} changeViewOrder={changeViewOrder} />
+              addComment={addComment} addLike={addLike} addView={addNewView} changeViewOrder={changeViewOrder}
+              changeViewOrderD={changeViewOrderD} />
           </div>
         }
         {pageTurner === 1

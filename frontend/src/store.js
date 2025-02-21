@@ -46,6 +46,12 @@ const viewReducer = (state = [], action) => {
       return y-x;
       })
   }
+  if (action.type === 'SORT_VIEWS_ASCENDING') {
+      return [...state].sort((a, b) => new Date(a.date) - new Date(b.date));
+  }
+  if (action.type === 'SORT_VIEWS_DESCENDING') {
+      return [...state].sort((a, b) => new Date(b.date) - new Date(a.date));
+  }
   if (action.type === 'ALL_VIEWS') {
     state = action.payload
     return state

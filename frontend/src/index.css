@@ -169,19 +169,27 @@ p {
 
 .leftbase {
     width: 20%;
-    border-right: 1px lightgray solid;
 }
 
 .centerbase {
     width: 60%;
-    margin-left: 5%;
-    margin-right: 5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border-left: 1px lightgray solid;
+    border-right: 1px lightgray solid;
+}
+
+.centerbase.asc {
+    background: transparent;
+}
+
+.centerbase.dsc {
+    background: black;
 }
 
 .rightbase {
     width: 20%;
     padding-left: 20px;
-    border-left: 1px lightgray solid;
 }
 
 .basevideo {
@@ -256,8 +264,9 @@ p {
     }
     .centerbase { 
         width: 100%;
-        margin-left: 0;
-        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border: 0px;
     }
     .rightbase { 
         display: flex;

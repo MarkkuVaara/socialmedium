@@ -16,6 +16,7 @@ const Base = (props) => {
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [isCommentOpen, setIsCommentOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
+    const [order, setOrder] = useState(false);
 
     const [messageTitle, setMessageTitle] = useState("");
     const [messageMessage, setMessageMessage] = useState("");
@@ -59,9 +60,11 @@ const Base = (props) => {
     }
 
     const changeOrder = () => {
-
         props.changeViewOrder();
+    }
 
+    const changeOrderD = () => {
+        props.changeViewOrderD();
     }
 
 
@@ -71,17 +74,17 @@ const Base = (props) => {
             
             <div className="leftbase">
                 <div className="newviewbutton">
-                    <button className="navbutton" onClick={() => setIsViewOpen(true)}>Add new view</button>
+                    <button className="navbutton" onClick={() =>  setIsViewOpen(true)}>Add new view</button>
                 </div>
                 <div className="newviewbutton">
-                    <button className="navbutton" onClick={() => changeOrder()}>Latest to the top</button>
+                    <button className="navbutton" onClick={() => { changeOrderD(); setOrder(false); } }>Latest view to the top</button>
                 </div>
                 <div className="newviewbutton">
-                    <button className="navbutton" onClick={() => changeOrder()}>Earliest to the top</button>
+                    <button className="navbutton" onClick={() => { changeOrder(); setOrder(true); } }>Earliest view to the top</button>
                 </div> 
             </div>
 
-            <div className="centerbase">
+            <div className={`centerbase ${order ? 'asc' : 'dsc'}`}>
             {props.views.map(view => 
                 <div className="baseview" key={view.id}>
                     <p className="basedate">{view.date.substring(0, 10)}</p>
