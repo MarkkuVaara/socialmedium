@@ -34,34 +34,59 @@ const Timeline = (props) => {
     const [isCommentOpen, setIsCommentOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
 
-    const events = [
+    /*const events = [
         {
           title: 'Event 1',
           start: new Date(),
           end: new Date(),
         },
-    ];
+    ]; */
+
+    const CustomEvent = ({ event }) => (
+
+        <div className="bg-blue-500 text-white rounded-lg p-1">
+          <strong>{event.title}</strong>
+        </div>
+        
+    );
+
+    const transformToEvents = (views) => {
+
+        return views.map(item => {
+          const [month, day, year] = item.date.split('/').map(Number);
+          const startHour = '00';
+          const startMinute = '00';
+          /* const [endHour, endMinute] = item.endTime.split(':').map(Number); */
+      
+          return {
+            title: item.videoid,
+            start: new Date(year, month - 1, day, startHour, startMinute),
+            end: new Date(year, month - 1, day, startHour, startMinute),
+            desc: item.date,
+          };
+        });
+    };
+
+    const events = transformToEvents(props.views);
+
 
     return (
 
         <div className="timelinefeed">
             
             <Calendar
-                localizer={localizer} events={events} startAccessor="start" endAccessor="end"
+                localizer={localizer} events={events} startAccessor="start" endAccessor="end" 
+                components={{ event: CustomEvent, }}
             />
 
-            {props.videos.map(video => 
-                <p>{video.name}</p>
+            {events.map(view => 
+                <>
+                <p>{view.title}</p>
+                <p>{view.start.toString()}</p>
+                <p>{view.end.toString()}</p>
+                </>
             )}
-            {props.views.map(view => 
-                <p>{view.date}</p>
-            )}
-            {props.messages.map(message => 
-                <p>{message.title}</p>
-            )}
-            {props.likes.map(like => 
-                <p>{like.type}</p>
-            )}
+
         </div>
 
     )

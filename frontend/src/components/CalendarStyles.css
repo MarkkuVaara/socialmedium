@@ -26,7 +26,9 @@
     background-color: black;
 }
 
-.rbc-event-content {
+.rbc-event-content,
+.rbc-event-content:hover,
+.rbc-event-content:focus {
     background-color: black;
 }
 
@@ -39,7 +41,8 @@
     cursor: pointer;
 }
 
-.rbc-toolbar button:hover {
+.rbc-toolbar button:hover,
+.rbc-toolbar button:focus {
     background-color: #3F2D17;
     color: white;
 }
