@@ -30,14 +30,21 @@ import NewView from '../components/NewView';
 
 const Timeline = (props) => {
 
+    const [isVideoOpen, setIsVideoOpen] = useState(null);
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [isCommentOpen, setIsCommentOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
 
     const CustomEvent = ({ event }) => (
 
-        <div className="bg-blue-500 text-white rounded-lg p-1">
-          <strong>{event.title}</strong>
+        <div className="bg-blue-500 text-white rounded-lg">
+            {props.videos.map(video =>
+                <>
+                    {video.id === event.title &&
+                        <strong onClick={() => setIsVideoOpen(video.id)}>{video.name}</strong>
+                    }
+                </>
+            )}
         </div>
         
     );
@@ -80,6 +87,41 @@ const Timeline = (props) => {
                 localizer={localizer} events={events} startAccessor="start" endAccessor="end" 
                 components={{ event: CustomEvent, }}
             />
+
+            <div className="timelineview">
+                {props.videos.map(video => 
+                <> 
+                    {video.id === isVideoOpen &&
+                        <>
+                        <div className="timelinevideo" key={video.id}>
+                            <div className="videoname">
+                                <h4>{video.name}</h4>
+                                <img className="film-image" onClick={() => setIsVideoOpen(null)} 
+                                    src={filmimage} alt={filmimage}></img>
+                            </div>
+                            <p>Year: {video.year}</p>
+                            <p>Director: {video.director}</p>
+                            <p>Actors: {video.actors.map(actor => 
+                            <span className="videoactor" key={video.id}>
+                                <p>{actor}</p>
+                            </span>)}
+                            </p>
+                            <p>Length: {video.length} min</p>
+                            <div className="image-container">
+                                <img className="messageicon" 
+                                    src={message} alt={message}
+                                    onClick={() => { setIsMessageOpen(null); setIsCommentOpen(false); }}></img>
+                                <div className="centered-text">
+                                    {props.messages.filter(message => message.viewid === null).length}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="basebottom"></div>
+                        </>
+                    }
+                </>
+                )}
+            </div>
 
             {events.map(view => 
                 <>
