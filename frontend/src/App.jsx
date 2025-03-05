@@ -55,6 +55,8 @@ const App = (props) => {
 
   const addNewView = ({title, date}) => {
 
+    date = date.concat(" 12:00:00 PM");
+
     dispatch({
       type: 'NEW_VIEW',
       payload: {id: 1000 + views.length, date: date,

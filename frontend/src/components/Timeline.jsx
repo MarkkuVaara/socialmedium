@@ -34,14 +34,6 @@ const Timeline = (props) => {
     const [isCommentOpen, setIsCommentOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
 
-    /*const events = [
-        {
-          title: 'Event 1',
-          start: new Date(),
-          end: new Date(),
-        },
-    ]; */
-
     const CustomEvent = ({ event }) => (
 
         <div className="bg-blue-500 text-white rounded-lg p-1">
@@ -50,18 +42,28 @@ const Timeline = (props) => {
         
     );
 
+    const parseTime = (timeStr) => {
+
+        const [time, period] = timeStr.split(' ');
+        let [hour, minute, second] = time.split(':').map(Number);
+
+        if (period === 'PM' && hour !== 12) hour += 12;
+        if (period === 'AM' && hour === 12) hour = 0;
+
+        return { hour, minute, second };
+    };
+
     const transformToEvents = (views) => {
 
         return views.map(item => {
-          const [month, day, year] = item.date.split('/').map(Number);
-          const startHour = '00';
-          const startMinute = '00';
-          /* const [endHour, endMinute] = item.endTime.split(':').map(Number); */
-      
+          const [datePart, timePart] = item.date.split(' ');
+          const [month, day, year] = datePart.split('/').map(Number);
+          const { hour, minute, second } = parseTime(timePart);
+
           return {
             title: item.videoid,
-            start: new Date(year, month - 1, day, startHour, startMinute),
-            end: new Date(year, month - 1, day, startHour, startMinute),
+            start: new Date(year, month - 1, day, hour, minute, second),
+            end: new Date(year, month - 1, day, hour + 2, minute, second),
             desc: item.date,
           };
         });
@@ -84,6 +86,7 @@ const Timeline = (props) => {
                 <p>{view.title}</p>
                 <p>{view.start.toString()}</p>
                 <p>{view.end.toString()}</p>
+                <p>{view.desc}</p>
                 </>
             )}
 
