@@ -238,6 +238,10 @@ p {
     width: 50px;
 }
 
+.x-image {
+    cursor: pointer;
+}
+
 .basevideo > p {
     padding-left: 20px;
 }
@@ -336,7 +340,7 @@ p {
     height: 90%;
     width: 90%;
     min-height: 300px;
-    min-width: 300px;
+    min-width: 400px;
     padding: 10px;
     padding-left: 20px;
     padding-right: 20px;
@@ -357,6 +361,10 @@ p {
         top: 50%;
         left: 10%;
         z-index: 1000;
+    }
+    .timelinevideo {
+        min-height: 200px;
+        min-width: 200px;
     }
 }
 

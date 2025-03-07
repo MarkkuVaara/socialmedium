@@ -18,6 +18,7 @@ const localizer = dateFnsLocalizer({
 
 import filmimage from '../images/filmreel2.png';
 import message from '../images/messageicon.png';
+import xmark from '../images/x-mark.png';
 import likeicon from '../images/likeicon.png';
 import fadelikeicon from '../images/fadelikeicon.png';
 import loveicon from '../images/loveicon.png';
@@ -34,6 +35,9 @@ const Timeline = (props) => {
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [isCommentOpen, setIsCommentOpen] = useState(false);
     const [isViewOpen, setIsViewOpen] = useState(false);
+
+    const [messageTitle, setMessageTitle] = useState("");
+    const [messageMessage, setMessageMessage] = useState("");
 
     const CustomEvent = ({ event }) => (
 
@@ -96,8 +100,9 @@ const Timeline = (props) => {
                         <div className="timelinevideo" key={video.id}>
                             <div className="videoname">
                                 <h4>{video.name}</h4>
-                                <img className="film-image" onClick={() => setIsVideoOpen(null)} 
-                                    src={filmimage} alt={filmimage}></img>
+                                <img className="film-image" src={filmimage} alt={filmimage}></img>
+                                <img className="film-image x-image" onClick={() => setIsVideoOpen(null)} 
+                                    src={xmark} alt={xmark}></img>
                             </div>
                             <p>Year: {video.year}</p>
                             <p>Director: {video.director}</p>
@@ -110,7 +115,7 @@ const Timeline = (props) => {
                             <div className="image-container">
                                 <img className="messageicon" 
                                     src={message} alt={message}
-                                    onClick={() => { setIsMessageOpen(null); setIsCommentOpen(false); }}></img>
+                                    onClick={() => { setIsMessageOpen(true); setIsCommentOpen(false); }}></img>
                                 <div className="centered-text">
                                     {props.messages.filter(message => message.viewid === null).length}
                                 </div>
@@ -123,14 +128,14 @@ const Timeline = (props) => {
                 )}
             </div>
 
-            {events.map(view => 
-                <>
-                <p>{view.title}</p>
-                <p>{view.start.toString()}</p>
-                <p>{view.end.toString()}</p>
-                <p>{view.desc}</p>
-                </>
-            )}
+            <div className={`basemessage ${isMessageOpen ? 'open' : 'closed'}`}>
+                {isMessageOpen &&
+                    <div className="topbuttons">
+                        <button className="commbutton" onClick={() => { setIsCommentOpen(true); setMessageTitle(""); setMessageMessage(""); }}>Comment</button>
+                        <button className="commclosebutton" onClick={() => { setIsMessageOpen(null); setIsCommentOpen(false); }}>Close</button>
+                    </div>
+                }
+            </div>
 
         </div>
 
