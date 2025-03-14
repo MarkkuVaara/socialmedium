@@ -39,6 +39,44 @@ const Timeline = (props) => {
     const [messageTitle, setMessageTitle] = useState("");
     const [messageMessage, setMessageMessage] = useState("");
 
+    const handleDataChange = (event) => {
+        setMessageTitle(event.target.value);
+    };
+
+    const handleDataChange2 = (event) => {
+        setMessageMessage(event.target.value);
+    };
+
+    const sendMessage = (event) => {
+    
+        event.preventDefault();
+    
+        const title = event.target.title.value;
+        const premessage = event.target.message.value;
+        const message = premessage.split("\n").map((line, index) => (
+            <React.Fragment key={index}>
+                {line}
+                <br />
+            </React.Fragment>
+        ));
+    
+        setIsCommentOpen(false);
+        props.addComment({title, message, isMessageOpen});
+    
+    }
+
+    const sendView = (event) => {
+    
+        event.preventDefault();
+    
+        const date = event.target.date.value;
+        const title = event.target.title.value;
+    
+        setIsViewOpen(false);
+        props.addView({title, date});
+    
+    }
+
     const CustomEvent = ({ event }) => (
 
         <div className="bg-blue-500 text-white rounded-lg">
@@ -119,7 +157,7 @@ const Timeline = (props) => {
                                 <div className="centered-text">
                                     {props.views.map(view =>
                                         <>
-                                            {view.videoid === video.id &&
+                                            {view.id === isMessageOpen &&
                                                 <>
                                                 {props.messages.filter(message => message.viewid === view.id).length}
                                                 </>
@@ -166,7 +204,7 @@ const Timeline = (props) => {
                                 <h4>{message.title}</h4>
                                 <p>{message.message}</p>
                                 <div className="reactions">
-                                    <button className="replybutton" onClick={() => { setIsCommentOpen(null); 
+                                    <button className="replybutton" onClick={() => { setIsCommentOpen(true); 
                                         setMessageTitle("Vs:" + message.title); 
                                         setMessageMessage(">> " + message.message.replace(/<br\s*\/?>/gi, "\n").trim() + "\n\n"); } }>Reply</button>
                                     <div>
@@ -245,10 +283,22 @@ const Timeline = (props) => {
                         }
                     </div>
                 )}
+                {isMessageOpen === view.id &&
+                    <div className={`newcomment ${isCommentOpen ? 'open' : 'closed'}`}>
+                        <NewComment messageTitle={messageTitle} messageMessage={messageMessage} 
+                            handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
+                            sendMessage={sendMessage} closeMessage={() => setIsCommentOpen(false)} />
+                    </div>
+                }
 
                 </>
                 )}
             </div>
+            {isViewOpen === true &&
+                <div className={`newview ${isViewOpen ? 'open' : 'closed'}`}>
+                    <NewView videos={props.videos} sendView={sendView} closeView={() => setIsViewOpen(false)}/>
+                </div>
+            }
 
         </div>
 
