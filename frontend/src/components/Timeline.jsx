@@ -117,7 +117,15 @@ const Timeline = (props) => {
                                     src={message} alt={message}
                                     onClick={() => { setIsMessageOpen(true); setIsCommentOpen(false); }}></img>
                                 <div className="centered-text">
-                                    {props.messages.filter(message => message.viewid === null).length}
+                                    {props.views.map(view =>
+                                        <>
+                                            {view.videoid === video.id &&
+                                                <>
+                                                {props.messages.filter(message => message.viewid === view.id).length}
+                                                </>
+                                            }
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </div>
