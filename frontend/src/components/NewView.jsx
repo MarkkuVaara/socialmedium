@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const NewView = (props) => {
 
-    const [startDate, setStartDate] = useState(Date.now());
+    const [startDate, setStartDate] = useState(props.startTime ? props.startTime : Date.now());
 
     return (
         <div>

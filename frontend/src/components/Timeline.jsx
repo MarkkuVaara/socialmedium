@@ -38,6 +38,7 @@ const Timeline = (props) => {
 
     const [messageTitle, setMessageTitle] = useState("");
     const [messageMessage, setMessageMessage] = useState("");
+    const [startTime, setStartTime] = useState(null);
 
     const handleDataChange = (event) => {
         setMessageTitle(event.target.value);
@@ -91,6 +92,13 @@ const Timeline = (props) => {
         
     );
 
+    const handleSelectSlot = ({ start, end }) => {
+
+        setIsViewOpen(true);
+        setStartTime(start);
+
+    };
+
     const parseTime = (timeStr) => {
 
         const [time, period] = timeStr.split(' ');
@@ -128,6 +136,7 @@ const Timeline = (props) => {
             <Calendar
                 localizer={localizer} events={events} startAccessor="start" endAccessor="end" 
                 components={{ event: CustomEvent, }}
+                selectable onSelectSlot={handleSelectSlot}
             />
 
             <div className="timelineview">
@@ -296,7 +305,8 @@ const Timeline = (props) => {
             </div>
             {isViewOpen === true &&
                 <div className={`newview ${isViewOpen ? 'open' : 'closed'}`}>
-                    <NewView videos={props.videos} sendView={sendView} closeView={() => setIsViewOpen(false)}/>
+                    <NewView videos={props.videos} startTime={startTime}
+                        sendView={sendView} closeView={() => setIsViewOpen(false)}/>
                 </div>
             }
 

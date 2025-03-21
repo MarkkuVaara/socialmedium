@@ -171,7 +171,7 @@ const App = (props) => {
           && 
           <div className="timeline">
             <Timeline users={users} videos={videos} views={views} messages={messages} likes={likes} 
-              addComment={addComment} addLike={addLike} />
+              addComment={addComment} addLike={addLike} addView={addNewView} />
           </div>
         }
         {pageTurner === 2
