@@ -112,7 +112,10 @@ p {
     background-color: transparent;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
+    .mainapp {
+        background-repeat: repeat;
+    }
     .banner {
         justify-content: space-around;
         margin-left: 0;
