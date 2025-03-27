@@ -822,3 +822,26 @@ p {
         width: 25%;
     }
 }
+
+
+/* Datepicker */
+
+.react-datepicker {
+    width: 200px !important;
+}
+
+.react-datepicker__month-container {
+    width: 200px !important;
+}
+
+.react-datepicker__time-container {
+    width: 200px !important;
+}
+
+.react-datepicker__time-box {
+    width: 200px !important;
+}
+
+.react-datepicker__time-list {
+    width: 175px !important;
+}

@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 const NewView = (props) => {
 
-    const [startDate, setStartDate] = useState(props.startTime ? props.startTime : Date.now());
+    const [startDate, setStartDate] = useState(props.startTime ? props.startTime : new Date());
 
     return (
         <div>
@@ -19,7 +19,15 @@ const NewView = (props) => {
                         )}
                     </select>
                     <label>Date</label>
-                    <DatePicker name="date" selected={startDate} onChange={(date) => setStartDate(date)} />
+                    <DatePicker name="date" 
+                        selected={startDate} 
+                        onChange={(date) => {
+                            if (date instanceof Date && !isNaN(date)) {
+                              setStartDate(date);
+                            }}
+                        }
+                        showTimeSelect dateFormat="MM/dd/yyyy hh:mm:ss a" timeFormat="hh:mm:ss a"
+                        timeIntervals={60} />
                     <button className="sendbutton" type="submit">Add</button>
                     <button className="closebutton" type="button" onClick={props.closeView}>Close</button>
                 </div>
