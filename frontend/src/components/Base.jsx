@@ -9,6 +9,8 @@ import loveicon from '../images/loveicon.png';
 import fadeloveicon from '../images/fadeloveicon.png';
 import unlikeicon from '../images/unlikeicon.png';
 import fadeunlikeicon from '../images/fadeunlikeicon.png';
+import downarrow from '../images/downarrow.png';
+import uparrow from '../images/uparrow.png';
 
 import NewComment from '../components/NewComment';
 import NewView from '../components/NewView';
@@ -80,11 +82,17 @@ const Base = (props) => {
                     <button className="navbutton" onClick={() =>  setIsViewOpen(true)}>Add new view</button>
                 </div>
                 <div className="newviewbutton">
-                    <button className="navbutton" onClick={() => { changeOrderD(); setOrder(false); } }>Latest view to the top</button>
+                    <button className="navbutton" onClick={() => { changeOrderD(); setOrder(false); } }>
+                        <p>Latest view to the top</p>
+                        <img className="arrowicon" src={uparrow} alt={uparrow}></img>
+                    </button>
                 </div>
                 <div className="newviewbutton">
-                    <button className="navbutton" onClick={() => { changeOrder(); setOrder(true); } }>Earliest view to the top</button>
-                </div> 
+                    <button className="navbutton" onClick={() => { changeOrder(); setOrder(true); } }>
+                        <p>Earliest view to the top</p>
+                        <img className="arrowicon" src={downarrow} alt={downarrow}></img>
+                    </button>
+                </div>
             </div>
 
             <div className={`centerbase ${order ? 'asc' : 'dsc'}`}>

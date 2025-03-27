@@ -809,6 +809,11 @@ p {
     width: 200px;
 }
 
+.arrowicon {
+    height: 30px;
+    width: 30px;
+}
+
 @media only screen and (max-width: 800px) {
     .mediasocial {
         width: 25%;

@@ -24,18 +24,18 @@ const videos = [
         name: "Gladiator",
         type: "movie",
         director: "Ridley Scott",
-        actors: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen"],
+        actors: ["Russell Crowe", "Joaquin Phoenix", "Connie Nielsen", "Oliver Reed", "Richard Harris"],
         year: 2000,
-        length: 130
+        length: 155
     },
     {
         id: 2,
         name: "Star Wars",
         type: "movie",
         director: "George Lucas",
-        actors: ["Mark Hamill", "Carrie Fisher", "Harrison Ford"],
+        actors: ["Mark Hamill", "Carrie Fisher", "Harrison Ford", "Alec Guinness", "Peter Mayhew"],
         year: 1977,
-        length: 120
+        length: 121
     },
     {
         id: 3,
@@ -49,57 +49,84 @@ const videos = [
         name: "Deadpool & Wolverine",
         type: "movie",
         director: "Sean Lewy",
-        actors: ["Ryan Reynolds", "Hugh Jackman"],
+        actors: ["Ryan Reynolds", "Hugh Jackman", "Leslie Uggams", "Emma Corrin", "Dafne Keen"],
         year: 2024,
-        length: 135
+        length: 128
     },
     {
         id: 5,
         name: "Nosferatu",
         type: "movie",
         director: "Robert Eggers",
-        actors: ["Nicholas Hoult", "Lily Rose-Depp", "Bill Skarsgard"],
+        actors: ["Nicholas Hoult", "Lily Rose-Depp", "Bill Skarsgard", "Willem Dafoe", "Aaron Taylor Johnson", "Emma Corrin"],
         year: 2024,
-        length: 135
+        length: 132
     },
     {
         id: 6,
         name: "The Substance",
         type: "movie",
         director: "Nicol Farbege",
-        actors: ["Demi Moore"],
+        actors: ["Demi Moore", "Margaret Qualley", "Dennis Quiad", "Hugo Diego Garcia", "Alexandra Papoulias Barton"],
         year: 2024,
-        length: 145
+        length: 140
     },
     {
         id: 7,
         name: "The Batman",
         type: "movie",
         director: "Matt Reeves",
-        actors: ["Robert Pattinson"],
+        actors: ["Robert Pattinson", "Jeffrey Wright", "Zoe Kravitz", "Paul Dano", "Colin Farrell"],
         year: 2022,
-        length: 180
+        length: 176
+    },
+    {
+        id: 8,
+        name: "Death on the Nile",
+        type: "movie",
+        director: "Kenneth Branaugh",
+        actors: ["Kenneth Branaugh", "Gal Gadot", "Armie Hammer", "Annette Benign", "Tom Bateman"],
+        year: 2022,
+        length: 127
+    },
+    {
+        id: 9,
+        name: "Everything Everywhere All at Once",
+        type: "movie",
+        director: "Daniel Scheinert and Daniel Kwan",
+        actors: ["Ke Huy Quan", "Michelle Yeoh", "Stephanie Hsu", "Jamie Lee Curtis", "James Hong"],
+        year: 2022,
+        length: 139
+    },
+    {
+        id: 10,
+        name: "Lawrence of Arabia",
+        type: "movie",
+        director: "David Lean",
+        actors: ["Peter O'Toole", "Omar Sharif", "Alec Guinness", "Anthony Quinn", "Jack Hawkins"],
+        year: 1962,
+        length: 216
     }
 ]
 
 const views = [
     {
         id: 1,
-        date: "11/21/2024 9:00:00 PM",
+        date: "03/11/2025 9:00:00 PM",
         videoid: 2,
         userid: 1,
         partid: null
     },
     {
         id: 2,
-        date: "11/28/2024 8:12:00 PM",
+        date: "03/08/2025 8:12:00 PM",
         videoid: 1,
         userid: 1,
         partid: null
     },
     {
         id: 3,
-        date: "11/30/2024 6:18:00 PM",
+        date: "03/20/2025 6:18:00 PM",
         videoid: 3,
         userid: 1,
         partid: 19
