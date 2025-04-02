@@ -42,7 +42,7 @@ const videos = [
         name: "Breaking Bad",
         type: "tv",
         director: "Various",
-        actors: ["Bryan Cranston"]
+        actors: ["Bryan Cranston", "Aaron Paul", "Giancarlo Esposito"]
     },
     {
         id: 4,
@@ -115,21 +115,40 @@ const views = [
         date: "03/11/2025 9:00:00 PM",
         videoid: 2,
         userid: 1,
-        partid: null
+        partid: null,
+        episodeid: null
     },
     {
         id: 2,
         date: "03/08/2025 8:12:00 PM",
         videoid: 1,
         userid: 1,
-        partid: null
+        partid: null,
+        episodeid: null
     },
     {
         id: 3,
         date: "03/20/2025 6:18:00 PM",
         videoid: 3,
         userid: 1,
-        partid: 19
+        partid: 1,
+        episodeid: 1
+    },
+    {
+        id: 4,
+        date: "03/20/2025 8:18:00 PM",
+        videoid: 3,
+        userid: 1,
+        partid: 1,
+        episodeid: 2
+    },
+    {
+        id: 5,
+        date: "03/21/2025 6:00:00 PM",
+        videoid: 3,
+        userid: 1,
+        partid: 1,
+        episodeid: 3
     }
 ]
 

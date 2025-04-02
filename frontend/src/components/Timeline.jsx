@@ -156,6 +156,13 @@ const Timeline = (props) => {
                                 <img className="film-image x-image" onClick={() => { setIsVideoOpen(null); setIsMessageOpen(null); setIsCommentOpen(false); } } 
                                     src={xmark} alt={xmark}></img>
                             </div>
+                            {props.views.map(view => 
+                                <>
+                                {(isMessageOpen === view.id) && (video.type === "tv") &&
+                                    <p>Season: {view.partid} / Episode: {view.episodeid}</p>
+                                }
+                                </>
+                            )}
                             <p>Year: {video.year}</p>
                             <p>Director: {video.director}</p>
                             <p>Actors: {video.actors.map(actor => 
@@ -163,11 +170,13 @@ const Timeline = (props) => {
                                 <p>{actor}</p>
                             </span>)}
                             </p>
-                            <p>Length: {video.length} min</p>
+                            {video.length &&
+                                <p>Length: {video.length} min</p>
+                            }
                             <div className="image-container">
                                 <img className="messageicon" 
                                     src={message} alt={message}
-                                    onClick={() => { setIsMessageOpen(true); setIsCommentOpen(false); }}></img>
+                                    onClick={() => { setIsMessageOpen(null); setIsCommentOpen(false); }}></img>
                                 <div className="centered-text">
                                     {props.views.map(view =>
                                         <>
@@ -194,7 +203,7 @@ const Timeline = (props) => {
                 {isMessageOpen === view.id &&
                     <div className="topbuttons">
                         <button className="commbutton" onClick={() => { setIsCommentOpen(true); setMessageTitle(""); setMessageMessage(""); }}>Comment</button>
-                        <button className="commclosebutton" onClick={() => { setIsMessageOpen(null); setIsCommentOpen(false); }}>Close</button>
+                        <button className="commclosebutton" onClick={() => { setIsVideoOpen(null); setIsMessageOpen(null); setIsCommentOpen(false); }}>Close</button>
                     </div>
                 }
 

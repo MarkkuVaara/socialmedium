@@ -115,6 +115,9 @@ const Base = (props) => {
                                         <img className="film-image" src={retrotv} alt={retrotv}></img>
                                     }
                                 </div>
+                                {view.partid &&
+                                    <p>Season: {view.partid} / Episode: {view.episodeid}</p>
+                                }
                                 <p>Year: {video.year}</p>
                                 <p>Director: {video.director}</p>
                                 <p>Actors: {video.actors.map(actor => 
@@ -122,7 +125,9 @@ const Base = (props) => {
                                         <p>{actor}</p>
                                     </span>)}
                                 </p>
-                                <p>Length: {video.length} min</p>
+                                {video.length &&
+                                    <p>Length: {video.length} min</p>
+                                }
                                 <div className="image-container">
                                     <img className="messageicon" 
                                         src={message} alt={message}
