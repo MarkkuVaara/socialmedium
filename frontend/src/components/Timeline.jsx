@@ -17,6 +17,7 @@ const localizer = dateFnsLocalizer({
 });
 
 import filmimage from '../images/filmreel2.png';
+import retrotv from '../images/retrotv.png';
 import message from '../images/messageicon.png';
 import xmark from '../images/x-mark.png';
 import likeicon from '../images/likeicon.png';
@@ -147,7 +148,12 @@ const Timeline = (props) => {
                         <div className="timelinevideo" key={video.id}>
                             <div className="videoname">
                                 <h4>{video.name}</h4>
-                                <img className="film-image" src={filmimage} alt={filmimage}></img>
+                                {video.type === "movie" &&
+                                    <img className="film-image" src={filmimage} alt={filmimage}></img>
+                                }
+                                {video.type === "tv" &&
+                                    <img className="film-image" src={retrotv} alt={retrotv}></img>
+                                }
                                 <img className="film-image x-image" onClick={() => { setIsVideoOpen(null); setIsMessageOpen(null); setIsCommentOpen(false); } } 
                                     src={xmark} alt={xmark}></img>
                             </div>

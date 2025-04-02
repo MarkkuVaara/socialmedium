@@ -11,6 +11,7 @@ import unlikeicon from '../images/unlikeicon.png';
 import fadeunlikeicon from '../images/fadeunlikeicon.png';
 import downarrow from '../images/downarrow.png';
 import uparrow from '../images/uparrow.png';
+import retrotv from '../images/retrotv.png';
 
 import NewComment from '../components/NewComment';
 import NewView from '../components/NewView';
@@ -107,7 +108,12 @@ const Base = (props) => {
                             <div className="basevideo" key={video.id}>
                                 <div className="videoname">
                                     <h4>{video.name}</h4>
-                                    <img className="film-image" src={filmimage} alt={filmimage}></img>
+                                    {video.type === "movie" &&
+                                        <img className="film-image" src={filmimage} alt={filmimage}></img>
+                                    }
+                                    {video.type === "tv" &&
+                                        <img className="film-image" src={retrotv} alt={retrotv}></img>
+                                    }
                                 </div>
                                 <p>Year: {video.year}</p>
                                 <p>Director: {video.director}</p>
