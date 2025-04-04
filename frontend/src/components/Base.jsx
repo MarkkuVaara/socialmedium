@@ -146,7 +146,7 @@ const Base = (props) => {
                     <div className={`basemessage ${isMessageOpen ? 'open' : 'closed'}`}>
                         {isMessageOpen === view.id &&
                             <div className="topbuttons">
-                                <button className="commbutton" onClick={() => { setIsCommentOpen(true); setMessageTitle(""); setMessageMessage(""); }}>Comment</button>
+                                <button className="commbutton" onClick={() => { setIsCommentOpen(true); setMessageTitle(" "); setMessageMessage(" "); }}>Comment</button>
                                 <button className="commclosebutton" onClick={() => { setIsMessageOpen(null); setIsCommentOpen(false); }}>Close</button>
                             </div>
                         }
@@ -173,7 +173,7 @@ const Base = (props) => {
                                     <div className="reactions">
                                         <button className="replybutton" onClick={() => { setIsCommentOpen(true); 
                                             setMessageTitle("Vs:" + message.title); 
-                                            setMessageMessage(">> " + message.message.replace(/<br\s*\/?>/gi, "\n").trim() + "\n\n"); } }>Reply</button>
+                                            setMessageMessage(message.message.replace(/<br\s*\/?>/gi, "\n").trim() + "\n\n"); } }>Reply</button>
                                         <div>
                                             {props.likes.map(like => 
                                             <>

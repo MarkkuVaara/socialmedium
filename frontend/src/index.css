@@ -691,7 +691,7 @@ p {
 }
 
 .formfield > input,
-.formfield > textarea,
+.formfield > .styled-editor,
 .formfield > select {
     grid-column: controls;
     padding: 5px;
@@ -700,10 +700,15 @@ p {
     font-size: 12px;
 }
 
-.formfield > textarea {
+.styled-editor {
+    width: 300px;
     height: 120px;
     max-height: 250px;
-    max-width: 200px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 8px;
+    overflow-y: auto;
+    white-space: pre-wrap;
 }
 
 .formfield > button {
