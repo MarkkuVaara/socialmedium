@@ -150,9 +150,9 @@ const App = (props) => {
       <div className="nav">
         <div className="subnav">
           <div>
-          <button className={`navbutton ${pageTurner === 0 ? 'bar' : 'nobar' }` } onClick={() => dispatch({type: 'BASE'})}>Base</button>
-          <button className={`navbutton ${pageTurner === 1 ? 'bar' : 'nobar' }` } onClick={() => dispatch({type: 'TIMELINE'})}>Timeline</button>
-          <button className={`navbutton ${pageTurner === 2 ? 'bar' : 'nobar' }` } onClick={() => dispatch({type: 'INTERACTION'})}>Interaction</button>
+          <button className={`navbutton ${pageTurner === 0 ? 'bar' : 'nobar' }` } onClick={() => dispatch({type: 'BASE'})}>Feed</button>
+          <button className={`navbutton ${pageTurner === 1 ? 'bar' : 'nobar' }` } onClick={() => dispatch({type: 'TIMELINE'})}>Calendar</button>
+          <button className={`navbutton ${pageTurner === 2 ? 'bar' : 'nobar' }` } onClick={() => dispatch({type: 'INTERACTION'})}>Timeline</button>
           </div>
         </div>
       </div>

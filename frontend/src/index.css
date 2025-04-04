@@ -52,8 +52,8 @@ p {
     h1 { font-size: 30px; }
     h2 { font-size: 25px; }
     h3 { font-size: 20px; }
-    h4 { font-size: 12px; }
-    p { font-size: 12px; }
+    h4 { font-size: 14px; }
+    p { font-size: 14px; }
 }
 
 
@@ -115,6 +115,9 @@ p {
 @media only screen and (max-width: 1000px) {
     .mainapp {
         background-repeat: repeat;
+    }
+    .main {
+        margin-left: 1%;
     }
     .banner {
         justify-content: space-around;
@@ -293,7 +296,7 @@ p {
     .centerbase { 
         width: 100%;
         padding-top: 5px;
-        padding-left: 10px;
+        padding-left: 15px;
         padding-right: 0;
         border: 0px;
         border-radius: 10px;
@@ -306,6 +309,7 @@ p {
         margin-top: 20px;
     }
     .basevideo {
+        padding: 10px;
         height: 80%;
         width: 85%;
         min-width: 75px;
@@ -369,6 +373,9 @@ p {
     .timelinevideo {
         min-height: 200px;
         min-width: 200px;
+    }
+    strong {
+        font-size: 12px;
     }
 }
 
