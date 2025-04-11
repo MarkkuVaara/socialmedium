@@ -30,13 +30,14 @@ const Base = (props) => {
         setMessageTitle(event.target.value);
     };
 
-    const handleDataChange2 = (event) => {
-        setMessageMessage(event.target.value);
+    const handleDataChange2 = (value) => {
+        setMessageMessage(value);
     };
 
     const sendMessage = (event) => {
 
         event.preventDefault();
+        console.log(event.target.message.value)
 
         const title = event.target.title.value;
         const premessage = event.target.message.value;

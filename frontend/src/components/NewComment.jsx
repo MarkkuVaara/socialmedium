@@ -8,6 +8,7 @@ const NewComment = (props) => {
     const handleInput = () => {
         if (editorRef.current) {
           setHtml(editorRef.current.innerHTML);
+          props.handleDataChange2(editorRef.current.innerHTML);
         }
     };
 
@@ -21,9 +22,10 @@ const NewComment = (props) => {
                     <input name="title" onChange={props.handleDataChange} value={props.messageTitle}></input>
                     <label>Message</label>
                     <div ref={editorRef} contentEditable="true" dangerouslySetInnerHTML={{ __html: html }}
-                        className="styled-editor" name="message" value={html}
-                        onInput={() => { handleInput; props.handleDataChange2();} } suppressContentEditableWarning>
+                        className="styled-editor" value={html}
+                        onInput={() => { handleInput(); } } suppressContentEditableWarning>
                     </div>
+                    <input type="hidden" name="message" value={html} />
                     <button className="sendbutton" type="submit">Send</button>
                     <button className="closebutton" type="button" onClick={props.closeMessage}>Close</button>
                 </div>

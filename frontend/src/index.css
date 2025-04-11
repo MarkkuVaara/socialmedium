@@ -701,12 +701,12 @@ p {
 }
 
 .styled-editor {
-    width: 300px;
+    width: 200px;
     height: 120px;
     max-height: 250px;
     padding: 10px;
     border: 1px solid black;
-    border-radius: 8px;
+    border-radius: 4px;
     overflow-y: auto;
     white-space: pre-wrap;
 }

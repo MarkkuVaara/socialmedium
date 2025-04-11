@@ -45,8 +45,8 @@ const Timeline = (props) => {
         setMessageTitle(event.target.value);
     };
 
-    const handleDataChange2 = (event) => {
-        setMessageMessage(event.target.value);
+    const handleDataChange2 = (value) => {
+        setMessageMessage(value);
     };
 
     const sendMessage = (event) => {
