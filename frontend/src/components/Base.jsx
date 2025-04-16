@@ -41,7 +41,7 @@ const Base = (props) => {
 
         const title = event.target.title.value;
         const premessage = event.target.message.value;
-        const almmessage = premessage.replace(/<div><br><\/div>/gi, '').replace(/<div>/gi, '\n').replace(/<\/div>/gi, '')                // Remove closing divs
+        const almmessage = premessage.replace(/<div><br><\/div>/gi, '\n').replace(/<div>/gi, '\n').replace(/<\/div>/gi, '')                // Remove closing divs
             .replace(/<br\s*\/?>/gi, '\n').replace(/<\/?[^>]+(>|$)/g, '');
         const message = almmessage.replace(/\n\n/g, '\n\u00A0\n');
         setIsCommentOpen(false);

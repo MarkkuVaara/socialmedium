@@ -55,12 +55,9 @@ const Timeline = (props) => {
     
         const title = event.target.title.value;
         const premessage = event.target.message.value;
-        const message = premessage.split("\n").map((line, index) => (
-            <React.Fragment key={index}>
-                {line}
-                <br />
-            </React.Fragment>
-        ));
+        const almmessage = premessage.replace(/<div><br><\/div>/gi, '\n').replace(/<div>/gi, '\n').replace(/<\/div>/gi, '')                // Remove closing divs
+            .replace(/<br\s*\/?>/gi, '\n').replace(/<\/?[^>]+(>|$)/g, '');
+        const message = almmessage.replace(/\n\n/g, '\n\u00A0\n');
     
         setIsCommentOpen(false);
         props.addComment({title, message, isMessageOpen});
@@ -225,7 +222,7 @@ const Timeline = (props) => {
                                     </div>
                                 </div>
                                 <h4>{message.title}</h4>
-                                <p>{message.message}</p>
+                                <div className="messagemessage" style={{ whiteSpace: 'pre-wrap' }}>{message.message}</div>
                                 <div className="reactions">
                                     <button className="replybutton" onClick={() => { setIsCommentOpen(true); 
                                         setMessageTitle("Vs:" + message.title); 
