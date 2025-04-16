@@ -475,9 +475,12 @@ p {
     font-size: 18px;
 }
 
-.messagetop > p {
+.messagetop > p,
+.messagemessage {
+    font-family: 'Lato Regular';
     color: black;
     font-size: 14px;
+    padding-bottom: 20px;
 }
 
 .replybutton {
@@ -592,7 +595,8 @@ p {
         padding-left: 25%;
     }
     .messagetop > h4 { font-size: 14px; }
-    .messagetop > p { font-size: 12px; }
+    .messagetop > p,
+    .messagemessage {  font-family: 'Lato Regular'; font-size: 12px; }
 }
 
 
@@ -705,7 +709,7 @@ p {
     height: 120px;
     max-height: 250px;
     padding: 10px;
-    border: 1px solid black;
+    border: 1px solid darkgray;
     border-radius: 4px;
     overflow-y: auto;
     white-space: pre-wrap;
