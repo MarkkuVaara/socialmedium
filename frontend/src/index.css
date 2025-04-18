@@ -715,6 +715,16 @@ p {
     white-space: pre-wrap;
 }
 
+.quote-block {
+    border-left: 4px solid black;
+    padding: 8px 12px;
+    margin: 8px 0;
+    font-style: italic;
+    color: black;
+    background-color: #f9f9f9;
+    pointer-events: none;
+}
+
 .formfield > button {
     background-color: lightgray;
     color: black;

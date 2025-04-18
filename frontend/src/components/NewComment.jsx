@@ -9,7 +9,9 @@ const NewComment = (props) => {
 
     useEffect(() => {
         if (editorRef.current && props.messageMessage && !hasSetInitial.current) {
-            editorRef.current.innerHTML = props.messageMessage;
+            editorRef.current.innerHTML = '<div class="quote-block" contenteditable="false">' 
+                + props.messageMessage + 
+                '</div> <div> </div>';
             hasSetInitial.current = true;
         }
     }, [props.messageMessage]);
