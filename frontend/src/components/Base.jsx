@@ -2,6 +2,9 @@
 import React, { useState } from 'react';
 
 import filmimage from '../images/filmreel2.png';
+import filmcamera from '../images/filmcamera.png';
+import retrotv from '../images/retrotv.png';
+
 import message from '../images/messageicon.png';
 import likeicon from '../images/likeicon.png';
 import fadelikeicon from '../images/fadelikeicon.png';
@@ -9,9 +12,9 @@ import loveicon from '../images/loveicon.png';
 import fadeloveicon from '../images/fadeloveicon.png';
 import unlikeicon from '../images/unlikeicon.png';
 import fadeunlikeicon from '../images/fadeunlikeicon.png';
+
 import downarrow from '../images/downarrow.png';
 import uparrow from '../images/uparrow.png';
-import retrotv from '../images/retrotv.png';
 
 import NewComment from '../components/NewComment';
 import NewView from '../components/NewView';
@@ -77,7 +80,10 @@ const Base = (props) => {
             
             <div className="leftbase">
                 <div className="newviewbutton">
-                    <button className="navbutton" onClick={() =>  setIsViewOpen(true)}>Add new view</button>
+                    <button className="navbutton" onClick={() =>  setIsViewOpen(true)}>
+                        <p>Add new view</p>
+                        <img className="arrowicon" style={{ "background-color": "white", "border-radius": "10px" }} src={filmcamera} alt={filmcamera}></img>
+                    </button>
                 </div>
                 <div className="newviewbutton">
                     <button className="navbutton" onClick={() => { changeOrderD(); setOrder(false); } }>
@@ -168,9 +174,9 @@ const Base = (props) => {
                                     <h4>{message.title}</h4>
                                     <div className="messagemessage" style={{ whiteSpace: 'pre-wrap' }}>{message.message}</div>
                                     <div className="reactions">
-                                        <button className="replybutton" onClick={() => { setIsCommentOpen(true); 
-                                            setMessageTitle("Vs:" + message.title); 
-                                            setMessageMessage(message.message.replace(/<br\s*\/?>/gi, "\n").trim() + "\n\n"); } }>Reply</button>
+                                        <button className="replybutton" onClick={() => { setMessageTitle("Vs:" + message.title); 
+                                            setMessageMessage(message.date + "\n\n" + message.message.trim() + "\n\n");
+                                            setIsCommentOpen(true); } }>Reply</button>
                                         <div>
                                             {props.likes.map(like => 
                                             <>

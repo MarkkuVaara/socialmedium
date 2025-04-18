@@ -226,7 +226,7 @@ const Timeline = (props) => {
                                 <div className="reactions">
                                     <button className="replybutton" onClick={() => { setIsCommentOpen(true); 
                                         setMessageTitle("Vs:" + message.title); 
-                                        setMessageMessage(message.message.replace(/<br\s*\/?>/gi, "\n").trim() + "\n\n"); } }>Reply</button>
+                                        setMessageMessage(message.date + "\n\n" + message.message.trim() + "\n\n"); } }>Reply</button>
                                     <div>
                                         {props.likes.map(like => 
                                         <>
