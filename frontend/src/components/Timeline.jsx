@@ -34,19 +34,27 @@ const Timeline = (props) => {
 
     const [isVideoOpen, setIsVideoOpen] = useState(null);
     const [isMessageOpen, setIsMessageOpen] = useState(null);
-    const [isCommentOpen, setIsCommentOpen] = useState(false);
+    const [commentData, setCommentData] = useState({
+        isOpen: false,
+        title: '',
+        message: '',
+    });
     const [isViewOpen, setIsViewOpen] = useState(false);
 
-    const [messageTitle, setMessageTitle] = useState("");
-    const [messageMessage, setMessageMessage] = useState("");
     const [startTime, setStartTime] = useState(null);
 
     const handleDataChange = (event) => {
-        setMessageTitle(event.target.value);
+        setCommentData({ isOpen: true, 
+            title: event.target.value, 
+            message: commentData.message 
+        });
     };
-
+    
     const handleDataChange2 = (value) => {
-        setMessageMessage(value);
+        setCommentData({ isOpen: true,
+            title: commentData.title,
+            message: value 
+        });
     };
 
     const sendMessage = (event) => {
@@ -59,7 +67,7 @@ const Timeline = (props) => {
             .replace(/<br\s*\/?>/gi, '\n').replace(/<\/?[^>]+(>|$)/g, '');
         const message = almmessage.replace(/\n\n/g, '\n\u00A0\n');
     
-        setIsCommentOpen(false);
+        setCommentData({ isOpen: false, title:"", message:"" });
         props.addComment({title, message, isMessageOpen});
     
     }
@@ -173,7 +181,7 @@ const Timeline = (props) => {
                             <div className="image-container">
                                 <img className="messageicon" 
                                     src={message} alt={message}
-                                    onClick={() => { setIsMessageOpen(null); setIsCommentOpen(false); }}></img>
+                                    onClick={() => { setIsMessageOpen(null); setCommentData({ isOpen: false, title: "", message: "" }); } }></img>
                                 <div className="centered-text">
                                     {props.views.map(view =>
                                         <>
@@ -199,8 +207,15 @@ const Timeline = (props) => {
                 <>
                 {isMessageOpen === view.id &&
                     <div className="topbuttons">
-                        <button className="commbutton" onClick={() => { setIsCommentOpen(true); setMessageTitle(" "); setMessageMessage(" "); }}>Comment</button>
-                        <button className="commclosebutton" onClick={() => { setIsVideoOpen(null); setIsMessageOpen(null); setIsCommentOpen(false); }}>Close</button>
+                        <button className="commbutton" onClick={() => setCommentData({
+                            isOpen: true,
+                            title: "",
+                            message: ""
+                        })}>Comment</button>
+                        <button className="commclosebutton" onClick={() => { 
+                            setIsMessageOpen(null); 
+                            setCommentData({ isOpen: false, title: "", message: "" }); 
+                        }}>Close</button>
                     </div>
                 }
 
@@ -224,9 +239,11 @@ const Timeline = (props) => {
                                 <h4>{message.title}</h4>
                                 <div className="messagemessage" style={{ whiteSpace: 'pre-wrap' }}>{message.message}</div>
                                 <div className="reactions">
-                                    <button className="replybutton" onClick={() => { setIsCommentOpen(true); 
-                                        setMessageTitle("Vs:" + message.title); 
-                                        setMessageMessage(message.date + "\n\n" + message.message.trim() + "\n\n"); } }>Reply</button>
+                                    <button className="replybutton" onClick={() => setCommentData({
+                                        isOpen: true,
+                                        title: "Vs:" + message.title,
+                                        message: message.date + "\n\n" + message.message.trim() + "\n\n"
+                                    })}>Reply</button>
                                     <div>
                                         {props.likes.map(like => 
                                         <>
@@ -304,10 +321,10 @@ const Timeline = (props) => {
                     </div>
                 )}
                 {isMessageOpen === view.id &&
-                    <div className={`newcomment ${isCommentOpen ? 'open' : 'closed'}`}>
-                        <NewComment messageTitle={messageTitle} messageMessage={messageMessage} 
+                    <div className={`newcomment ${commentData.isOpen ? 'open' : 'closed'}`}>
+                        <NewComment messageTitle={commentData.title} messageMessage={commentData.message} 
                             handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
-                            sendMessage={sendMessage} closeMessage={() => setIsCommentOpen(false)} />
+                            sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "" })} />
                     </div>
                 }
 
