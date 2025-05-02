@@ -68,11 +68,7 @@ const Timeline = (props) => {
             if (el.tagName === 'BR') {
                 el.replaceWith('\n');
             } else if (el.classList?.contains('quote-block')) {
-                const textContent = el.innerHTML || '';
-                const quoteBlockDiv = document.createElement('div');
-                quoteBlockDiv.classList.add('quote-block');
-                quoteBlockDiv.innerHTML = textContent;
-                el.replaceWith(quoteBlockDiv);
+                return;
             } else {
                 const text = el.textContent || '';
                 const textNode = document.createTextNode(text + '\n');
@@ -251,12 +247,13 @@ const Timeline = (props) => {
                         {(message.viewid === view.id && isMessageOpen === view.id ) &&
                             <div className="messagetop">
                                 <div className="messageup">
-                                    {props.users.map(user => 
-                                        <div className="messageuser" key={user.id}>
+                                    {props.users.map(user => <>
                                         {message.userid === user.id &&
-                                            <p>{user.name}</p>
+                                            <div className="messageuser" key={user.id}>
+                                                <p>{user.name}</p>
+                                            </div>
                                         }
-                                        </div>
+                                        </>
                                     )}
                                     <div className="messagedate">
                                         <p>{message.date.substring(0, 10)}</p>
@@ -264,7 +261,8 @@ const Timeline = (props) => {
                                     </div>
                                 </div>
                                 <h4>{message.title}</h4>
-                                <div className="messagemessage" style={{ whiteSpace: 'pre-wrap' }}>{message.message}</div>
+                                <div className="messagemessage" style={{ whiteSpace: 'pre-wrap' }}
+                                        dangerouslySetInnerHTML={{ __html: message.message }} ></div>
                                 <div className="reactions">
                                     <button className="replybutton" onClick={() => setCommentData({
                                         isOpen: true,
