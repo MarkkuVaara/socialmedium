@@ -45,6 +45,33 @@ const Base = (props) => {
         });
     };
 
+    const sanitizeHtml = (html) => {
+
+        const container = document.createElement('div');
+        container.innerHTML = html;
+
+        const elements = Array.from(container.querySelectorAll('*')).reverse();
+
+        elements.forEach((el) => {
+            if (el.tagName === 'BR') {
+                el.replaceWith('\n');
+            } else if (el.classList?.contains('quote-block')) {
+                const textContent = el.innerHTML || '';
+                const quoteBlockDiv = document.createElement('div');
+                quoteBlockDiv.classList.add('quote-block');
+                quoteBlockDiv.innerHTML = textContent;
+                el.replaceWith(quoteBlockDiv);
+            } else {
+                const text = el.textContent || '';
+                const textNode = document.createTextNode(text + '\n');
+                el.replaceWith(textNode);
+            }
+        });
+      
+        return container.innerHTML;
+
+    }
+
     const sendMessage = (event) => {
 
         event.preventDefault();
@@ -52,9 +79,12 @@ const Base = (props) => {
 
         const title = event.target.title.value;
         const premessage = event.target.message.value;
-        const almmessage = premessage.replace(/<div><br><\/div>/gi, '\n').replace(/<div>/gi, '\n').replace(/<\/div>/gi, '')                // Remove closing divs
-            .replace(/<br\s*\/?>/gi, '\n').replace(/<\/?[^>]+(>|$)/g, '');
-        const message = almmessage.replace(/\n\n/g, '\n\u00A0\n');
+
+        const almmessage = sanitizeHtml(premessage);
+
+        const message = almmessage
+            .replace(/<br\s*\/?>/gi, '\n').replace(/\n\n/g, '\n\u00A0\n');
+        console.log(message)
         setCommentData({ isOpen: false, title:"", message:"" });
         props.addComment({title, message, isMessageOpen});
 
