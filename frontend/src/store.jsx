@@ -1,5 +1,6 @@
 
-import { legacy_createStore as createStore, combineReducers } from 'redux';
+import { legacy_createStore as createStore } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 
 const pageTurner = (state = 0, action) => {
   switch (action.type) {
@@ -95,15 +96,14 @@ const reactionReducer = (state = [], action) => {
   return state
 }
 
-const rootReducer = combineReducers({
-  pageTurner: pageTurner, 
-  userReducer: userReducer,
-  videoReducer: videoReducer,
-  viewReducer: viewReducer,
-  commentReducer: commentReducer,
-  reactionReducer: reactionReducer
-});
-
-const store = createStore(rootReducer);
+const store = configureStore({
+  reducer: {
+    pageTurner: pageTurner, 
+    userReducer: userReducer,
+    videoReducer: videoReducer,
+    viewReducer: viewReducer,
+    commentReducer: commentReducer,
+    reactionReducer: reactionReducer
+}});
 
 export default store;

@@ -1,6 +1,6 @@
 import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
-import store from './store';
+import store from './store.jsx';
 
 import App from './App';
 import './index.css';
@@ -208,6 +208,14 @@ const messages = [
         title: "Parhaat repliikit?",
         message: "Walter: 'I am the one who knocks!'",
         date: "12/1/2024 9:00:00 PM"
+    },
+    {
+        id: 7,
+        viewid: 3,
+        userid: 1,
+        title: "Paras sarja ikinä",
+        message: "Sanonpahan vaan",
+        date: "05/1/2025 9:02:00 PM"
     }
 ]
 
@@ -317,6 +325,24 @@ const likes = [
     {
         id: 18,
         messageid: 6,
+        type: "unlike",
+        amount: 0
+    },
+    {
+        id: 19,
+        messageid: 7,
+        type: "like",
+        amount: 1
+    },
+    {
+        id: 20,
+        messageid: 7,
+        type: "love",
+        amount: 1
+    },
+    {
+        id: 21,
+        messageid: 7,
         type: "unlike",
         amount: 0
     }
