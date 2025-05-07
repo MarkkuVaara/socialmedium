@@ -442,7 +442,7 @@ p {
 }
 
 .messageup:hover {
-    background-color: rgb(200, 200, 200);
+    background-color: lightgray
 }
 
 .messageuser {
@@ -540,7 +540,7 @@ p {
 }
 
 .messagetop:hover {
-    background-color: lightgray;
+    background-color: #f9f9f9;
     font-weight: bold;
 }
 
@@ -722,7 +722,12 @@ p {
     font-style: italic;
     color: black;
     background-color: #f9f9f9;
-    pointer-events: none;
+    pointer-events: fill;
+}
+
+.quote-block:hover {
+    font-style: normal;
+    border-right: 1px solid black;
 }
 
 .formfield > button {

@@ -168,7 +168,9 @@ const Base = (props) => {
                                 <div className="image-container">
                                     <img className="messageicon" 
                                         src={message} alt={message}
-                                        onClick={() => { setIsMessageOpen(view.id); setIsCommentOpen(false); }}></img>
+                                        onClick={() => { setIsMessageOpen(view.id);
+                                            setCommentData({ isOpen: false, title: "", message: "" }); 
+                                         }}></img>
                                     <div className="centered-text">
                                         {props.messages.filter(message => message.viewid === view.id).length}
                                     </div>
@@ -298,7 +300,7 @@ const Base = (props) => {
                             }
                             </div>
                         )}
-                        {isMessageOpen === view.id &&
+                        {(isMessageOpen === view.id) && (commentData.isOpen) &&
                             <div className={`newcomment ${commentData.isOpen ? 'open' : 'closed'}`}>
                                 <NewComment messageTitle={commentData.title} messageMessage={commentData.message} 
                                     handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 

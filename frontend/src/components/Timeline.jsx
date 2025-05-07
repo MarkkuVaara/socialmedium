@@ -345,7 +345,7 @@ const Timeline = (props) => {
                         }
                     </div>
                 )}
-                {isMessageOpen === view.id &&
+                {(isMessageOpen === view.id) && (commentData.isOpen) &&
                     <div className={`newcomment ${commentData.isOpen ? 'open' : 'closed'}`}>
                         <NewComment messageTitle={commentData.title} messageMessage={commentData.message} 
                             handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
