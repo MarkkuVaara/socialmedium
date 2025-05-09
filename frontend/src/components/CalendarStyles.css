@@ -70,8 +70,10 @@
     color: white;
 }
 
-.rbc-active {
-    background-color: black !important;
+.rbc-active,
+.rbc-selected {
+    background-color: #3F2D07 !important;
+    border: none;
 }
 
 .span,

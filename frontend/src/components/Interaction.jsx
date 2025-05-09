@@ -1,21 +1,35 @@
 
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+
 const Interaction = (props) => {
+
+    const sliderSettings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: false
+    };
 
     return (
         <div className="nav">
-            <h3>Timeline</h3>
+            <h3>Comment timeline</h3>
             <div className="interactionview">
-                <h4>Messages</h4>
-                <p>Comment 1</p>
-                <p>Comment 2</p>
-                <p>Comment 3</p>
-                <p>Comment 4</p>
-                <p>Comment 5</p>
-                <p>Comment 6</p>
-                <p>Comment 7</p>
-                <p>Comment 8</p>
-                <p>Comment 9</p>
-                <p>Comment 10</p>
+            <Slider {...sliderSettings}>
+                <div>
+                {props.messages.map(message =>
+                    <div className="messagetop" key={message.id}>{message.title}</div>
+                )}
+                </div>
+                <div>
+                {props.messages.map(message =>
+                    <div className="messagetop" key={message.id}>{message.message}</div>
+                )}
+                </div>
+            </Slider>
             </div>
         </div>
     )
