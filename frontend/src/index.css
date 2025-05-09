@@ -822,11 +822,65 @@ p {
 .interaction {
     margin-left: 10%;
     margin-right: 10%;
-    padding-bottom: 5px;
+    padding-bottom: 20px;
     padding-left: 20px;
     padding-right: 20px;
     background-color: transparent;
     border-bottom: 2px solid gray;
+}
+
+.commentview {
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+}
+
+.commenttitle {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    border-top: 5px solid black;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+}
+
+.datep {
+    padding-left: 5%;
+}
+
+.commentmessage {
+    width: 80%;
+    border-bottom-left-radius: 10px;
+    background-color: white;
+    color: black;
+    padding: 10px;
+}
+
+.commenttitle > h4,
+.commentmessage > h4,
+.commenttitle > p,
+.commentmessage > p {
+    color: black;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+@media only screen and (max-width: 800px) {
+    .interaction {
+        margin-left: 0;
+        margin-right: 0;
+    }
+    .datep {
+        padding-left: 10%;
+    }
+    .commenttitle,
+    .commentmessage {
+        width: 95%;
+    }
 }
 
 

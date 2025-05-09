@@ -19,16 +19,21 @@ const Interaction = (props) => {
             <h3>Comment timeline</h3>
             <div className="interactionview">
             <Slider {...sliderSettings}>
-                <div>
                 {props.messages.map(message =>
-                    <div className="messagetop" key={message.id}>{message.title}</div>
+                    <>
+                    <p className="datep">{message.date.substring(0, 10)}</p>
+                    <div className="commentview" key={message.id}>
+                        <div className="commenttitle">
+                            <h4>{message.title}</h4>
+                            <p>{message.date}</p>
+                        </div>
+                        <div className="commentmessage">
+                            <p style={{ whiteSpace: 'pre-wrap' }}
+                                dangerouslySetInnerHTML={{ __html: message.message }} ></p>
+                        </div>
+                    </div>
+                    </>
                 )}
-                </div>
-                <div>
-                {props.messages.map(message =>
-                    <div className="messagetop" key={message.id}>{message.message}</div>
-                )}
-                </div>
             </Slider>
             </div>
         </div>
