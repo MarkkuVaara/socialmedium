@@ -826,7 +826,6 @@ p {
     padding-left: 20px;
     padding-right: 20px;
     background-color: transparent;
-    border-bottom: 2px solid gray;
 }
 
 .commentview {
@@ -838,9 +837,9 @@ p {
 
 .commenttitle {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     width: 80%;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid lightgray;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: white;
@@ -849,15 +848,15 @@ p {
 }
 
 .viewdata {
-    background-color: white;
-    border: 1px solid lightgray;
+    background-color: lightgray;
+    border: 1px solid gray;
     border-radius: 7px;
     padding-left: 10px;
     padding-right: 10px;
 }
 
 .viewdata:hover {
-    background-color: lightgray;
+    background-color: white;
 }
 
 .viewdata > * {
@@ -875,28 +874,50 @@ p {
 .commentmessagewrap {
     width: 80%;
     background-color: white;
+    border-bottom-left-radius: 10px;
     padding: 10px;
 }
 
 .commentmessage {
     width: 95%;
-    border-bottom-left-radius: 10px;
     background-color: lightgray;
+    border-bottom-left-radius: 10px;
     color: black;
     padding: 10px;
+    margin-bottom: 15px;
+}
+
+.commentmessage:hover {
+    font-weight: bold;
 }
 
 .commenttitle > h4,
 .commentmessage > h4,
-.commenttitle > p,
+.commenttitle > * > p,
 .commentmessage > p {
     color: black;
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.commenttitle > h4 {
+    padding-left: 20px;
+    max-width: 30%;
+}
+
+.commenttitle > * {
+    min-width: 25%;
 }
 
 .commenttitle > h4:hover {
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid gray;
+}
+
+.commentbuttons {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2%;
+    margin-right: 2%;
 }
 
 @media only screen and (max-width: 800px) {
@@ -910,6 +931,14 @@ p {
     .commenttitle,
     .commentmessagewrap {
         width: 95%;
+    }
+    .commenttitle > h4 {
+        max-width: 25%;
+        font-size: 14px;
+        padding-left: 10px;
+    }
+    .commenttitle > * > p {
+        font-size: 12px;
     }
 }
 

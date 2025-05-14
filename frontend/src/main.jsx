@@ -165,6 +165,7 @@ const messages = [
         id: 1,
         viewid: 1,
         userid: 1,
+        prevmessage: 0,
         title: "Toinen kerta",
         message: "Edelleen hyvä elokuva!",
         date: "11/21/2024 11:00:00 PM"
@@ -173,6 +174,7 @@ const messages = [
         id: 2,
         viewid: 2,
         userid: 1,
+        prevmessage: 0,
         title: "Ensimmäinen katselu",
         message: "Russell Crowe on paras!",
         date: "11/28/2024 11:02:00 PM"
@@ -181,6 +183,7 @@ const messages = [
         id: 3,
         viewid: 2,
         userid: 2,
+        prevmessage: 0,
         title: "Vs: Ensimmäinen katselu",
         message: "Joaquin Phoenix on kans aika hyvä, itse asiassa kaikki näyttelijät ovat hyviä..",
         date: "11/30/2024 8:18:00 AM"
@@ -189,6 +192,7 @@ const messages = [
         id: 4,
         viewid: 2,
         userid: 1,
+        prevmessage: 0,
         title: "Vs: Ensimmäinen katselu",
         message: "Se Sons of Anarchy tyyppikin on tässä",
         date: "11/30/2024 8:30:00 AM"
@@ -197,6 +201,7 @@ const messages = [
         id: 5,
         viewid: 1,
         userid: 2,
+        prevmessage: 0,
         title: "Vs: Toinen kerta",
         message: "On kyllä vähän liian hidas elokuva. Ja miksi tässä on typeriä Jawoja? Imperiumin orjiksi tuommoiset!",
         date: "11/22/2024 3:00:00 PM"
@@ -205,6 +210,7 @@ const messages = [
         id: 6,
         viewid: 3,
         userid: 1,
+        prevmessage: 0,
         title: "Parhaat repliikit?",
         message: "Walter: 'I am the one who knocks!'",
         date: "12/1/2024 9:00:00 PM"
@@ -213,6 +219,7 @@ const messages = [
         id: 7,
         viewid: 3,
         userid: 1,
+        prevmessage: 0,
         title: "Paras sarja ikinä",
         message: "Sanonpahan vaan",
         date: "05/1/2025 9:02:00 PM"

@@ -14,18 +14,24 @@ const Interaction = (props) => {
         autoplay: false
     };
 
+    const messages = props.messages.sort( function(a, b){
+        let x = new Date(a.date);
+        let y = new Date(b.date);
+        return x-y;
+    });
+
     return (
         <div className="nav">
             <h3>Comment timeline</h3>
             <div className="interactionview">
             <Slider {...sliderSettings}>
-                {props.messages.map(message =>
+                {messages.map(message =>
                     <>
                     <p className="datep">{message.date.substring(0, 10)}</p>
                     <div className="commentview" key={message.id}>
                         <div className="commenttitle">
                             <h4>{message.title}</h4>
-                            <p>{message.date}</p>
+                            <div><p>{message.date.substring(0, 10)}</p><p>{message.date.substring(10)}</p></div>
                             {props.views.map(view => <>
                                 {view.id === message.viewid && 
                                     <div className="viewdata">
@@ -44,6 +50,10 @@ const Interaction = (props) => {
                             <div className="commentmessage">
                                 <p style={{ whiteSpace: 'pre-wrap' }}
                                     dangerouslySetInnerHTML={{ __html: message.message }} ></p>
+                            </div>
+                            <div className="commentbuttons">
+                                <button className="replybutton">Reply</button>
+                                <button className="replybutton">Show</button>
                             </div>
                         </div>
                     </div>
