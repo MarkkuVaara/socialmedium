@@ -838,9 +838,9 @@ p {
 
 .commenttitle {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 80%;
-    border-top: 5px solid black;
+    border-bottom: 2px solid black;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     background-color: white;
@@ -848,14 +848,40 @@ p {
     padding: 10px;
 }
 
+.viewdata {
+    background-color: white;
+    border: 1px solid lightgray;
+    border-radius: 7px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.viewdata:hover {
+    background-color: lightgray;
+}
+
+.viewdata > * {
+    color: black;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+}
+
 .datep {
     padding-left: 5%;
 }
 
-.commentmessage {
+.commentmessagewrap {
     width: 80%;
-    border-bottom-left-radius: 10px;
     background-color: white;
+    padding: 10px;
+}
+
+.commentmessage {
+    width: 95%;
+    border-bottom-left-radius: 10px;
+    background-color: lightgray;
     color: black;
     padding: 10px;
 }
@@ -869,6 +895,10 @@ p {
     padding-right: 5%;
 }
 
+.commenttitle > h4:hover {
+    border-bottom: 1px solid black;
+}
+
 @media only screen and (max-width: 800px) {
     .interaction {
         margin-left: 0;
@@ -878,7 +908,7 @@ p {
         padding-left: 10%;
     }
     .commenttitle,
-    .commentmessage {
+    .commentmessagewrap {
         width: 95%;
     }
 }

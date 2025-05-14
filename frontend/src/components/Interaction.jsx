@@ -26,10 +26,25 @@ const Interaction = (props) => {
                         <div className="commenttitle">
                             <h4>{message.title}</h4>
                             <p>{message.date}</p>
+                            {props.views.map(view => <>
+                                {view.id === message.viewid && 
+                                    <div className="viewdata">
+                                        <p>{view.date.substring(0, 10)}</p>
+                                        {props.videos.map(video => <>
+                                            {video.id === view.videoid &&
+                                                <p><strong>{video.name}</strong></p>
+                                            } 
+                                        </>
+                                        )}
+                                    </div>
+                                }
+                            </> )}
                         </div>
-                        <div className="commentmessage">
-                            <p style={{ whiteSpace: 'pre-wrap' }}
-                                dangerouslySetInnerHTML={{ __html: message.message }} ></p>
+                        <div className="commentmessagewrap">
+                            <div className="commentmessage">
+                                <p style={{ whiteSpace: 'pre-wrap' }}
+                                    dangerouslySetInnerHTML={{ __html: message.message }} ></p>
+                            </div>
                         </div>
                     </div>
                     </>
