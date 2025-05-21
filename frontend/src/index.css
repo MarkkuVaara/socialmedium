@@ -867,6 +867,10 @@ p {
     margin-top: 10px;
 }
 
+.videodata:hover {
+    font-size: medium;
+}
+
 .datep {
     padding-left: 5%;
 }
@@ -920,6 +924,28 @@ p {
     margin-right: 2%;
 }
 
+.interactionvideo {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    height: 50%;
+    width: 30%;
+    max-height: 300px;
+    min-width: 400px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: #3F2207;
+    border: 2px solid gray;
+    border-radius: 5px;
+    border-bottom-left-radius: 0px;
+}
+
+.interactionvideo:hover,
+.interactionvideo:focus {
+    background: #3F2D17;
+}
+
 @media only screen and (max-width: 800px) {
     .interaction {
         margin-left: 0;
@@ -939,6 +965,10 @@ p {
     }
     .commenttitle > * > p {
         font-size: 12px;
+    }
+    .interactionvideo {
+        left: 10%;
+        max-width: 75%;
     }
 }
 

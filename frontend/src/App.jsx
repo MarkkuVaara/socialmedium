@@ -138,6 +138,12 @@ const App = (props) => {
     })
   }
 
+  const changePage = (id) => {
+    dispatch({
+      type: 'BASE'
+    })
+  }
+
 
   return (
 
@@ -176,7 +182,7 @@ const App = (props) => {
           && 
           <div className="interaction">
             <Interaction users={users} videos={videos} views={views} messages={messages} likes={likes} 
-              addComment={addComment} addLike={addLike} />
+              addComment={addComment} addLike={addLike} changePage={changePage} />
           </div>
         }
       </div>

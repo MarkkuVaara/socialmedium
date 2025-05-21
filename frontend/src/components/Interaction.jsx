@@ -1,9 +1,17 @@
 
+import React, { useState } from 'react';
+
+import filmimage from '../images/filmreel2.png';
+import retrotv from '../images/retrotv.png';
+import xmark from '../images/x-mark.png';
+
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 
 const Interaction = (props) => {
+
+    const [videoid, setVideoid] = useState(null);
 
     const sliderSettings = {
         dots: true,
@@ -13,6 +21,10 @@ const Interaction = (props) => {
         slidesToScroll: 1,
         autoplay: false
     };
+
+    const changefeed = (id) => {
+        props.changePage(id);
+    }
 
     const messages = props.messages.sort( function(a, b){
         let x = new Date(a.date);
@@ -38,7 +50,7 @@ const Interaction = (props) => {
                                         <p>{view.date.substring(0, 10)}</p>
                                         {props.videos.map(video => <>
                                             {video.id === view.videoid &&
-                                                <p><strong>{video.name}</strong></p>
+                                                <p className="videodata" onClick={() => setVideoid(video.id)}><strong>{video.name}</strong></p>
                                             } 
                                         </>
                                         )}
@@ -61,6 +73,38 @@ const Interaction = (props) => {
                 )}
             </Slider>
             </div>
+            {videoid && <>
+                {props.videos.map(video =>
+                <>
+                    {video.id === videoid &&
+                        <div className="interactionvideo" key={video.id}>
+                            <div className="videoname">
+                                <h4>{video.name}</h4>
+                                {video.type === "movie" &&
+                                    <img className="film-image" src={filmimage} alt={filmimage}></img>
+                                }
+                                {video.type === "tv" &&
+                                    <img className="film-image" src={retrotv} alt={retrotv}></img>
+                                }
+                                <img className="film-image x-image" onClick={() => { setVideoid(null); } } 
+                                    src={xmark} alt={xmark}></img>
+                            </div>
+                            <p>Year: {video.year}</p>
+                            <p>Director: {video.director}</p>
+                            <p>Actors: {video.actors.map(actor => 
+                                <span className="videoactor" key={video.id}>
+                                    <p>{actor}</p>
+                                </span>)}
+                            </p>
+                            {video.length &&
+                                <p>Length: {video.length} min</p>
+                            }
+                        </div>
+                    } 
+                </>
+                )}
+            </>
+            }
         </div>
     )
 
