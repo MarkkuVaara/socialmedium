@@ -860,6 +860,7 @@ p {
     background-color: white;
     color: black;
     padding: 10px;
+    padding-bottom: 0;
 }
 
 .viewdata {
@@ -868,6 +869,7 @@ p {
     border-radius: 7px;
     padding-left: 10px;
     padding-right: 10px;
+    margin-bottom: 20px;
 }
 
 .viewdata:hover {
@@ -920,6 +922,11 @@ p {
 }
 
 .commenttitle > h4 {
+    border: 3px solid lightgray;
+    border-bottom: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding-top: 10px;
     padding-left: 20px;
     max-width: 30%;
 }
@@ -928,8 +935,19 @@ p {
     min-width: 25%;
 }
 
+.commenttitle > * > p {
+    font-size: 12px;
+}
+
 .commenttitle > h4:hover {
-    border-bottom: 1px solid gray;
+    font-style: italic;
+}
+
+.commentreactions {
+    background-color: transparent;
+    text-align: center;
+    padding-bottom: 0;
+    border: 1px solid lightgray;
 }
 
 .commentbuttons {
