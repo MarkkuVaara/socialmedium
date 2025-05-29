@@ -107,26 +107,27 @@ const Interaction = (props) => {
             <h3>Comment timeline</h3>
             <div className="interactionview">
             <Slider {...sliderSettings}>
-                {messages.map(message =>
-                    <>
-                    <p className="datep">{message.date.substring(0, 10)}</p>
+                {messages.map(message => <>
+                    <div className="dateandview">
+                        <p className="datep">{message.date.substring(0, 10)}</p>
+                        {props.views.map(view => <>
+                            {view.id === message.viewid && 
+                                <div className="viewdata">
+                                    <p>{view.date.substring(0, 10)}</p>
+                                    {props.videos.map(video => <>
+                                        {video.id === view.videoid &&
+                                            <p className="videodata" onClick={() => setVideoid(video.id)}><strong>{video.name}</strong></p>
+                                        } 
+                                    </>
+                                    )}
+                                </div>
+                            }
+                        </> )}
+                    </div>
                     <div className="commentview" key={message.id}>
                         <div className="commenttitle">
-                            <h4>{message.title}</h4>
+                            <div className="titlewrap"><h4>{message.title}</h4></div>
                             <div><p>{message.date.substring(0, 10)}</p><p>{message.date.substring(10)}</p></div>
-                            {props.views.map(view => <>
-                                {view.id === message.viewid && 
-                                    <div className="viewdata">
-                                        <p>{view.date.substring(0, 10)}</p>
-                                        {props.videos.map(video => <>
-                                            {video.id === view.videoid &&
-                                                <p className="videodata" onClick={() => setVideoid(video.id)}><strong>{video.name}</strong></p>
-                                            } 
-                                        </>
-                                        )}
-                                    </div>
-                                }
-                            </> )}
                         </div>
                         <div className="commentmessagewrap">
                             <div className="commentmessage">

@@ -860,15 +860,23 @@ p {
     background-color: white;
     color: black;
     padding: 10px;
+    padding-top: 20px;
     padding-bottom: 0;
+}
+
+.dateandview {
+    display: flex;
+    justify-content: space-between;
 }
 
 .viewdata {
     background-color: lightgray;
     border: 1px solid gray;
     border-radius: 7px;
-    padding-left: 10px;
-    padding-right: 10px;
+    min-width: 100px;
+    padding: 10px;
+    padding-top: 0;
+    margin-right: 20%;
     margin-bottom: 20px;
 }
 
@@ -885,7 +893,8 @@ p {
 }
 
 .videodata:hover {
-    font-size: medium;
+    cursor: pointer;
+    font-style: italic;
 }
 
 .datep {
@@ -912,7 +921,7 @@ p {
     font-weight: bold;
 }
 
-.commenttitle > h4,
+.commenttitle > * > h4,
 .commentmessage > h4,
 .commenttitle > * > p,
 .commentmessage > p {
@@ -921,25 +930,28 @@ p {
     padding-right: 2%;
 }
 
-.commenttitle > h4 {
+.commenttitle > * {
     border: 3px solid lightgray;
     border-bottom: 0;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     padding-top: 10px;
     padding-left: 20px;
-    max-width: 30%;
+    max-width: 35%;
+    min-width: 30%;
 }
 
-.commenttitle > * {
-    min-width: 25%;
+.titlewrap {
+    background-color: lightgray;
+    padding: 10px;
 }
 
 .commenttitle > * > p {
     font-size: 12px;
+    font-weight: bold;
 }
 
-.commenttitle > h4:hover {
+.commenttitle > * > h4:hover {
     font-style: italic;
 }
 
@@ -986,6 +998,9 @@ p {
     }
     .datep {
         padding-left: 10%;
+    }
+    .viewdata {
+        margin-right: 10%;
     }
     .commenttitle,
     .commentmessagewrap {
