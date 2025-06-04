@@ -957,7 +957,7 @@ p {
 
 .commentreactions {
     background-color: transparent;
-    text-align: center;
+    text-align: justify;
     padding-bottom: 0;
     border: 1px solid lightgray;
 }
@@ -971,7 +971,7 @@ p {
 
 .interactionvideo {
     position: absolute;
-    top: 50%;
+    top: 500px;
     left: 30%;
     height: 50%;
     width: 30%;
