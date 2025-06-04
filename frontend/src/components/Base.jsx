@@ -84,7 +84,6 @@ const Base = (props) => {
 
         const message = almmessage
             .replace(/<br\s*\/?>/gi, '\n').replace(/\n\n/g, '\n\u00A0\n');
-        console.log(message)
         setCommentData({ isOpen: false, title:"", message:"", prevmessage: null });
         props.addComment({title, message, isMessageOpen, prevmessage});
 
