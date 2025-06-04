@@ -66,7 +66,7 @@ const App = (props) => {
   }
 
 
-  const addComment = ({title, message, isMessageOpen}) => {
+  const addComment = ({title, message, isMessageOpen, prevmessage}) => {
 
     const id = messages.length + 1;
 
@@ -79,6 +79,8 @@ const App = (props) => {
   
     const today = mm + '/' + dd + '/' + yyyy + ' ' + formattedTime;
 
+    console.log(Number(prevmessage));
+
     dispatch({
       type: 'NEW_COMMENT',
       payload: {id: id,
@@ -86,7 +88,8 @@ const App = (props) => {
         date: today,
         title: title,
         message: message,
-        viewid: isMessageOpen
+        viewid: isMessageOpen,
+        prevmessage: Number(prevmessage)
       }
     });
 
