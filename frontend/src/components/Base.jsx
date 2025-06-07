@@ -119,7 +119,7 @@ const Base = (props) => {
                 <div className="newviewbutton">
                     <button className="navbutton" onClick={() =>  setIsViewOpen(true)}>
                         <p>Add new view</p>
-                        <img className="arrowicon" style={{ "background-color": "white", "border-radius": "10px" }} src={filmcamera} alt={filmcamera}></img>
+                        <img className="arrowicon" style={{ "backgroundColor": "white", "borderRadius": "10px" }} src={filmcamera} alt={filmcamera}></img>
                     </button>
                 </div>
                 <div className="newviewbutton">

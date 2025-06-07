@@ -29,91 +29,91 @@ const Comment = (props) => {
                         dangerouslySetInnerHTML={{ __html: message.message }} ></p>
                 </div>  
                 <div className="commentmessage commentreactions">
-                                {props.likes.map(like => 
-                                    <>
-                                        {like.messageid === message.id &&
-                                            <div className="reaction" key={like.id}>
-                                                {like.type === "like" &&
-                                                    <div className="reaction-container">
-                                                        {like.amount === 0 && <>
-                                                            <img className="likeicon" src={fadelikeicon} alt={fadelikeicon} 
-                                                                onClick={() => props.addLike(like.id)}></img>
-                                                            <div className="side-text whitetext">
-                                                                {like.amount}
-                                                            </div> 
-                                                        </>
-                                                        }
-                                                        {like.amount > 0 && <>
-                                                            <img className="likeicon" src={likeicon} alt={likeicon} 
-                                                                onClick={() => props.addLike(like.id)}></img>
-                                                            <div className="side-text">
-                                                                {like.amount}
-                                                            </div>
-                                                        </>
-                                                        }
-                                                    </div>
-                                                }
-                                                {like.type === "love" &&
-                                                    <div className="reaction-container">
-                                                        {like.amount === 0 && <>
-                                                            <img className="likeicon" src={fadeloveicon} alt={fadeloveicon}  
-                                                                onClick={() => props.addLike(like.id)}></img>
-                                                            <div className="side-text whitetext">
-                                                                {like.amount}
-                                                            </div>
-                                                        </>
-                                                        }
-                                                        {like.amount > 0 && <>
-                                                            <img className="likeicon" src={loveicon} alt={loveicon}  
-                                                                onClick={() => props.addLike(like.id)}></img>
-                                                            <div className="side-text">
-                                                                {like.amount}
-                                                            </div>
-                                                        </>
-                                                        }
-                                                    </div>
-                                                }
-                                                {like.type === "unlike" &&
-                                                    <div className="reaction-container">
-                                                        {like.amount === 0 && <>
-                                                            <img className="likeicon" src={fadeunlikeicon} alt={fadeunlikeicon}
-                                                                onClick={() => props.addLike(like.id)}></img>
-                                                            <div className="side-text whitetext">
-                                                                {like.amount}
-                                                            </div>
-                                                        </>
-                                                        }
-                                                        {like.amount > 0 && <>
-                                                            <img className="likeicon" src={unlikeicon} alt={unlikeicon}
-                                                                onClick={() => props.addLike(like.id)}></img>
-                                                            <div className="side-text">
-                                                                {like.amount}
-                                                            </div>
-                                                        </>
-                                                        }
-                                                    </div>
-                                                }
-                                            </div>
-                                        }
-                                    </>
-                                )}
-                            </div>
-                            {props.views.map(view => <>
-                                {view.id === message.viewid && 
-                                    <div className="commentbuttons">
-                                        <button className="replybutton" onClick={() => { setCommentData({
-                                            isOpen: true,
-                                            title: "Vs:" + message.title,
-                                            message: message.date + "\n\n" + message.message.trim() + "\n\n"
-                                        }); setIsMessageOpen(view.id); } }>Reply</button>
-                                        <button className="replybutton">Show chain</button>
-                                    </div>
-                                }
-                            </> )}
+                    {props.likes.map(like => 
+                        <>
+                            {like.messageid === message.id &&
+                                <div className="reaction" key={like.id}>
+                                    {like.type === "like" &&
+                                        <div className="reaction-container">
+                                            {like.amount === 0 && <>
+                                                <img className="likeicon" src={fadelikeicon} alt={fadelikeicon} 
+                                                    onClick={() => props.addLike(like.id)}></img>
+                                                <div className="side-text whitetext">
+                                                    {like.amount}
+                                                </div> 
+                                            </>
+                                            }
+                                            {like.amount > 0 && <>
+                                                <img className="likeicon" src={likeicon} alt={likeicon} 
+                                                    onClick={() => props.addLike(like.id)}></img>
+                                                <div className="side-text">
+                                                    {like.amount}
+                                                </div>
+                                            </>
+                                            }
+                                        </div>
+                                    }
+                                    {like.type === "love" &&
+                                       <div className="reaction-container">
+                                            {like.amount === 0 && <>
+                                                <img className="likeicon" src={fadeloveicon} alt={fadeloveicon}  
+                                                    onClick={() => props.addLike(like.id)}></img>
+                                                <div className="side-text whitetext">
+                                                    {like.amount}
+                                                </div>
+                                            </>
+                                            }
+                                            {like.amount > 0 && <>
+                                                <img className="likeicon" src={loveicon} alt={loveicon}  
+                                                    onClick={() => props.addLike(like.id)}></img>
+                                                <div className="side-text">
+                                                    {like.amount}
+                                                </div>
+                                            </>
+                                            }
+                                        </div>
+                                    }
+                                    {like.type === "unlike" &&
+                                        <div className="reaction-container">
+                                            {like.amount === 0 && <>
+                                                <img className="likeicon" src={fadeunlikeicon} alt={fadeunlikeicon}
+                                                    onClick={() => props.addLike(like.id)}></img>
+                                                <div className="side-text whitetext">
+                                                    {like.amount}
+                                                </div>
+                                            </>
+                                            }
+                                            {like.amount > 0 && <>
+                                                <img className="likeicon" src={unlikeicon} alt={unlikeicon}
+                                                    onClick={() => props.addLike(like.id)}></img>
+                                                <div className="side-text">
+                                                    {like.amount}
+                                                </div>
+                                            </>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </>
+                    )}
+                </div>
+                {props.views.map(view => <>
+                    {view.id === message.viewid && 
+                        <div className="commentbuttons">
+                            <button className="replybutton" onClick={() => { setCommentData({
+                                isOpen: true,
+                                title: "Vs:" + message.title,
+                                message: message.date + "\n\n" + message.message.trim() + "\n\n"
+                            }); setIsMessageOpen(view.id); } }>Reply</button>
+                            <button className="replybutton">Show chain</button>
                         </div>
+                    }
+                </> )}
+            </div>
         </div>
         {childrenmessages.map(message => 
-            <Comment key={message.id} message={message} messages={props.messages} likes={props.likes} 
+            <Comment key={message.id} message={message} messages={props.messages} likes={props.likes} sendMessage={props.sendMessage}
                 addLike={props.addLike} views={props.views} intendation={intendation + 20} />
         )}
         </>

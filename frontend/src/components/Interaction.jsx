@@ -14,7 +14,7 @@ import NewComment from '../components/NewComment';
 
 const Interaction = (props) => {
 
-    const [videoid, setVideoid] = useState(null);
+    const [videoid, setVideoid] = useState({ videoid: null, viewid: null });
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [commentData, setCommentData] = useState({
             isOpen: false,
@@ -117,7 +117,7 @@ const Interaction = (props) => {
                                     <p>{view.date.substring(0, 10)}</p>
                                     {props.videos.map(video => <>
                                         {video.id === view.videoid &&
-                                            <p className="videodata" onClick={() => setVideoid(video.id)}><strong>{video.name}</strong></p>
+                                            <p className="videodata" onClick={() => setVideoid({ videoid: video.id, viewid: view.id })}><strong>{video.name}</strong></p>
                                         } 
                                     </>
                                     )}
@@ -125,16 +125,16 @@ const Interaction = (props) => {
                             }
                         </> )}
                     </div>
-                    <Comment message={message} messages={props.messages} likes={props.likes} 
+                    <Comment message={message} messages={props.messages} likes={props.likes} sendMessage={sendMessage}
                         addLike={props.addLike} views={props.views} intendation={intendation} />
                     </>
                 )}
             </Slider>
             </div>
-            {videoid && <>
+            {videoid.videoid && <>
                 {props.videos.map(video =>
                 <>
-                    {video.id === videoid &&
+                    {video.id === videoid.videoid &&
                         <div className="interactionvideo" key={video.id}>
                             <div className="videoname">
                                 <h4>{video.name}</h4>
@@ -144,9 +144,16 @@ const Interaction = (props) => {
                                 {video.type === "tv" &&
                                     <img className="film-image" src={retrotv} alt={retrotv}></img>
                                 }
-                                <img className="film-image x-image" onClick={() => { setVideoid(null); } } 
+                                <img className="film-image x-image" onClick={() => { setVideoid({ videoid: null, viewid: null }); } } 
                                     src={xmark} alt={xmark}></img>
                             </div>
+                            {props.views.map(view => 
+                                <>
+                                {(view.videoid === videoid.videoid) && (view.id === videoid.viewid) && (view.partid) &&
+                                    <p>Season: {view.partid} / Episode: {view.episodeid}</p>
+                                }
+                                </>
+                            )}
                             <p>Year: {video.year}</p>
                             <p>Director: {video.director}</p>
                             <p>Actors: {video.actors.map(actor => 
