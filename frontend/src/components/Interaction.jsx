@@ -20,6 +20,7 @@ const Interaction = (props) => {
             isOpen: false,
             title: '',
             message: '',
+            prevmessage: null
     });
 
     const sliderSettings = {
@@ -39,14 +40,16 @@ const Interaction = (props) => {
     const handleDataChange = (event) => {
         setCommentData({ isOpen: true, 
             title: event.target.value, 
-            message: commentData.message 
+            message: commentData.message,
+            prevmessage: commentData.prevmessage
         });
     };
         
     const handleDataChange2 = (value) => {
         setCommentData({ isOpen: true,
             title: commentData.title,
-            message: value 
+            message: value,
+            prevmessage: commentData.prevmessage
         });
     };
 
@@ -80,18 +83,19 @@ const Interaction = (props) => {
 
         const title = event.target.title.value;
         const premessage = event.target.message.value;
+        const prevmessage = event.target.message.value;
 
         const almmessage = sanitizeHtml(premessage);
 
         const message = almmessage
             .replace(/<br\s*\/?>/gi, '\n').replace(/\n\n/g, '\n\u00A0\n');
         console.log(message)
-        setCommentData({ isOpen: false, title:"", message:"" });
-        props.addComment({title, message, isMessageOpen});
+        setCommentData({ isOpen: false, title:"", message:"", prevmessage: null });
+        props.addComment({title, message, isMessageOpen, prevmessage });
 
     }
 
-    const messages = props.messages.filter(message => message.prevmessage === null).sort( function(a, b){
+    const messages = props.messages.filter(message => message.prevmessage === 0).sort( function(a, b){
         let x = new Date(a.date);
         let y = new Date(b.date);
         return x-y;
@@ -161,9 +165,9 @@ const Interaction = (props) => {
             }
             {(commentData.isOpen) && (isMessageOpen) &&
                 <div className={`newinteractioncomment ${commentData.isOpen ? 'open' : 'closed'}`}>
-                    <NewComment messageTitle={commentData.title} messageMessage={commentData.message} 
+                    <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage} 
                         handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
-                        sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "" })} />
+                        sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null })} />
                 </div>
             }
         </div>

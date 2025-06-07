@@ -226,7 +226,7 @@ const Base = (props) => {
                                             isOpen: true,
                                             title: "Vs:" + message.title,
                                             message: message.date + "\n\n" + message.message.trim() + "\n\n",
-                                            prevmessage: message.prevmessage
+                                            prevmessage: message.id
                                         })}>Reply</button>
                                         <div>
                                             {props.likes.map(like => 
