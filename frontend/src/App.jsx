@@ -66,7 +66,7 @@ const App = (props) => {
   }
 
 
-  const addComment = ({title, message, isMessageOpen, prevmessage}) => {
+  const addComment = ({title, message, viewid, prevmessage}) => {
 
     const id = messages.length + 1;
 
@@ -88,7 +88,7 @@ const App = (props) => {
         date: today,
         title: title,
         message: message,
-        viewid: isMessageOpen,
+        viewid: Number(viewid),
         prevmessage: Number(prevmessage)
       }
     });

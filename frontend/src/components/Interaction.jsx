@@ -14,7 +14,6 @@ import Comment from '../components/Comment';
 const Interaction = (props) => {
 
     const [videoid, setVideoid] = useState({ videoid: null, viewid: null });
-    const [isMessageOpen, setIsMessageOpen] = useState(null);
 
     const sliderSettings = {
         dots: true,
@@ -60,14 +59,15 @@ const Interaction = (props) => {
 
         const title = event.target.title.value;
         const premessage = event.target.message.value;
-        const prevmessage = event.target.message.value;
+        const prevmessage = event.target.prevmessage.value;
+        const viewid = event.target.ismessageopen.value;
 
         const almmessage = sanitizeHtml(premessage);
 
         const message = almmessage
             .replace(/<br\s*\/?>/gi, '\n').replace(/\n\n/g, '\n\u00A0\n');
         console.log(message)
-        props.addComment({title, message, isMessageOpen, prevmessage });
+        props.addComment({title, message, viewid, prevmessage });
 
     }
 
