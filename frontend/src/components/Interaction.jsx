@@ -10,18 +10,11 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Comment from '../components/Comment';
-import NewComment from '../components/NewComment';
 
 const Interaction = (props) => {
 
     const [videoid, setVideoid] = useState({ videoid: null, viewid: null });
     const [isMessageOpen, setIsMessageOpen] = useState(null);
-    const [commentData, setCommentData] = useState({
-            isOpen: false,
-            title: '',
-            message: '',
-            prevmessage: null
-    });
 
     const sliderSettings = {
         dots: true,
@@ -36,22 +29,6 @@ const Interaction = (props) => {
     const changefeed = (id) => {
         props.changePage(id);
     }
-
-    const handleDataChange = (event) => {
-        setCommentData({ isOpen: true, 
-            title: event.target.value, 
-            message: commentData.message,
-            prevmessage: commentData.prevmessage
-        });
-    };
-        
-    const handleDataChange2 = (value) => {
-        setCommentData({ isOpen: true,
-            title: commentData.title,
-            message: value,
-            prevmessage: commentData.prevmessage
-        });
-    };
 
     const sanitizeHtml = (html) => {
 
@@ -90,7 +67,6 @@ const Interaction = (props) => {
         const message = almmessage
             .replace(/<br\s*\/?>/gi, '\n').replace(/\n\n/g, '\n\u00A0\n');
         console.log(message)
-        setCommentData({ isOpen: false, title:"", message:"", prevmessage: null });
         props.addComment({title, message, isMessageOpen, prevmessage });
 
     }
@@ -169,13 +145,6 @@ const Interaction = (props) => {
                 </>
                 )}
             </>
-            }
-            {(commentData.isOpen) && (isMessageOpen) &&
-                <div className={`newinteractioncomment ${commentData.isOpen ? 'open' : 'closed'}`}>
-                    <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage} 
-                        handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
-                        sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null })} />
-                </div>
             }
         </div>
     )

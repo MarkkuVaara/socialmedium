@@ -671,16 +671,22 @@ p {
 
 .newinteractioncomment.open {
     position: absolute;
-    top: 50%;
+    top: 5%;
     right: 50%;
     display: block;
+    max-height: 90%;
     background-color: white;
     border: 2px solid black;
     border-radius: 10px;
 }
 
-.newcomment.closed {
+.newcomment.closed,
+.newinteractioncomment.closed {
     display: none;
+}
+
+.slick-slide {
+    overflow: visible !important;
 }
 
 .newcomment > * > h4,
@@ -718,8 +724,8 @@ p {
 
 .styled-editor {
     width: 200px;
-    height: 200px;
-    max-height: 250px;
+    height: 175px;
+    max-height: 200px;
     padding: 10px;
     border: 1px solid darkgray;
     border-radius: 4px;

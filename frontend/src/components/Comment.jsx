@@ -8,7 +8,32 @@ import fadeloveicon from '../images/fadeloveicon.png';
 import unlikeicon from '../images/unlikeicon.png';
 import fadeunlikeicon from '../images/fadeunlikeicon.png';
 
+import NewComment from '../components/NewComment';
+
 const Comment = (props) => {
+
+    const [commentData, setCommentData] = useState({
+        isOpen: false,
+        title: '',
+        message: '',
+        prevmessage: null
+    });
+
+    const handleDataChange = (event) => {
+        setCommentData({ isOpen: true, 
+            title: event.target.value, 
+            message: commentData.message,
+            prevmessage: commentData.prevmessage
+        });
+    };
+        
+    const handleDataChange2 = (value) => {
+        setCommentData({ isOpen: true,
+            title: commentData.title,
+            message: value,
+            prevmessage: commentData.prevmessage
+        });
+    };
 
     const message = props.message;
     const intendation = props.intendation;
@@ -17,7 +42,7 @@ const Comment = (props) => {
 
     return (
 
-        <>
+        <div style={{ position: 'relative' }}>
         <div className="commentview" key={message.id} style={{ marginLeft: intendation }}>
             <div className="commenttitle">
                 <div className="titlewrap"><h4>{message.title}</h4></div>
@@ -101,11 +126,12 @@ const Comment = (props) => {
                 {props.views.map(view => <>
                     {view.id === message.viewid && 
                         <div className="commentbuttons">
-                            <button className="replybutton" onClick={() => { setCommentData({
+                            <button className="replybutton" onClick={() => setCommentData({
                                 isOpen: true,
                                 title: "Vs:" + message.title,
-                                message: message.date + "\n\n" + message.message.trim() + "\n\n"
-                            }); setIsMessageOpen(view.id); } }>Reply</button>
+                                message: message.date + "\n\n" + message.message.trim() + "\n\n",
+                                prevmessage: message.prevmessage
+                            }) }>Reply</button>
                             <button className="replybutton">Show chain</button>
                         </div>
                     }
@@ -116,7 +142,14 @@ const Comment = (props) => {
             <Comment key={message.id} message={message} messages={props.messages} likes={props.likes} sendMessage={props.sendMessage}
                 addLike={props.addLike} views={props.views} intendation={intendation + 20} />
         )}
-        </>
+        {commentData.isOpen &&
+            <div className={`newinteractioncomment ${commentData.isOpen ? 'open' : 'closed'}`}>
+                <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage} 
+                    handleDataChange={handleDataChange} handleDataChange2={handleDataChange2}
+                    sendMessage={props.sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null })} />
+            </div>
+        }
+        </div>
 
     )
 
