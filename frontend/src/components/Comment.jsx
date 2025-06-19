@@ -139,7 +139,7 @@ const Comment = (props) => {
                                 message: message.date + "\n\n" + message.message.trim() + "\n\n",
                                 prevmessage: message.id
                             }); setIsMessageOpen(view.id) } }>Reply</button>
-                            <button className="replybutton">Show chain</button>
+                            <button className="replybutton">TBD</button>
                         </div>
                     }
                 </> )}

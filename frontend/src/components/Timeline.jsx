@@ -90,13 +90,14 @@ const Timeline = (props) => {
         const title = event.target.title.value;
         const premessage = event.target.message.value;
         const prevmessage = event.target.prevmessage.value;
+        const viewid = event.target.ismessageopen.value;
 
         const almmessage = sanitizeHtml(premessage);
         const message = almmessage
             .replace(/<br\s*\/?>/gi, '\n').replace(/\n\n/g, '\n\u00A0\n');
     
         setCommentData({ isOpen: false, title:"", message:"", prevmessage: null });
-        props.addComment({title, message, isMessageOpen, prevmessage });
+        props.addComment({title, message, viewid, prevmessage });
     
     }
 
@@ -354,7 +355,7 @@ const Timeline = (props) => {
                 {(isMessageOpen === view.id) && (commentData.isOpen) &&
                     <div className={`newcomment ${commentData.isOpen ? 'open' : 'closed'}`}>
                         <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage}
-                            handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
+                            isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
                             sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null }) } />
                     </div>
                 }
