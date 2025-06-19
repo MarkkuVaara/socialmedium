@@ -160,7 +160,7 @@ p {
 }
 
 
-/* Base styles */
+/* Basefeed styles */
 
 .base {
     padding-bottom: 5px;
@@ -327,7 +327,7 @@ p {
 }
 
 
-/* Timeline styles */
+/* Calendar-subpage styles */
 
 .timelinefeed {
     position: relative;
@@ -838,7 +838,7 @@ p {
 }
 
 
-/* Interaction-subpage styles */
+/* Timeline-subpage styles */
 
 .interaction {
     margin-left: 10%;

@@ -1,17 +1,17 @@
 
 @font-face {
     font-family: 'Lato Regular';
-    src: url('./fonts/Lato-Regular.ttf') format('truetype');
+    src: url('../fonts/Lato-Regular.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Poppins Semibold';
-    src: url('./fonts/Poppins-SemiBold.ttf') format('truetype');
+    src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
 }
 
 @font-face {
     font-family: 'Poppins Medium';
-    src: url('./fonts/Poppins-Medium.ttf') format('truetype');
+    src: url('../fonts/Poppins-Medium.ttf') format('truetype');
 }
 
 .rbc-calendar {

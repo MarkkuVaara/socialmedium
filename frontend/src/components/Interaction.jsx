@@ -10,6 +10,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Comment from '../components/Comment';
+import './TimelineStyles.css';
 
 const Interaction = (props) => {
 
@@ -77,14 +78,30 @@ const Interaction = (props) => {
         return x-y;
     });
 
+    const start = new Date(messages[0].date).getTime();
+    const end = new Date(messages[messages.length - 1].date).getTime();
+    const total = end - start;
     const intendation = 0;
 
     return (
         <div className="nav">
-            <h3>Comment timeline</h3>
+            <h3>Comment chains</h3>
+            <div className="timeline-container">
+                <div className="timeline-line" />
+                    {messages.map(message => {
+                        const pos = ((new Date(message.date).getTime() - start) / total) * 100;
+
+                        return (
+                            <div className="timeline-event" style={{ left: `${pos}%` }} key={message.date}>
+                                <div className="dot" />
+                                <div className="date">{message.date.substring(0, 2)}</div>
+                            </div>
+                        );
+                    })}
+            </div>
             <div className="interactionview">
-            <Slider {...sliderSettings}>
-                {messages.map(message => <>
+                <Slider {...sliderSettings}>
+                    {messages.map(message => <>
                     <div className="dateandview">
                         <p className="datep">{message.date.substring(0, 10)}</p>
                         {props.views.map(view => <>
@@ -104,8 +121,8 @@ const Interaction = (props) => {
                     <Comment message={message} messages={props.messages} likes={props.likes} sendMessage={sendMessage}
                         addLike={props.addLike} views={props.views} intendation={intendation} />
                     </>
-                )}
-            </Slider>
+                    )}
+                </Slider>
             </div>
             {videoid.videoid && <>
                 {props.videos.map(video =>
