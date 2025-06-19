@@ -26,8 +26,23 @@ const Interaction = (props) => {
         adaptiveHeight: true
     };
 
-    const changefeed = (id) => {
-        props.changePage(id);
+    const generateMonthlyTicks = (startDate, endDate) => {
+
+        const ticks = [];
+        const date = new Date(startDate);
+
+        date.setDate(1);
+
+        while (date <= new Date(endDate)) {
+            ticks.push({
+                date: new Date(date),
+                label: date.toLocaleString('default', { month: 'short' })
+            });
+            date.setMonth(date.getMonth() + 1);
+        }
+
+        return ticks;
+
     }
 
     const sanitizeHtml = (html) => {
@@ -81,6 +96,7 @@ const Interaction = (props) => {
     const start = new Date(messages[0].date).getTime();
     const end = new Date(messages[messages.length - 1].date).getTime();
     const total = end - start;
+    const ticks = generateMonthlyTicks(start, end);
     const intendation = 0;
 
     return (
@@ -88,13 +104,23 @@ const Interaction = (props) => {
             <h3>Comment chains</h3>
             <div className="timeline-container">
                 <div className="timeline-line" />
+                    {ticks.map((tick, i) => {
+                        const pos = ((tick.date.getTime() - start) / total) * 100;
+
+                        return (
+                            <div className="timeline-tick" style={{ left: `${pos}%` }} key={i}>
+                            <div className="tick-mark" />
+                            <div className="tick-label">{tick.label}</div>
+                            </div>
+                        );
+                    })}
                     {messages.map(message => {
                         const pos = ((new Date(message.date).getTime() - start) / total) * 100;
 
                         return (
                             <div className="timeline-event" style={{ left: `${pos}%` }} key={message.date}>
                                 <div className="dot" />
-                                <div className="date">{message.date.substring(0, 2)}</div>
+                                <div className="date">{new Date(message.date).getDate()}</div>
                             </div>
                         );
                     })}

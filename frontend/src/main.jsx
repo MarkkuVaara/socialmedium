@@ -223,6 +223,33 @@ const messages = [
         title: "Paras sarja ikinä",
         message: "Sanonpahan vaan",
         date: "05/1/2025 9:02:00 PM"
+    },
+    {
+        id: 8,
+        viewid: 3,
+        userid: 1,
+        prevmessage: 7,
+        title: "Vs:Paras sarja ikinä",
+        message: "Sano vaan",
+        date: "05/1/2025 9:52:00 PM"
+    },
+    {
+        id: 9,
+        viewid: 6,
+        userid: 1,
+        prevmessage: 0,
+        title: "Hyvä elokuva",
+        message: "Mutta aika hapokas välillä.",
+        date: "05/14/2025 11:02:00 PM"
+    },
+    {
+        id: 10,
+        viewid: 6,
+        userid: 1,
+        prevmessage: 9,
+        title: "Vs:Hyvä elokuva",
+        message: "Itse olet hapokas",
+        date: "05/1/2025 9:02:00 PM"
     }
 ]
 
@@ -350,6 +377,60 @@ const likes = [
     {
         id: 21,
         messageid: 7,
+        type: "unlike",
+        amount: 0
+    },
+    {
+        id: 22,
+        messageid: 8,
+        type: "like",
+        amount: 1
+    },
+    {
+        id: 23,
+        messageid: 8,
+        type: "love",
+        amount: 0
+    },
+    {
+        id: 24,
+        messageid: 8,
+        type: "unlike",
+        amount: 0
+    },
+    {
+        id: 25,
+        messageid: 9,
+        type: "like",
+        amount: 1
+    },
+    {
+        id: 26,
+        messageid: 9,
+        type: "love",
+        amount: 1
+    },
+    {
+        id: 27,
+        messageid: 9,
+        type: "unlike",
+        amount: 0
+    },
+    {
+        id: 28,
+        messageid: 10,
+        type: "like",
+        amount: 1
+    },
+    {
+        id: 29,
+        messageid: 10,
+        type: "love",
+        amount: 1
+    },
+    {
+        id: 30,
+        messageid: 10,
         type: "unlike",
         amount: 0
     }

@@ -991,6 +991,7 @@ p {
     border: 2px solid gray;
     border-radius: 5px;
     border-bottom-left-radius: 0px;
+    z-index: 1000;
 }
 
 .interactionvideo:hover,

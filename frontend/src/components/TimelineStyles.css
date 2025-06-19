@@ -13,28 +13,34 @@
 
 .timeline-line {
   position: absolute;
-  top: 40px;
+  top: 50%;
   left: 0;
   right: 0;
-  height: 2px;
+  height: 5px;
   background-color: #ccc;
   z-index: 1;
+  transform: translateY(-50%);
 }
 
 .timeline-event {
   position: absolute;
-  top: 0;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-30%, -30%);
   text-align: center;
   z-index: 2;
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background-color: #ccc;
   margin: 0 auto;
+}
+
+.dot:hover {
+  width: 24px;
+  height: 24px;
 }
 
 .label {
@@ -46,4 +52,27 @@
   font-family: 'Lato Regular';
   font-size: 10px;
   color: gray;
+}
+
+.timeline-tick {
+  position: absolute;
+  top: 50%;
+  transform: translate(-30%, -30%);
+  text-align: center;
+  z-index: 1;
+}
+
+.tick-mark {
+  width: 3px;
+  height: 12px;
+  background-color: black;
+  margin: 0 auto;
+}
+
+.tick-label {
+  font-family: 'Lato Regular';
+  font-size: 10px;
+  color: white;
+  margin-top: 2px;
+  transform: translateY(10px);
 }
