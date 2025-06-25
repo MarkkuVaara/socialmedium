@@ -15,11 +15,13 @@ import './TimelineStyles.css';
 const Interaction = (props) => {
 
     const [videoid, setVideoid] = useState({ videoid: null, viewid: null });
+    const [refresh, setRefresh] = useState(0);
 
     const sliderRef = useRef(null);
 
     const goToNext = (index) => {
         sliderRef.current.slickGoTo(index);
+        setRefresh(index);
     };
 
     const sliderSettings = {
@@ -108,7 +110,7 @@ const Interaction = (props) => {
 
     return (
         <div className="nav">
-            <h3>Comment chains</h3>
+            <h3>Comment chain timeline</h3>
             <div className="timeline-container">
                 <div className="timeline-line" />
                     {ticks.map((tick, i) => {
@@ -120,6 +122,9 @@ const Interaction = (props) => {
                             {tick.date.getTime() > start &&
                                 <div className="tick-label">{tick.label}</div>
                             }
+                            {tick.date.getMonth() === 0 &&
+                                <div className="tick-label">{tick.date.getFullYear()}</div>
+                            }
                             </div>
                         );
                     })}
@@ -128,7 +133,9 @@ const Interaction = (props) => {
 
                         return (
                             <div className="timeline-event" style={{ left: `${pos}%` }} key={i}>
-                                <div className="dot" onClick={() => goToNext(i)} />
+                                <div className="dot"
+                                    style={{ backgroundColor: refresh === i ? 'red' : '#ccc' }} 
+                                    onClick={() => goToNext(i)} />
                                 <div className="date">{new Date(message.date).getDate()}</div>
                             </div>
                         );
