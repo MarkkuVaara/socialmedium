@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 import filmimage from '../images/filmreel2.png';
 import retrotv from '../images/retrotv.png';
@@ -16,6 +16,12 @@ const Interaction = (props) => {
 
     const [videoid, setVideoid] = useState({ videoid: null, viewid: null });
 
+    const sliderRef = useRef(null);
+
+    const goToNext = (index) => {
+        sliderRef.current.slickGoTo(index);
+    };
+
     const sliderSettings = {
         dots: true,
         infinite: true,
@@ -23,7 +29,8 @@ const Interaction = (props) => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: false,
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        ref: sliderRef
     };
 
     const generateMonthlyTicks = (startDate, endDate) => {
@@ -110,16 +117,18 @@ const Interaction = (props) => {
                         return (
                             <div className="timeline-tick" style={{ left: `${pos}%` }} key={i}>
                             <div className="tick-mark" />
-                            <div className="tick-label">{tick.label}</div>
+                            {tick.date.getTime() > start &&
+                                <div className="tick-label">{tick.label}</div>
+                            }
                             </div>
                         );
                     })}
-                    {messages.map(message => {
+                    {messages.map((message, i) => {
                         const pos = ((new Date(message.date).getTime() - start) / total) * 100;
 
                         return (
-                            <div className="timeline-event" style={{ left: `${pos}%` }} key={message.date}>
-                                <div className="dot" />
+                            <div className="timeline-event" style={{ left: `${pos}%` }} key={i}>
+                                <div className="dot" onClick={() => goToNext(i)} />
                                 <div className="date">{new Date(message.date).getDate()}</div>
                             </div>
                         );
