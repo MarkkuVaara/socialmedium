@@ -30,7 +30,7 @@ const NewComment = (props) => {
             <form onSubmit={props.sendMessage}>
                 <div className="formfield">
                     <label>Title</label>
-                    <input name="title" onChange={props.handleDataChange} value={props.messageTitle}></input>
+                    <input name="title" onChange={props.handleDataChange} value={props.messageTitle} placeholder='Insert title'></input>
                     <label>Message</label>
                     <div ref={editorRef} contentEditable="true" dir="ltr"
                         className="styled-editor p-3 overflow-y-auto whitespace-pre-wrap break-words focus:outline-none text-left text-base leading-relaxed" 
