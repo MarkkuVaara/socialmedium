@@ -29,8 +29,14 @@ public class CommentController {
         return commentRepository.save(comment);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteComment(@PathVariable Long id) {
+        commentRepository.deleteById(id);
+    }
+
     @GetMapping("/view/{viewid}")
     public List<Comment> getCommentsByViewid(@PathVariable Long viewid) {
         return commentRepository.findByViewid(viewid);
     }
+
 }

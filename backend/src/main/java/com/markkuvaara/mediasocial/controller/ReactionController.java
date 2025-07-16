@@ -29,6 +29,11 @@ public class ReactionController {
         return reactionRepository.save(reaction);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteReaction(@PathVariable Long id) {
+        reactionRepository.deleteById(id);
+    }
+
     @GetMapping("/comment/{commentId}")
     public List<Reaction> getReactionsByCommentId(@PathVariable Long commentId) {
         return reactionRepository.findByCommentId(commentId);

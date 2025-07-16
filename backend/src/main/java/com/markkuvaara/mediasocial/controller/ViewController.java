@@ -29,6 +29,11 @@ public class ViewController {
         return viewRepository.save(view);
     }
 
+    @DeleteMapping("/{id}")
+    public void deleteView(@PathVariable Long id) {
+        viewRepository.deleteById(id);
+    }
+
     @GetMapping("/user/{userid}")
     public List<View> getViewsByuserid(@PathVariable Long userid) {
         return viewRepository.findByuserid(userid);
