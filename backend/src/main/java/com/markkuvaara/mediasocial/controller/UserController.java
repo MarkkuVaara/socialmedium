@@ -4,6 +4,7 @@ package com.markkuvaara.mediasocial.controller;
 import com.markkuvaara.mediasocial.model.User;
 import com.markkuvaara.mediasocial.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,6 +14,9 @@ import java.util.List;
 public class UserController {
 
     private final UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     public UserController(UserRepository userRepository) {
@@ -26,6 +30,10 @@ public class UserController {
 
     @PostMapping
     public User createUser(@RequestBody User user) {
+        String plainPassword = user.getPassword();
+        String hashedPassword = passwordEncoder.encode(plainPassword);
+        user.setPassword(hashedPassword);
+
         return userRepository.save(user);
     }
 
