@@ -1,3 +1,4 @@
+
 package com.markkuvaara.mediasocial.model;
 
 import jakarta.persistence.*;

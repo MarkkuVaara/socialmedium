@@ -67,7 +67,7 @@ public class UserController {
 
         if (!passwordEncoder.matches(request.getCurrentPassword(), user.getPassword())) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body("Current password is incorrect");
+                    .body("Old password is incorrect");
         }
 
         user.setPassword(passwordEncoder.encode(request.getNewPassword()));
