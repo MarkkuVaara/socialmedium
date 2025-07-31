@@ -43,6 +43,10 @@ public class Userdata {
 
     // Getters and Setters
 
+    public Long getId() {
+        return id;
+    }
+
     public Long getUserid() {
         return userid;
     }
