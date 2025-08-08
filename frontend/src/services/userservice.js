@@ -1,6 +1,5 @@
-
 import axios from 'axios';
-const baseUrl = '/api/videos';
+const baseUrl = '/api/users';
 
 axios.interceptors.response.use(
     response => response,
@@ -12,7 +11,7 @@ axios.interceptors.response.use(
 let token = null;
 
 const setToken = newToken => {
-  token = `Bearer ${newToken}`
+    token = `Bearer ${newToken}`
 };
 
 const getAll = () => {
