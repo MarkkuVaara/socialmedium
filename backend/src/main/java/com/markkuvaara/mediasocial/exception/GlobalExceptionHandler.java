@@ -18,122 +18,117 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.security.SignatureException;
-// import org.springframework.security.authentication.BadCredentialsException;
-// import org.springframework.security.core.AuthenticationException;
+import com.markkuvaara.mediasocial.exception.AuthenticationFailedException;
 
 import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(EntityNotFoundException.class)
-    public ResponseEntity<ErrorResponse> handleNotFound(EntityNotFoundException ex, WebRequest request) {
+        @ExceptionHandler(EntityNotFoundException.class)
+        public ResponseEntity<ErrorResponse> handleNotFound(EntityNotFoundException ex, WebRequest request) {
 
-        ErrorResponse err = new ErrorResponse(
-                HttpStatus.NOT_FOUND.value(),
-                "Not Found",
-                ex.getMessage(),
-                request.getDescription(false).replace("uri=", ""));
+                ErrorResponse err = new ErrorResponse(
+                                HttpStatus.NOT_FOUND.value(),
+                                "Entity not Found",
+                                ex.getMessage(),
+                                request.getDescription(false).replace("uri=", ""));
 
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(err);
 
-    }
+        }
 
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(
-            @NonNull MethodArgumentNotValidException ex,
-            @NonNull HttpHeaders headers,
-            @NonNull HttpStatusCode status,
-            @NonNull WebRequest request) {
+        @Override
+        protected ResponseEntity<Object> handleMethodArgumentNotValid(
+                        @NonNull MethodArgumentNotValidException ex,
+                        @NonNull HttpHeaders headers,
+                        @NonNull HttpStatusCode status,
+                        @NonNull WebRequest request) {
 
-        String message = ex.getBindingResult().getFieldErrors()
-                .stream()
-                .map(fe -> fe.getField() + ": " + fe.getDefaultMessage())
-                .collect(Collectors.joining("; "));
+                String message = ex.getBindingResult().getFieldErrors()
+                                .stream()
+                                .map(fe -> fe.getField() + ": " + fe.getDefaultMessage())
+                                .collect(Collectors.joining("; "));
 
-        ErrorResponse err = new ErrorResponse(
-                status.value(),
-                "Validation Failed",
-                message,
-                request.getDescription(false).replace("uri=", ""));
+                ErrorResponse err = new ErrorResponse(
+                                status.value(),
+                                "Validation Failed",
+                                message,
+                                request.getDescription(false).replace("uri=", ""));
 
-        return ResponseEntity.status(status).body(err);
+                return ResponseEntity.status(status).body(err);
 
-    }
+        }
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    public ResponseEntity<ErrorResponse> handleConstraintViolation(ConstraintViolationException ex,
-            WebRequest request) {
+        @ExceptionHandler(ConstraintViolationException.class)
+        public ResponseEntity<ErrorResponse> handleConstraintViolation(ConstraintViolationException ex,
+                        WebRequest request) {
 
-        String message = ex.getConstraintViolations()
-                .stream()
-                .map(cv -> cv.getPropertyPath() + ": " + cv.getMessage())
-                .collect(Collectors.joining("; "));
+                String message = ex.getConstraintViolations()
+                                .stream()
+                                .map(cv -> cv.getPropertyPath() + ": " + cv.getMessage())
+                                .collect(Collectors.joining("; "));
 
-        ErrorResponse err = new ErrorResponse(
-                HttpStatus.BAD_REQUEST.value(),
-                "Constraint Violation",
-                message,
-                request.getDescription(false).replace("uri=", ""));
+                ErrorResponse err = new ErrorResponse(
+                                HttpStatus.BAD_REQUEST.value(),
+                                "Constraint Violation",
+                                message,
+                                request.getDescription(false).replace("uri=", ""));
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(err);
 
-    }
+        }
 
-    @ExceptionHandler(ExpiredJwtException.class)
-    public ResponseEntity<ErrorResponse> handleJwtExpired(ExpiredJwtException ex, WebRequest request) {
+        @ExceptionHandler(ExpiredJwtException.class)
+        public ResponseEntity<ErrorResponse> handleJwtExpired(ExpiredJwtException ex, WebRequest request) {
 
-        ErrorResponse err = new ErrorResponse(
-                HttpStatus.UNAUTHORIZED.value(),
-                "Token Expired",
-                "JWT has expired; please re-authenticate",
-                request.getDescription(false).replace("uri=", ""));
+                ErrorResponse err = new ErrorResponse(
+                                HttpStatus.UNAUTHORIZED.value(),
+                                "Token Expired",
+                                "JWT has expired; please re-authenticate",
+                                request.getDescription(false).replace("uri=", ""));
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
 
-    }
+        }
 
-    @ExceptionHandler({ SignatureException.class, JwtException.class })
-    public ResponseEntity<ErrorResponse> handleJwtBadToken(Exception ex, WebRequest request) {
+        @ExceptionHandler({ SignatureException.class, JwtException.class })
+        public ResponseEntity<ErrorResponse> handleJwtBadToken(Exception ex, WebRequest request) {
 
-        ErrorResponse err = new ErrorResponse(
-                HttpStatus.UNAUTHORIZED.value(),
-                "Invalid Token",
-                "JWT is malformed or signature does not match",
-                request.getDescription(false).replace("uri=", ""));
+                ErrorResponse err = new ErrorResponse(
+                                HttpStatus.UNAUTHORIZED.value(),
+                                "Invalid Token",
+                                "JWT is malformed or signature does not match",
+                                request.getDescription(false).replace("uri=", ""));
 
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
 
-    }
+        }
 
-    /*
-     * @ExceptionHandler({ BadCredentialsException.class,
-     * AuthenticationException.class })
-     * public ResponseEntity<ErrorResponse> handleAuthenticationError(Exception ex,
-     * WebRequest request) {
-     * 
-     * ErrorResponse err = new ErrorResponse(
-     * HttpStatus.UNAUTHORIZED.value(),
-     * "Authentication Failed",
-     * ex.getMessage(),
-     * request.getDescription(false).replace("uri=", ""));
-     * 
-     * return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
-     * 
-     * }
-     */
+        @ExceptionHandler(AuthenticationFailedException.class)
+        public ResponseEntity<ErrorResponse> handleAuthFail(AuthenticationFailedException ex, WebRequest request) {
 
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorResponse> handleAll(Exception ex, WebRequest request) {
+                ErrorResponse err = new ErrorResponse(
+                                HttpStatus.UNAUTHORIZED.value(),
+                                "Authentication Failed",
+                                ex.getMessage(),
+                                request.getDescription(false).replace("uri=", ""));
 
-        ErrorResponse err = new ErrorResponse(
-                HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                "Internal Server Error",
-                ex.getMessage(),
-                request.getDescription(false).replace("uri=", ""));
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(err);
 
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err);
+        }
 
-    }
+        @ExceptionHandler(Exception.class)
+        public ResponseEntity<ErrorResponse> handleAll(Exception ex, WebRequest request) {
+
+                ErrorResponse err = new ErrorResponse(
+                                HttpStatus.INTERNAL_SERVER_ERROR.value(),
+                                "Internal Server Error",
+                                ex.getMessage(),
+                                request.getDescription(false).replace("uri=", ""));
+
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(err);
+
+        }
 
 }
