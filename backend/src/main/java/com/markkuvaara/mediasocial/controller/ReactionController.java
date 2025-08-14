@@ -4,6 +4,7 @@ package com.markkuvaara.mediasocial.controller;
 import com.markkuvaara.mediasocial.model.Reaction;
 import com.markkuvaara.mediasocial.repository.ReactionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -29,6 +30,19 @@ public class ReactionController {
         return reactionRepository.save(reaction);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Reaction> updateReaction(@PathVariable Long id, @RequestBody Reaction updatedReaction) {
+        return reactionRepository.findById(id)
+                .map(existingReaction -> {
+                    existingReaction.setType(updatedReaction.getType());
+                    existingReaction.setCommentId(updatedReaction.getCommentId());
+                    existingReaction.setAmount(updatedReaction.getAmount());
+                    Reaction savedReaction = reactionRepository.save(existingReaction);
+                    return ResponseEntity.ok(savedReaction);
+                })
+                .orElse(ResponseEntity.notFound().build());
+    }
+
     @DeleteMapping("/{id}")
     public void deleteReaction(@PathVariable Long id) {
         reactionRepository.deleteById(id);
@@ -38,4 +52,5 @@ public class ReactionController {
     public List<Reaction> getReactionsByCommentId(@PathVariable Long commentId) {
         return reactionRepository.findByCommentId(commentId);
     }
+
 }

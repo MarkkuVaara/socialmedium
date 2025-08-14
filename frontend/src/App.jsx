@@ -101,30 +101,58 @@ const App = (props) => {
       }
     });
 
-    dispatch({
-      type: 'NEW_BASEREACTION',
-      payload: {id: likes.length + 1,
-        messageid: id,
-        type: "like",
-        amount: 0
-      }
-    })
-    dispatch({
-      type: 'NEW_BASEREACTION',
-      payload: {id: likes.length + 2,
-        messageid: id,
-        type: "love",
-        amount: 0
-      }
-    })
-    dispatch({
-      type: 'NEW_BASEREACTION',
-      payload: {id: likes.length + 3,
-        messageid: id,
-        type: "unlike",
-        amount: 0
-      }
-    })
+    const newLike = {
+      commentId: id,
+      type: "like",
+      amount: 0
+    }
+    const newLove= {
+      commentId: id,
+      type: "love",
+      amount: 0
+    }
+    const newUnlike = {
+      commentId: id,
+      type: "unlike",
+      amount: 0
+    }
+
+    reactionservice
+      .create(newLike)
+      .then(response =>
+        dispatch({
+          type: 'NEW_BASEREACTION',
+          payload: {id: response.data.id,
+            commentId: response.data.commentId,
+            type: "like",
+            amount: 0
+          }
+        })
+      )
+    reactionservice
+      .create(newLove)
+      .then(response =>
+        dispatch({
+          type: 'NEW_BASEREACTION',
+          payload: {id: response.data.id,
+            commentId: response.data.commentId,
+            type: "love",
+            amount: 0
+          }
+        })
+      )
+    reactionservice
+      .create(newUnlike)
+      .then(response =>
+        dispatch({
+          type: 'NEW_BASEREACTION',
+          payload: {id: response.data.id,
+            commentId: response.data.commentId,
+            type: "unlike",
+            amount: 0
+          }
+        })
+      )
 
   }
 
@@ -134,6 +162,22 @@ const App = (props) => {
       type: 'NEW_REACTION',
       payload: { likeId }
     })
+
+    const reactions = likes.filter(like => like.id == likeId );
+    const reaction = reactions[0];
+
+    const newObject = {
+      id: likeId,
+      commentId: reaction.commentId,
+      type: reaction.type,
+      amount: reaction.amount + 1
+    }
+
+    reactionservice
+      .update(likeId, newObject)
+      .then(response =>
+        console.log(response.data)
+      )
 
   }
 
