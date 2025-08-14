@@ -232,7 +232,7 @@ const Base = (props) => {
                                         <div>
                                             {props.likes.map(like => 
                                             <>
-                                                {like.messageid === message.id &&
+                                                {like.commentId === message.id &&
                                                     <div className="reaction" key={like.id}>
                                                         {like.type === "like" &&
                                                         <div className="reaction-container">

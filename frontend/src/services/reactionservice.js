@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = '/api/reactions';
+const baseUrl = 'http://localhost:8080/api/reactions';
 
 axios.interceptors.response.use(
     response => response,

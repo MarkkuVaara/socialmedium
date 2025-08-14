@@ -10,6 +10,8 @@ import Base from './components/Base';
 import Timeline from './components/Timeline';
 import Interaction from './components/Interaction';
 
+import reactionservice from './services/reactionservice';
+
 import Filmreel from './images/filmreel.png';
 import MediaSocial from './images/Media Social.png';
 
@@ -41,10 +43,16 @@ const App = (props) => {
       type: 'ALL_COMMENTS',
       payload: props.messages
     });
-    dispatch({
-      type: 'ALL_REACTIONS',
-      payload: props.likes
-    });
+
+    reactionservice
+      .getAll()
+      .then(response => 
+        dispatch({
+          type: 'ALL_REACTIONS',
+          payload: response.data
+        })
+      )
+
     dispatch({
       type: 'ALL_USERS',
       payload: props.users
