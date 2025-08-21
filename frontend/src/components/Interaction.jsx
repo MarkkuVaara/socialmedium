@@ -96,7 +96,7 @@ const Interaction = (props) => {
 
     }
 
-    const messages = props.messages.filter(message => message.prevmessage === 0).sort( function(a, b){
+    const messages = props.messages.filter(message => message.prevcomment === 0).sort( function(a, b){
         let x = new Date(a.date);
         let y = new Date(b.date);
         return x-y;

@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = '/api/comments';
+const baseUrl = 'http://localhost:8080/api/comments';
 
 axios.interceptors.response.use(
     response => response,

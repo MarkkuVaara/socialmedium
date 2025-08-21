@@ -16,7 +16,7 @@ const Comment = (props) => {
         isOpen: false,
         title: '',
         message: '',
-        prevmessage: null
+        prevcomment: null
     });
     const [isMessageOpen, setIsMessageOpen] = useState(null);
 
@@ -24,7 +24,7 @@ const Comment = (props) => {
         setCommentData({ isOpen: true, 
             title: event.target.value, 
             message: commentData.message,
-            prevmessage: commentData.prevmessage
+            prevcomment: commentData.prevcomment
         });
     };
         
@@ -32,20 +32,20 @@ const Comment = (props) => {
         setCommentData({ isOpen: true,
             title: commentData.title,
             message: value,
-            prevmessage: commentData.prevmessage
+            prevcomment: commentData.prevcomment
         });
     };
 
     const sendMessage = (event) => {
         event.preventDefault();
-        setCommentData({ isOpen: false, title: "", message: "", prevmessage: null });
+        setCommentData({ isOpen: false, title: "", message: "", prevcomment: null });
         props.sendMessage(event);
     }
 
     const message = props.message;
     const intendation = props.intendation;
 
-    const childrenmessages = props.messages.filter(m => m.prevmessage === message.id);
+    const childrenmessages = props.messages.filter(m => m.prevcomment === message.id);
 
     return (
 
@@ -137,7 +137,7 @@ const Comment = (props) => {
                                 isOpen: true,
                                 title: "Vs:" + message.title,
                                 message: message.date + "\n\n" + message.message.trim() + "\n\n",
-                                prevmessage: message.id
+                                prevcomment: message.id
                             }); setIsMessageOpen(view.id) } }>Reply</button>
                             <button className="replybutton">TBD</button>
                         </div>
@@ -151,9 +151,9 @@ const Comment = (props) => {
         )}
         {commentData.isOpen &&
             <div className={`newinteractioncomment ${commentData.isOpen ? 'open' : 'closed'}`}>
-                <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage} 
+                <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevcomment={commentData.prevcomment} 
                     isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2}
-                    sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null })} />
+                    sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevcomment: null })} />
             </div>
         }
         </div>

@@ -10,6 +10,7 @@ import Base from './components/Base';
 import Timeline from './components/Timeline';
 import Interaction from './components/Interaction';
 
+import commentservice from './services/commentservice';
 import reactionservice from './services/reactionservice';
 
 import Filmreel from './images/filmreel.png';
@@ -39,10 +40,15 @@ const App = (props) => {
         return y-x;
         })
     });
-    dispatch({
-      type: 'ALL_COMMENTS',
-      payload: props.messages
-    });
+
+    commentservice
+      .getAll()
+      .then(response =>
+        dispatch({
+          type: 'ALL_COMMENTS',
+          payload: response.data
+        })
+      )
 
     reactionservice
       .getAll()
@@ -76,43 +82,62 @@ const App = (props) => {
 
   const addComment = ({title, message, viewid, prevmessage}) => {
 
-    const id = messages.length + 1;
+    let commentid;
 
     const currentDate = new Date();
-    const formatter = new Intl.DateTimeFormat('en-us', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    const formattedTime = formatter.format(currentDate);
-    const dd = String(currentDate.getDate()).padStart(2, '0');
-    const mm = String(currentDate.getMonth()+1).padStart(2, '0');
     const yyyy = currentDate.getFullYear();
-  
-    const today = mm + '/' + dd + '/' + yyyy + ' ' + formattedTime;
+    const mm = String(currentDate.getMonth() + 1).padStart(2, '0');
+    const dd = String(currentDate.getDate()).padStart(2, '0');
+    const hh = String(currentDate.getHours()).padStart(2, '0');
+    const min = String(currentDate.getMinutes()).padStart(2, '0');
+    const ss = String(currentDate.getSeconds()).padStart(2, '0');
+
+    const today = `${yyyy}-${mm}-${dd}T${hh}:${min}:${ss}`;
 
     console.log(Number(prevmessage));
 
-    dispatch({
-      type: 'NEW_COMMENT',
-      payload: {id: id,
+    const newComment = {
         userid: 1,
         date: today,
         title: title,
         message: message,
         viewid: Number(viewid),
-        prevmessage: Number(prevmessage)
-      }
-    });
+        prevcomment: Number(prevmessage)
+    }
+
+    commentservice
+      .create(newComment)
+      .then(response => {
+
+          commentid = response.data.id;
+
+          dispatch({
+            type: 'NEW_COMMENT',
+            payload: {id: response.data.id,
+              userid: response.data.userid,
+              date: response.data.date,
+              title: response.data.title,
+              message: response.data.message,
+              viewid: response.data.viewid,
+              prevcomment: response.data.prevcomment
+            }
+          })
+
+        }
+      )
 
     const newLike = {
-      commentId: id,
+      commentId: commentid,
       type: "like",
       amount: 0
     }
     const newLove= {
-      commentId: id,
+      commentId: commentid,
       type: "love",
       amount: 0
     }
     const newUnlike = {
-      commentId: id,
+      commentId: commentid,
       type: "unlike",
       amount: 0
     }

@@ -160,7 +160,7 @@ const views = [
     }
 ]
 
-const messages = [
+/* const messages = [
     {
         id: 1,
         viewid: 1,
@@ -263,7 +263,7 @@ const messages = [
     }
 ]
 
-/* const likes = [
+const likes = [
     {
         id: 1,
         messageid: 1,
@@ -450,6 +450,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <Provider store={store}>
-      <App users={users} videos={videos} views={views} messages={messages} />
+      <App users={users} videos={videos} views={views} />
     </Provider>
 );
