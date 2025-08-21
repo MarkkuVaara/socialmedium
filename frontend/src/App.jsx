@@ -82,8 +82,6 @@ const App = (props) => {
 
   const addComment = ({title, message, viewid, prevmessage}) => {
 
-    let commentid;
-
     const currentDate = new Date();
     const yyyy = currentDate.getFullYear();
     const mm = String(currentDate.getMonth() + 1).padStart(2, '0');
@@ -109,8 +107,6 @@ const App = (props) => {
       .create(newComment)
       .then(response => {
 
-          commentid = response.data.id;
-
           dispatch({
             type: 'NEW_COMMENT',
             payload: {id: response.data.id,
@@ -123,60 +119,63 @@ const App = (props) => {
             }
           })
 
-        }
-      )
-
-    const newLike = {
-      commentId: commentid,
-      type: "like",
-      amount: 0
-    }
-    const newLove= {
-      commentId: commentid,
-      type: "love",
-      amount: 0
-    }
-    const newUnlike = {
-      commentId: commentid,
-      type: "unlike",
-      amount: 0
-    }
-
-    reactionservice
-      .create(newLike)
-      .then(response =>
-        dispatch({
-          type: 'NEW_BASEREACTION',
-          payload: {id: response.data.id,
-            commentId: response.data.commentId,
+          const newLike = {
+            commentId: response.data.id,
             type: "like",
             amount: 0
           }
-        })
-      )
-    reactionservice
-      .create(newLove)
-      .then(response =>
-        dispatch({
-          type: 'NEW_BASEREACTION',
-          payload: {id: response.data.id,
-            commentId: response.data.commentId,
+          const newLove= {
+            commentId: response.data.id,
             type: "love",
             amount: 0
           }
-        })
-      )
-    reactionservice
-      .create(newUnlike)
-      .then(response =>
-        dispatch({
-          type: 'NEW_BASEREACTION',
-          payload: {id: response.data.id,
-            commentId: response.data.commentId,
+          const newUnlike = {
+            commentId: response.data.id,
             type: "unlike",
             amount: 0
           }
-        })
+
+         reactionservice
+            .create(newLike)
+            .then(response => {
+              dispatch({
+                type: 'NEW_BASEREACTION',
+                payload: {id: response.data.id,
+                commentid: response.data.commentid,
+                type: "like",
+                amount: 0
+                }
+              })
+
+              console.log(response.data)
+              }
+            )
+          reactionservice
+            .create(newLove)
+            .then(response =>
+              dispatch({
+                type: 'NEW_BASEREACTION',
+                payload: {id: response.data.id,
+                commentid: response.data.commentid,
+                type: "love",
+                amount: 0
+                }
+              })
+            )
+          reactionservice
+            .create(newUnlike)
+            .then(response =>
+              dispatch({
+                type: 'NEW_BASEREACTION',
+                payload: {id: response.data.id,
+                commentid: response.data.commentid,
+                type: "unlike",
+                amount: 0
+                }
+              })
+            )
+
+        }
       )
 
   }
