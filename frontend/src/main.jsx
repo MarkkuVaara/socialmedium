@@ -5,7 +5,7 @@ import store from './store.jsx';
 import App from './App';
 import './index.css';
 
-const users = [
+/* const users = [
     {
         id: 1,
         name: "Markku Vaara",
@@ -16,7 +16,7 @@ const users = [
         name: "Seppo Kassinen",
         number: "999999"
     }
-]
+] */
 
 const videos = [
     {
@@ -450,6 +450,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <Provider store={store}>
-      <App users={users} videos={videos} />
+      <App videos={videos} />
     </Provider>
 );

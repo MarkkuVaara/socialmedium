@@ -16,6 +16,7 @@ import reactionservice from './services/reactionservice';
 
 import Filmreel from './images/filmreel.png';
 import MediaSocial from './images/Media Social.png';
+import userservice from './services/userservice';
 
 const App = (props) => {
 
@@ -65,10 +66,14 @@ const App = (props) => {
         })
       )
 
-    dispatch({
-      type: 'ALL_USERS',
-      payload: props.users
-    });
+    userservice
+      .getAll()
+      .then(response => 
+        dispatch({
+          type: 'ALL_USERS',
+          payload: response.data
+        })
+      )
 
   }, []);
 
@@ -80,7 +85,11 @@ const App = (props) => {
     if (period === 'PM' && hour !== 12) { hour = hour + 12; }
     if (period === 'AM' && hour === 12) { hour = 0; }
 
-    return { hour, minute, second };
+    return { 
+      hour: String(hour).padStart(2, '0'),
+      minute: String(minute).padStart(2, '0'),
+      second: String(second).padStart(2, '0'),
+    };
 
   }
 
@@ -91,7 +100,7 @@ const App = (props) => {
     const [month, day, year] = datePart.split('/');
     const { hour, minute, second } = parseTime(timePart, period);
 
-    return year + "-" + month + "-" + day + "T" + String(hour) + ":" + String(minute) + ":" + String(second);
+    return year + "-" + month + "-" + day + "T" + hour + ":" + minute + ":" + second;
 
   }
 
@@ -107,8 +116,6 @@ const App = (props) => {
       partid: null,
       episodeid: null
     }
-
-    console.log(newObject)
 
     viewservice
       .create(newObject)
