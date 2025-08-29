@@ -10,6 +10,7 @@ import Base from './components/Base';
 import Timeline from './components/Timeline';
 import Interaction from './components/Interaction';
 
+import viewservice from './services/viewservice';
 import commentservice from './services/commentservice';
 import reactionservice from './services/reactionservice';
 
@@ -32,14 +33,19 @@ const App = (props) => {
       type: 'ALL_VIDEOS',
       payload: props.videos
     });
-    dispatch({
-      type: 'ALL_VIEWS',
-      payload: props.views.sort( function(a, b){
-        let x = new Date(a.date);
-        let y = new Date(b.date);
-        return y-x;
+
+    viewservice
+      .getAll()
+      .then(response => 
+        dispatch({
+          type: 'ALL_VIEWS',
+          payload: response.data.sort( function(a, b){
+            let x = new Date(a.date);
+            let y = new Date(b.date);
+            return y-x;
+          })
         })
-    });
+      )
 
     commentservice
       .getAll()

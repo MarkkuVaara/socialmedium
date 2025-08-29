@@ -109,7 +109,7 @@ const videos = [
     }
 ]
 
-const views = [
+/* const views = [
     {
         id: 1,
         date: "05/11/2025 9:00:00 PM",
@@ -160,7 +160,7 @@ const views = [
     }
 ]
 
-/* const messages = [
+const messages = [
     {
         id: 1,
         viewid: 1,
@@ -450,6 +450,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <Provider store={store}>
-      <App users={users} videos={videos} views={views} />
+      <App users={users} videos={videos} />
     </Provider>
 );

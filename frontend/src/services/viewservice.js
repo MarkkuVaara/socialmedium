@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseUrl = '/api/views';
+const baseUrl = 'http://localhost:8080/api/views';
 
 axios.interceptors.response.use(
     response => response,

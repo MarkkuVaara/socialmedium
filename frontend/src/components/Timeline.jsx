@@ -134,12 +134,9 @@ const Timeline = (props) => {
 
     };
 
-    const parseTime = (timePart, period) => {
+    const parseTime = (timePart) => {
 
         let [hour, minute, second] = timePart.split(':').map(Number);
-
-        if (period === 'PM' && hour !== 12) { hour = hour + 12; }
-        if (period === 'AM' && hour === 12) { hour = 0; }
 
         return { hour, minute, second };
     };
@@ -147,9 +144,9 @@ const Timeline = (props) => {
     const transformToEvents = (views) => {
 
         return views.map(item => {
-          const [datePart, timePart, period] = item.date.split(' ');
-          const [month, day, year] = datePart.split('/').map(Number);
-          const { hour, minute, second } = parseTime(timePart, period);
+          const [datePart, timePart] = item.date.split('T');
+          const [year, month, day] = datePart.split('-').map(Number);
+          const { hour, minute, second } = parseTime(timePart);
 
           return {
             title: item.videoid,
