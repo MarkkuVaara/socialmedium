@@ -73,15 +73,51 @@ const App = (props) => {
   }, []);
 
 
+  const parseTime = (timePart, period) => {
+
+    let [hour, minute, second] = timePart.split(':').map(Number);
+
+    if (period === 'PM' && hour !== 12) { hour = hour + 12; }
+    if (period === 'AM' && hour === 12) { hour = 0; }
+
+    return { hour, minute, second };
+
+  }
+
+
+  const parseDate = (date) => {
+
+    const [datePart, timePart, period] = date.split(' ');
+    const [month, day, year] = datePart.split('/');
+    const { hour, minute, second } = parseTime(timePart, period);
+
+    return year + "-" + month + "-" + day + "T" + String(hour) + ":" + String(minute) + ":" + String(second);
+
+  }
+
+
   const addNewView = ({title, date}) => {
 
-    dispatch({
-      type: 'NEW_VIEW',
-      payload: {id: 1000 + views.length, date: date,
-        videoid: Number(title),
-        userid: 1,
-        partid: null}
-    });
+    const newDate = parseDate(date);
+
+    const newObject = {
+      date: newDate,
+      videoid: Number(title),
+      userid: 1,
+      partid: null,
+      episodeid: null
+    }
+
+    console.log(newObject)
+
+    viewservice
+      .create(newObject)
+      .then(response =>
+        dispatch({
+          type: 'NEW_VIEW',
+          payload: response.data
+        })
+      )
 
   }
 
