@@ -152,10 +152,21 @@ p {
     border-bottom: 10px gray solid;
 }
 
+.log {
+    text-align: center !important;
+}
+
+.logbutton {
+    width: 50%;
+}
+
 @media only screen and (max-width: 800px) {
     .navbutton {
         display: block;
         font-size: 16px;
+    }
+    .logbutton {
+        display: inline;
     }
 }
 

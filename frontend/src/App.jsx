@@ -21,6 +21,7 @@ import userservice from './services/userservice';
 const App = (props) => {
 
   const pageTurner = useSelector((state) => state.pageTurner);
+  const tokenHandler = useSelector((state) => state.tokenHandler);
   const videos = useSelector((state) => state.videoReducer);
   const views = useSelector((state) => state.viewReducer);
   const messages = useSelector((state) => state.commentReducer);
@@ -272,13 +273,20 @@ const App = (props) => {
     })
   }
 
+  const logIn = () => {
+    alert("Logging in");
+  }
+
 
   return (
 
     <div className="mainapp">
       <div className="banner">
         <img className="mediasocial" src={MediaSocial} alt={MediaSocial}></img>
-        <p>Welcome to the social media for movie, tv and streaming watchers!</p>
+        <div className="log">
+          <p>Welcome to the social media for movie, tv and streaming watchers!</p>
+          <button className="navbutton logbutton" onClick={() => logIn()}>Log in</button>
+        </div>
         <img className="filmlogo" src={Filmreel} alt={Filmreel}></img>
       </div>
       <div className="nav">

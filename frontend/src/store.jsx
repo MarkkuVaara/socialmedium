@@ -15,6 +15,18 @@ const pageTurner = (state = 0, action) => {
   }
 };
 
+const tokenHandler = (state = [], action) => {
+  if (action.type === 'NEW_TOKEN') {
+    return state.concat(action.payload)
+  }
+  if (action.type === 'REMOVE_TOKEN') {
+    state = []
+    return state
+  }
+
+  return state
+}
+
 const userReducer = (state = [], action) => {
   if (action.type === 'NEW_USER') {
     return state.concat(action.payload)
@@ -98,7 +110,8 @@ const reactionReducer = (state = [], action) => {
 
 const store = configureStore({
   reducer: {
-    pageTurner: pageTurner, 
+    pageTurner: pageTurner,
+    tokenHandler: tokenHandler,
     userReducer: userReducer,
     videoReducer: videoReducer,
     viewReducer: viewReducer,
