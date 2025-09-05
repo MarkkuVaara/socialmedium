@@ -17,10 +17,12 @@ import reactionservice from './services/reactionservice';
 import Filmreel from './images/filmreel.png';
 import MediaSocial from './images/Media Social.png';
 import userservice from './services/userservice';
+import LoginWindow from './components/LoginWindow';
 
 const App = (props) => {
 
   const pageTurner = useSelector((state) => state.pageTurner);
+  const loginWindow = useSelector((state) => state.loginWindow);
   const tokenHandler = useSelector((state) => state.tokenHandler);
   const videos = useSelector((state) => state.videoReducer);
   const views = useSelector((state) => state.viewReducer);
@@ -274,7 +276,27 @@ const App = (props) => {
   }
 
   const logIn = () => {
-    alert("Logging in");
+    dispatch({
+      type: 'OPEN'
+    })
+  }
+
+  const closedIn = () => {
+    dispatch({
+      type: 'CLOSED'
+    })
+  }
+
+  const loggingIn = (event) => {
+    event.preventDefault();
+
+    console.log(event.target.username.value);
+    console.log(event.target.password.value);
+
+    dispatch({
+      type: 'CLOSED'
+    })
+
   }
 
 
@@ -322,6 +344,11 @@ const App = (props) => {
           </div>
         }
       </div>
+      {loginWindow === 1 &&
+        <div>
+          <LoginWindow closedIn={closedIn} loggingIn={loggingIn}/>
+        </div>
+      }
     </div>
 
   )

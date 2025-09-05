@@ -15,6 +15,17 @@ const pageTurner = (state = 0, action) => {
   }
 };
 
+const loginWindow = (state = 0, action) => {
+  switch (action.type) {
+    case 'OPEN':
+      return 1
+    case 'CLOSED':
+      return 0
+    default:
+    return state
+  }
+}
+
 const tokenHandler = (state = [], action) => {
   if (action.type === 'NEW_TOKEN') {
     return state.concat(action.payload)
@@ -111,6 +122,7 @@ const reactionReducer = (state = [], action) => {
 const store = configureStore({
   reducer: {
     pageTurner: pageTurner,
+    loginWindow: loginWindow,
     tokenHandler: tokenHandler,
     userReducer: userReducer,
     videoReducer: videoReducer,
