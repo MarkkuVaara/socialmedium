@@ -15,12 +15,12 @@ const pageTurner = (state = 0, action) => {
   }
 };
 
-const loginWindow = (state = 0, action) => {
+const loginWindow = (state = false, action) => {
   switch (action.type) {
     case 'OPEN':
-      return 1
+      return true
     case 'CLOSED':
-      return 0
+      return false
     default:
     return state
   }

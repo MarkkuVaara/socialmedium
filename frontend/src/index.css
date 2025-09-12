@@ -160,13 +160,23 @@ p {
     width: 50%;
 }
 
+.logoutbutton {
+    width: 35%;
+    background-color: black;
+    font-size: small;
+}
+
 @media only screen and (max-width: 800px) {
     .navbutton {
         display: block;
         font-size: 16px;
     }
-    .logbutton {
+    .logbutton,
+    .logoutbutton {
         display: inline;
+    }
+    .logoutbutton {
+        font-size: smaller;
     }
 }
 
@@ -193,6 +203,27 @@ p {
 
 .loginlabel {
     color: white;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms;
+}
+
+@media only screen and (max-width: 800px) {
+    .newlogin {
+        margin-left: 10%;
+    }
 }
 
 

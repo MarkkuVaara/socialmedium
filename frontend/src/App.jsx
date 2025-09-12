@@ -1,9 +1,5 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import {
-  BrowserRouter as Router,
-  Routes, Route, Link
-} from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Base from './components/Base';
@@ -18,6 +14,7 @@ import loginservice from './services/loginservice';
 
 import Filmreel from './images/filmreel.png';
 import MediaSocial from './images/Media Social.png';
+import { CSSTransition } from "react-transition-group";
 
 import LoginWindow from './components/LoginWindow';
 
@@ -310,13 +307,22 @@ const App = (props) => {
       })
 
     } catch (exception) {
-      alert("Wrong username or password. Please try again.");
+      alert("Wrong username and/or password. Please try again.");
       localStorage.setItem('user', null);
     }
 
     dispatch({
       type: 'CLOSED'
     })
+
+  }
+
+  const logOut = () => {
+
+    dispatch({
+      type: 'REMOVE_TOKEN'
+    })
+    localStorage.setItem('user', null);
 
   }
 
@@ -328,7 +334,12 @@ const App = (props) => {
         <img className="mediasocial" src={MediaSocial} alt={MediaSocial}></img>
         <div className="log">
           <p>Welcome to the social media for movie, tv and streaming watchers!</p>
-          <button className="navbutton logbutton" onClick={() => logIn()}>Log in</button>
+          {!tokenHandler[0] &&
+            <button className="navbutton logbutton" onClick={() => logIn()}>Log in</button>
+          }
+          {tokenHandler[0] &&
+            <button className="navbutton logoutbutton" onClick={() => logOut()}>Log out</button>
+          }
           {JSON.parse(localStorage.getItem('user')) && 
             <p>Logged in as {JSON.parse(localStorage.getItem('user')).name}</p>
           }
@@ -368,11 +379,11 @@ const App = (props) => {
           </div>
         }
       </div>
-      {loginWindow === 1 &&
+      <CSSTransition in={loginWindow} timeout={1000} classNames="fade" unmountOnExit>
         <div>
           <LoginWindow closedIn={closedIn} loggingIn={loggingIn}/>
         </div>
-      }
+      </CSSTransition>
     </div>
 
   )
