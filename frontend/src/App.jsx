@@ -13,10 +13,12 @@ import Interaction from './components/Interaction';
 import viewservice from './services/viewservice';
 import commentservice from './services/commentservice';
 import reactionservice from './services/reactionservice';
+import userservice from './services/userservice';
+import loginservice from './services/loginservice';
 
 import Filmreel from './images/filmreel.png';
 import MediaSocial from './images/Media Social.png';
-import userservice from './services/userservice';
+
 import LoginWindow from './components/LoginWindow';
 
 const App = (props) => {
@@ -287,11 +289,30 @@ const App = (props) => {
     })
   }
 
-  const loggingIn = (event) => {
+  const loggingIn = async (event) => {
     event.preventDefault();
 
-    console.log(event.target.username.value);
-    console.log(event.target.password.value);
+    const name = event.target.username.value;
+    const password = event.target.password.value;
+
+    try {
+
+      const token = await loginservice.login({
+        name, password,
+      });
+      const loginuser = users.filter(userb => userb.name == name);
+      const user = loginuser[0];
+      localStorage.setItem('user', JSON.stringify(user));
+
+      dispatch({
+        type: 'NEW_TOKEN',
+        payload: token
+      })
+
+    } catch (exception) {
+      alert("Wrong username or password. Please try again.");
+      localStorage.setItem('user', null);
+    }
 
     dispatch({
       type: 'CLOSED'
@@ -308,6 +329,9 @@ const App = (props) => {
         <div className="log">
           <p>Welcome to the social media for movie, tv and streaming watchers!</p>
           <button className="navbutton logbutton" onClick={() => logIn()}>Log in</button>
+          {JSON.parse(localStorage.getItem('user')) && 
+            <p>Logged in as {JSON.parse(localStorage.getItem('user')).name}</p>
+          }
         </div>
         <img className="filmlogo" src={Filmreel} alt={Filmreel}></img>
       </div>
