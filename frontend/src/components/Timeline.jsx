@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 
+import { CSSTransition } from "react-transition-group";
+
 import { Calendar, dateFnsLocalizer } from 'react-big-calendar';
 import { format, parse, startOfWeek, getDay } from 'date-fns';
 import enUS from 'date-fns/locale/en-US';
@@ -349,23 +351,25 @@ const Timeline = (props) => {
                         }
                     </div>
                 )}
-                {(isMessageOpen === view.id) && (commentData.isOpen) &&
-                    <div className={`newcomment ${commentData.isOpen ? 'open' : 'closed'}`}>
-                        <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage}
-                            isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
-                            sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null }) } />
-                    </div>
-                }
+                <CSSTransition in={commentData.isOpen} timeout={1000} classNames="fade-slide" unmountOnExit>
+                    <>{isMessageOpen === view.id &&
+                        <div className="newcomment open">
+                            <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage}
+                                isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
+                                sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null }) } />
+                        </div>
+                    }</>
+                </CSSTransition>
 
                 </>
                 )}
             </div>
-            {isViewOpen === true &&
-                <div className={`newview ${isViewOpen ? 'open' : 'closed'}`}>
+            <CSSTransition in={isViewOpen} timeout={1000} classNames="fade-slide" unmountOnExit>
+                <div className="newview opencalendar">
                     <NewView videos={props.videos} startTime={startTime}
                         sendView={sendView} closeView={() => setIsViewOpen(false)}/>
                 </div>
-            }
+            </CSSTransition>
 
         </div>
 

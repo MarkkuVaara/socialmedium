@@ -880,16 +880,23 @@ p {
     padding-right: 10px;
     width: 30%;
     min-width: 300px;
-}
-
-.newview.open {
-    position: sticky;
-    bottom: 80%;
-    right: 20%;
     display: block;
     background-color: white;
     border: 2px solid black;
     border-radius: 10px;
+}
+
+.newview.open {
+    position: sticky;
+    bottom: 90%;
+    right: 20%;
+    z-index: 1000;
+}
+
+.newview.opencalendar {
+    position: absolute;
+    bottom: 50%;
+    right: 40%;
     z-index: 1000;
 }
 
@@ -908,6 +915,8 @@ p {
 @media only screen and (max-width: 800px) {
     .newview.open {
         right: 0%;
+    }.newview.opencalendar {
+        right: 20%;
     }
 }
 

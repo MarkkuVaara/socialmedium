@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 
+import { CSSTransition } from "react-transition-group";
+
 import likeicon from '../images/likeicon.png';
 import fadelikeicon from '../images/fadelikeicon.png';
 import loveicon from '../images/loveicon.png';
@@ -149,13 +151,13 @@ const Comment = (props) => {
             <Comment key={message.id} message={message} messages={props.messages} likes={props.likes} sendMessage={sendMessage}
                 addLike={props.addLike} views={props.views} intendation={intendation + 20} />
         )}
-        {commentData.isOpen &&
-            <div className={`newinteractioncomment ${commentData.isOpen ? 'open' : 'closed'}`}>
+        <CSSTransition in={commentData.isOpen} timeout={1000} classNames="fade-slide" unmountOnExit>
+            <div className="newinteractioncomment open">
                 <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevcomment={commentData.prevcomment} 
                     isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2}
                     sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevcomment: null })} />
             </div>
-        }
+        </CSSTransition>
         </div>
 
     )
