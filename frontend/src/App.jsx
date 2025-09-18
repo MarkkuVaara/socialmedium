@@ -306,14 +306,14 @@ const App = (props) => {
         payload: token
       })
 
+      dispatch({
+        type: 'CLOSED'
+      })
+
     } catch (exception) {
       alert("Wrong username and/or password. Please try again.");
       localStorage.setItem('user', null);
     }
-
-    dispatch({
-      type: 'CLOSED'
-    })
 
   }
 
@@ -379,10 +379,8 @@ const App = (props) => {
           </div>
         }
       </div>
-      <CSSTransition in={loginWindow} timeout={1000} classNames="fade" unmountOnExit>
-        <div>
-          <LoginWindow closedIn={closedIn} loggingIn={loggingIn}/>
-        </div>
+      <CSSTransition in={loginWindow} timeout={1000} classNames="fade-slide" unmountOnExit>
+        <LoginWindow closedIn={closedIn} loggingIn={loggingIn}/>
       </CSSTransition>
     </div>
 

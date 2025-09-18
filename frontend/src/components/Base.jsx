@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 
+import { CSSTransition } from "react-transition-group";
+
 import filmimage from '../images/filmreel2.png';
 import filmcamera from '../images/filmcamera.png';
 import retrotv from '../images/retrotv.png';
@@ -316,11 +318,11 @@ const Base = (props) => {
 
                 </div>
             )}
-            {isViewOpen === true &&
+            <CSSTransition in={isViewOpen} timeout={1000} classNames="fade-slide" unmountOnExit>
                 <div className={`newview ${isViewOpen ? 'open' : 'closed'}`}>
                     <NewView videos={props.videos} sendView={sendView} closeView={() => setIsViewOpen(false)}/>
                 </div>
-            }
+            </CSSTransition>
             </div>
 
             <div className="rightbase">
