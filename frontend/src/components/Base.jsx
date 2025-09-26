@@ -309,7 +309,7 @@ const Base = (props) => {
                         )}
                         <CSSTransition in={commentData.isOpen} timeout={1000} classNames="fade-slide" unmountOnExit>
                             <>{isMessageOpen === view.id &&
-                                <div className="newcomment open">
+                                <div className="newcomment open" style={{ "bottom": "50%" }}>
                                     <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage}
                                         isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
                                         sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null })} />

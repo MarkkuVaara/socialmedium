@@ -37,7 +37,7 @@ const NewComment = (props) => {
                         value={html} onInput={() => { handleInput(); } } suppressContentEditableWarning>
                     </div>
                     <input type="hidden" name="message" value={html} />
-                    <input type="hidden" name="prevmessage" value={props.prevmessage} />
+                    <input type="hidden" name="prevmessage" value={props.prevcomment} />
                     <input type="hidden" name="ismessageopen" value={props.isMessageOpen} />
                     <button className="sendbutton" type="submit">Send</button>
                     <button className="closebutton" type="button" onClick={props.closeMessage}>Close</button>

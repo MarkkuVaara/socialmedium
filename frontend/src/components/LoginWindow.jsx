@@ -11,7 +11,7 @@ const LoginWindow = (props) => {
                     <label className="loginlabel">Username</label>
                     <input name="username"></input>
                     <label className="loginlabel">Password</label>
-                    <input name="password"></input>
+                    <input type="password" name="password"></input>
                     <button type="button" className="closebutton" onClick={props.closedIn}>Close</button>
                     <button type="submit" className="sendbutton">Log in</button>
                 </div>

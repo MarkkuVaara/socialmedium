@@ -106,6 +106,15 @@ const videos = [
         actors: ["Peter O'Toole", "Omar Sharif", "Alec Guinness", "Anthony Quinn", "Jack Hawkins"],
         year: 1962,
         length: 216
+    },
+    {
+        id: 11,
+        name: "The Big Lebowski",
+        type: "movie",
+        director: "Coen brothers",
+        actors: ["Jeff Bridges", "John Goodman", "Steve Buscemi", "John Turturro", "Julianne Moore"],
+        year: 1997,
+        length: 117
     }
 ]
 
