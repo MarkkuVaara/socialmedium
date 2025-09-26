@@ -23,6 +23,8 @@ import NewView from '../components/NewView';
 
 const Base = (props) => {
 
+    const [coords, setCoords] = useState(null);
+
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [isViewOpen, setIsViewOpen] = useState(false);
     const [order, setOrder] = useState(false);
@@ -191,11 +193,13 @@ const Base = (props) => {
                     <div className={`basemessage ${isMessageOpen ? 'open' : 'closed'}`}>
                         {isMessageOpen === view.id &&
                             <div className="topbuttons">
-                                <button className="commbutton" onClick={() => setCommentData({
-                                    isOpen: true,
-                                    title: "",
-                                    message: "", prevmessage: "0"
-                                })}>Comment</button>
+                                <button className="commbutton" onClick={(event) => 
+                                    { 
+                                        setCommentData({ isOpen: true, title: "", message: "", prevmessage: "0"});
+                                        const rect = event.currentTarget.getBoundingClientRect();
+                                        setCoords( rect.bottom + window.scrollY - 50 );
+                                    }
+                                }>Comment</button>
                                 <button className="commclosebutton" onClick={() => { 
                                     setIsMessageOpen(null); 
                                     setCommentData({ isOpen: false, title: "", message: "", prevmessage: null }); 
@@ -225,12 +229,14 @@ const Base = (props) => {
                                     <div className="messagemessage" style={{ whiteSpace: 'pre-wrap' }}
                                         dangerouslySetInnerHTML={{ __html: message.message }} ></div>
                                     <div className="reactions">
-                                        <button className="replybutton" onClick={() => setCommentData({
-                                            isOpen: true,
-                                            title: "Vs:" + message.title,
-                                            message: message.date + "\n\n" + message.message.trim() + "\n\n",
-                                            prevmessage: message.id
-                                        })}>Reply</button>
+                                        <button className="replybutton" onClick={(event) => {
+                                                setCommentData({ isOpen: true, title: "Vs:" + message.title,
+                                                    message: message.date + "\n\n" + message.message.trim() + "\n\n",
+                                                    prevmessage: message.id });
+                                                const rect = event.currentTarget.getBoundingClientRect();
+                                                setCoords( rect.bottom + window.scrollY - 50 );
+                                            }
+                                        }>Reply</button>
                                         <div>
                                             {props.likes.map(like => 
                                             <>
@@ -307,16 +313,16 @@ const Base = (props) => {
                             }
                             </div>
                         )}
-                        <CSSTransition in={commentData.isOpen} timeout={1000} classNames="fade-slide" unmountOnExit>
-                            <>{isMessageOpen === view.id &&
-                                <div className="newcomment open" style={{ "bottom": "50%" }}>
-                                    <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage}
-                                        isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
-                                        sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null })} />
-                                </div>
-                            }</>
-                        </CSSTransition>
                     </div>
+                    <CSSTransition in={commentData.isOpen} timeout={1000} classNames="fade-slide" unmountOnExit>
+                        <>{isMessageOpen === view.id &&
+                            <div className="newcomment open" style={{ "top": coords }}>
+                                <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage}
+                                    isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
+                                    sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null })} />
+                            </div>
+                        }</>
+                    </CSSTransition>
 
                 </div>
             )}
