@@ -6,6 +6,7 @@ import Base from './components/Base';
 import Timeline from './components/Timeline';
 import Interaction from './components/Interaction';
 
+import videoservice from './services/videoservice';
 import viewservice from './services/viewservice';
 import commentservice from './services/commentservice';
 import reactionservice from './services/reactionservice';
@@ -18,7 +19,7 @@ import { CSSTransition } from "react-transition-group";
 
 import LoginWindow from './components/LoginWindow';
 
-const App = (props) => {
+const App = () => {
 
   const pageTurner = useSelector((state) => state.pageTurner);
   const loginWindow = useSelector((state) => state.loginWindow);
@@ -32,10 +33,14 @@ const App = (props) => {
 
   useEffect(() => {
 
-    dispatch({
-      type: 'ALL_VIDEOS',
-      payload: props.videos
-    });
+    videoservice
+      .getAll()
+      .then(response => 
+        dispatch({
+          type: 'ALL_VIDEOS',
+          payload: response.data
+        })
+      )
 
     viewservice
       .getAll()

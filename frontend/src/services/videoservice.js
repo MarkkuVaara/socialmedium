@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-const baseUrl = '/api/videos';
+const baseUrl = 'http://localhost:8080/api/videos';
 
 axios.interceptors.response.use(
     response => response,

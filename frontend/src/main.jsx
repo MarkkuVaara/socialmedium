@@ -16,7 +16,7 @@ import './index.css';
         name: "Seppo Kassinen",
         number: "999999"
     }
-] */
+]
 
 const videos = [
     {
@@ -118,7 +118,7 @@ const videos = [
     }
 ]
 
-/* const views = [
+const views = [
     {
         id: 1,
         date: "05/11/2025 9:00:00 PM",
@@ -459,6 +459,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <Provider store={store}>
-      <App videos={videos} />
+      <App />
     </Provider>
 );
