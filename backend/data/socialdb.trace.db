@@ -1209,3 +1209,9 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 16 more
+2025-09-26 22:59:26.546525+03:00 jdbc[37]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "MESSAGE CHARACTER VARYING(255)": "U&'Varhaisimmat T. E. Lawrencen Seven Pillars of Wisdom -kirjaan pohjautuvat elo... (798)"; SQL statement:
+insert into comment (date,message,prevcomment,title,userid,viewid,id) values (?,?,?,?,?,?,?) [22001-232]
+2025-09-26 23:01:20.296996+03:00 jdbc[37]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "MESSAGE CHARACTER VARYING(255)": "U&'Varhaisimmat T. E. Lawrencen Seven Pillars of Wisdom -kirjaan pohjautuvat elo... (297)"; SQL statement:
+insert into comment (date,message,prevcomment,title,userid,viewid,id) values (?,?,?,?,?,?,?) [22001-232]

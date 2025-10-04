@@ -34,6 +34,8 @@ import NewView from '../components/NewView';
 
 const Timeline = (props) => {
 
+    const [coords, setCoords] = useState(null);
+
     const [isVideoOpen, setIsVideoOpen] = useState(null);
     const [isMessageOpen, setIsMessageOpen] = useState(null);
     const [commentData, setCommentData] = useState({
@@ -235,11 +237,12 @@ const Timeline = (props) => {
                 <>
                 {isMessageOpen === view.id &&
                     <div className="topbuttons">
-                        <button className="commbutton" onClick={() => setCommentData({
-                            isOpen: true,
-                            title: "",
-                            message: "", prevmessage: "0"
-                        })}>Comment</button>
+                        <button className="commbutton" onClick={(event) => {
+                                setCommentData({ isOpen: true, title: "", message: "", prevmessage: "0" });
+                                const rect = event.currentTarget.getBoundingClientRect();
+                                setCoords( { top: rect.bottom + window.scrollY - 1250, right: rect.left + window.scrollX - 650 } );
+                            }
+                        }>Comment</button>
                         <button className="commclosebutton" onClick={() => { 
                             setIsMessageOpen(null); 
                             setCommentData({ isOpen: false, title: "", message: "", prevmessage: null }); 
@@ -269,12 +272,14 @@ const Timeline = (props) => {
                                 <div className="messagemessage" style={{ whiteSpace: 'pre-wrap' }}
                                         dangerouslySetInnerHTML={{ __html: message.message }} ></div>
                                 <div className="reactions">
-                                    <button className="replybutton" onClick={() => setCommentData({
-                                        isOpen: true,
-                                        title: "Vs:" + message.title,
-                                        message: message.date + "\n\n" + message.message.trim() + "\n\n",
-                                        prevmessage: message.id
-                                    })}>Reply</button>
+                                    <button className="replybutton" onClick={(event) => {
+                                        setCommentData({ isOpen: true, title: "Vs:" + message.title,
+                                            message: message.date + "\n\n" + message.message.trim() + "\n\n",
+                                            prevmessage: message.id });
+                                        const rect = event.currentTarget.getBoundingClientRect();
+                                        setCoords( { top: rect.bottom + window.scrollY - 1000, right: rect.left + window.scrollX - 650 } );
+                                        }
+                                    }>Reply</button>
                                     <div>
                                         {props.likes.map(like => 
                                         <>
@@ -352,13 +357,13 @@ const Timeline = (props) => {
                     </div>
                 )}
                 <CSSTransition in={commentData.isOpen} timeout={1000} classNames="fade-slide" unmountOnExit>
-                    <>{isMessageOpen === view.id &&
-                        <div className="newcomment open">
+                    <div style={{ "position": "relative" }}>{isMessageOpen === view.id &&
+                        <div className="newcomment open" style={{ "top": coords.top, "right": coords.right }}>
                             <NewComment messageTitle={commentData.title} messageMessage={commentData.message} prevmessage={commentData.prevmessage}
                                 isMessageOpen={isMessageOpen} handleDataChange={handleDataChange} handleDataChange2={handleDataChange2} 
                                 sendMessage={sendMessage} closeMessage={() => setCommentData({ isOpen: false, title: "", message: "", prevmessage: null }) } />
                         </div>
-                    }</>
+                    }</div>
                 </CSSTransition>
 
                 </>
