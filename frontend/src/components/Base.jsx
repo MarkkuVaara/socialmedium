@@ -144,7 +144,7 @@ const Base = (props) => {
             <div className={`centerbase ${order ? 'asc' : 'dsc'}`}>
             {props.views.map(view => 
                 <div className="baseview" key={view.id}>
-                    <p className="basedate">{view.date.substring(0, 10)}</p>
+                    <p className="basedate">{view.date.substring(8, 10)}.{view.date.substring(5, 7)}.{view.date.substring(0, 4)}</p>
 
                     {props.videos.map(video => 
                         <> 
@@ -221,7 +221,7 @@ const Base = (props) => {
                                         </>
                                     )}
                                     <div className="messagedate">
-                                        <p>{message.date.substring(0, 10)}</p>
+                                        <p>{message.date.substring(8, 10)}.{message.date.substring(5, 7)}.{message.date.substring(0, 4)}</p>
                                         <p>{message.date.substring(11)}</p>
                                     </div>
                                     </div>

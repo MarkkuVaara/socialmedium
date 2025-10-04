@@ -34,7 +34,7 @@ import NewView from '../components/NewView';
 
 const Timeline = (props) => {
 
-    const [coords, setCoords] = useState(null);
+    const [coords, setCoords] = useState( { top: null, right: null });
 
     const [isVideoOpen, setIsVideoOpen] = useState(null);
     const [isMessageOpen, setIsMessageOpen] = useState(null);
@@ -264,7 +264,7 @@ const Timeline = (props) => {
                                         </>
                                     )}
                                     <div className="messagedate">
-                                        <p>{message.date.substring(0, 10)}</p>
+                                        <p>{message.date.substring(8, 10)}.{message.date.substring(5, 7)}.{message.date.substring(0, 4)}</p>
                                         <p>{message.date.substring(11)}</p>
                                     </div>
                                 </div>

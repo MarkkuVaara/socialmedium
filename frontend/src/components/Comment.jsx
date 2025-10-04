@@ -55,7 +55,10 @@ const Comment = (props) => {
         <div className="commentview" key={message.id} style={{ marginLeft: intendation }}>
             <div className="commenttitle">
                 <div className="titlewrap"><h4>{message.title}</h4></div>
-                <div><p>{message.date.substring(0, 10)}</p><p>{message.date.substring(11)}</p></div>
+                <div>
+                    <p>{message.date.substring(8, 10)}.{message.date.substring(5, 7)}.{message.date.substring(0, 4)}</p>
+                    <p>{message.date.substring(11)}</p>
+                </div>
             </div>
             <div className="commentmessagewrap">
                 <div className="commentmessage">

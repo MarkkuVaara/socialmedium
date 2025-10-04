@@ -145,11 +145,11 @@ const Interaction = (props) => {
                 <Slider {...sliderSettings}>
                     {messages.map(message => <>
                     <div className="dateandview">
-                        <p className="datep">{message.date.substring(0, 10)}</p>
+                        <p className="datep">{message.date.substring(8, 10)}.{message.date.substring(5, 7)}.{message.date.substring(0, 4)}</p>
                         {props.views.map(view => <>
                             {view.id === message.viewid && 
                                 <div className="viewdata">
-                                    <p>{view.date.substring(0, 10)}</p>
+                                    <p>{view.date.substring(8, 10)}.{view.date.substring(5, 7)}.{view.date.substring(0, 4)}</p>
                                     {props.videos.map(video => <>
                                         {video.id === view.videoid &&
                                             <p className="videodata" onClick={() => setVideoid({ videoid: video.id, viewid: view.id })}><strong>{video.name}</strong></p>
