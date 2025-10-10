@@ -31,6 +31,7 @@ const App = () => {
   const users = useSelector((state) => state.userReducer);
   const dispatch = useDispatch();
 
+
   useEffect(() => {
 
     videoservice
@@ -83,6 +84,18 @@ const App = () => {
       )
 
   }, []);
+
+
+  useEffect(() => {
+
+    console.log("check");
+    if (!tokenHandler[0]) {
+
+      alert("Session ended. Log in again if you want go on as a user.");
+
+    }
+
+  }, [tokenHandler[0]]);
 
 
   const parseTime = (timePart, period) => {
@@ -315,9 +328,21 @@ const App = () => {
         type: 'CLOSED'
       })
 
+      setInterval(() => {
+        const currentTime = Date.now();
+        if (new Date(token.expiresAt).getTime() < currentTime) {
+
+          dispatch({
+            type: 'REMOVE_TOKEN'
+          })
+          localStorage.removeItem('user');
+
+        }
+      }, 1000);
+
     } catch (exception) {
       alert("Wrong username and/or password. Please try again.");
-      localStorage.setItem('user', null);
+      localStorage.removeItem('user');
     }
 
   }
@@ -327,7 +352,7 @@ const App = () => {
     dispatch({
       type: 'REMOVE_TOKEN'
     })
-    localStorage.setItem('user', null);
+    localStorage.removeItem('user');
 
   }
 

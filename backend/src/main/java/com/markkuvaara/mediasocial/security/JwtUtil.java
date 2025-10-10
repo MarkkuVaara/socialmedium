@@ -16,7 +16,7 @@ public class JwtUtil {
 
     private final SecretKey secretKey;
 
-    private final long expirationTime = 1000 * 60 * 60;
+    private final long expirationTime = 1000 * 60 * 5;
 
     public JwtUtil() {
         String secret = "my-very-secret-key-that-is-long-enough-to-be-secure";
