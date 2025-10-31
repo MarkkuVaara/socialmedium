@@ -85,13 +85,21 @@ const App = () => {
 
   }, []);
 
+  const isFirstRun = useRef(true);
 
   useEffect(() => {
+
+    if (isFirstRun.current) {
+      isFirstRun.current = false;
+      return;
+    }
 
     console.log("check");
     if (!tokenHandler[0]) {
 
-      alert("Session ended. Log in again if you want go on as a user.");
+      dispatch({
+        type: 'OPEN'
+      })
 
     }
 
@@ -328,7 +336,7 @@ const App = () => {
         type: 'CLOSED'
       })
 
-      setInterval(() => {
+      const interval = setInterval(() => {
         const currentTime = Date.now();
         if (new Date(token.expiresAt).getTime() < currentTime) {
 
@@ -336,6 +344,7 @@ const App = () => {
             type: 'REMOVE_TOKEN'
           })
           localStorage.removeItem('user');
+          clearInterval(interval);
 
         }
       }, 1000);
