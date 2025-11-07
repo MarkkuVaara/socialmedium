@@ -100,10 +100,17 @@ const Base = (props) => {
 
         const date = event.target.date.value;
         const title = event.target.title.value;
+        let season = null;
+        let episode = null;
+
+        if(event.target.season && event.target.episode) {
+            season = event.target.season.value;
+            episode = event.target.episode.value;
+        };
 
         setIsViewOpen(false);
         setOrder(false);
-        props.addView({title, date});
+        props.addView({ title, date, season, episode });
 
     }
 

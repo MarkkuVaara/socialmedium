@@ -134,7 +134,7 @@ const App = () => {
   }
 
 
-  const addNewView = ({title, date}) => {
+  const addNewView = ({ title, date, season, episode }) => {
 
     const newDate = parseDate(date);
 
@@ -142,8 +142,8 @@ const App = () => {
       date: newDate,
       videoid: Number(title),
       userid: 1,
-      partid: null,
-      episodeid: null
+      partid: Number(season),
+      episodeid: Number(episode)
     }
 
     viewservice
